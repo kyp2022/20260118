@@ -1,0 +1,59 @@
+# LaTeX编译生成的文件
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.brf
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex.gz(busy)
+*.nav
+*.snm
+*.vrb
+*.run.xml
+
+# PDF文件（如果需要版本控制PDF，可以删除这行）
+*.pdf
+
+# 编辑器生成的文件
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.temp
+
+# 特定编译工具生成的文件
+*.idx
+*.ind
+*.ilg
+*.glg
+*.glo
+*.gls
+*.ist
+*.acn
+*.acr
+*.alg
+*.loa
+
+# BibTeX编译生成的文件
+*.bcf
+*.run.xml
+
+# Makeindex生成的文件
+*.ind
+*.idx
+*.ilg
+
+# 其他可能的临时文件
+*.bak
+*.backup
+*.old
