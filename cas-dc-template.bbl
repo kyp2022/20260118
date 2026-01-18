@@ -1,0 +1,312 @@
+\begin{thebibliography}{44}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Zhu et~al.(2023)Zhu, Cao, Saxena, Jiang, and Ferradi]{1}
+Juncen Zhu, Jiannong Cao, Divya Saxena, Shan Jiang, and Houda Ferradi.
+\newblock Blockchain-empowered federated learning: Challenges, solutions, and
+  future directions.
+\newblock \emph{ACM Computing Surveys}, 55\penalty0 (11):\penalty0 1--31, 2023.
+
+\bibitem[Zhao et~al.(2020)Zhao, Zhao, Yang, Wang, Wang, Lyu, Niyato, and
+  Lam]{2}
+Yang Zhao, Jun Zhao, Mengmeng Yang, Teng Wang, Ning Wang, Lingjuan Lyu, Dusit
+  Niyato, and Kwok-Yan Lam.
+\newblock Local differential privacy-based federated learning for internet of
+  things.
+\newblock \emph{IEEE Internet of Things Journal}, 8\penalty0 (11):\penalty0
+  8836--8853, 2020.
+
+\bibitem[Ali et~al.(2021)Ali, Karimipour, and Tariq]{3}
+Mansoor Ali, Hadis Karimipour, and Muhammad Tariq.
+\newblock Integration of blockchain and federated learning for internet of
+  things: Recent advances and future challenges.
+\newblock \emph{Computers \& Security}, 108:\penalty0 102355, 2021.
+
+\bibitem[Li et~al.(2020)Li, Chen, Liu, Huang, Zheng, and Yan]{4}
+Yuzheng Li, Chuan Chen, Nan Liu, Huawei Huang, Zibin Zheng, and Qiang Yan.
+\newblock A blockchain-based decentralized federated learning framework with
+  committee consensus.
+\newblock \emph{IEEE Network}, 35\penalty0 (1):\penalty0 234--241, 2020.
+
+\bibitem[Man et~al.(2021)Man, Zeng, Yang, Yu, Lv, and Wang]{5}
+Dapeng Man, Fanyi Zeng, Wu~Yang, Miao Yu, Jiguang Lv, and Yijing Wang.
+\newblock Intelligent intrusion detection based on federated learning for
+  edge-assisted internet of things.
+\newblock \emph{Security and Communication Networks}, 2021\penalty0
+  (1):\penalty0 9361348, 2021.
+
+\bibitem[Zhang et~al.(2020)Zhang, Lu, Yu, Li, Liu, Lo, Chen, Xu, and Zhu]{6}
+Weishan Zhang, Qinghua Lu, Qiuyu Yu, Zhaotong Li, Yue Liu, Sin~Kit Lo, Shiping
+  Chen, Xiwei Xu, and Liming Zhu.
+\newblock Blockchain-based federated learning for device failure detection in
+  industrial iot.
+\newblock \emph{IEEE Internet of Things Journal}, 8\penalty0 (7):\penalty0
+  5926--5937, 2020.
+
+\bibitem[Zhang et~al.(2023)Zhang, Liu, Qin, Xu, and Zhang]{9}
+Jiaxiang Zhang, Yiming Liu, Xiaoqi Qin, Xiaodong Xu, and Ping Zhang.
+\newblock Adaptive resource allocation for blockchain-based federated learning
+  in internet of things.
+\newblock \emph{IEEE Internet of Things Journal}, 10\penalty0 (12):\penalty0
+  10621--10635, 2023.
+
+\bibitem[Gao et~al.(2022)Gao, Li, Chen, Xu, and Xu]{7}
+Liang Gao, Li~Li, Yingwen Chen, ChengZhong Xu, and Ming Xu.
+\newblock Fgfl: A blockchain-based fair incentive governor for federated
+  learning.
+\newblock \emph{Journal of Parallel and Distributed Computing}, 163:\penalty0
+  283--299, 2022.
+
+\bibitem[Tatar et~al.(2020)Tatar, Gokce, and Nussbaum]{8}
+Unal Tatar, Yasir Gokce, and Brian Nussbaum.
+\newblock Law versus technology: Blockchain, gdpr, and tough tradeoffs.
+\newblock \emph{Computer Law \& Security Review}, 38:\penalty0 105454, 2020.
+
+\bibitem[Mcmahan et~al.(2016)Mcmahan, Moore, Ramage, Hampson, and Arcas]{18}
+H.~Brendan Mcmahan, Eider Moore, Daniel Ramage, Seth Hampson, and Blaise
+  Agüera~y Arcas.
+\newblock Communication-efficient learning of deep networks from decentralized
+  data.
+\newblock 2016.
+
+\bibitem[Truex et~al.(2020)Truex, Liu, Chow, Gursoy, and Wei]{13}
+Stacey Truex, Ling Liu, Ka-Ho Chow, Mehmet~Emre Gursoy, and Wenqi Wei.
+\newblock Ldp-fed: Federated learning with local differential privacy.
+\newblock In \emph{Proceedings of the third ACM international workshop on edge
+  systems, analytics and networking}, pages 61--66, 2020.
+
+\bibitem[Liu et~al.(2021)Liu, Wang, Ma, and Yang]{11}
+Gaoyang Liu, Chen Wang, Xiaoqiang Ma, and Yang Yang.
+\newblock Keep your data locally: Federated-learning-based data privacy
+  preservation in edge computing.
+\newblock \emph{IEEE Network}, 35\penalty0 (2):\penalty0 60--66, 2021.
+
+\bibitem[Song et~al.(2022)Song, Wang, Gadekallu, Cao, and Liu]{14}
+Jingcheng Song, Weizheng Wang, Thippa~Reddy Gadekallu, Jianyu Cao, and Yining
+  Liu.
+\newblock Eppda: An efficient privacy-preserving data aggregation federated
+  learning scheme.
+\newblock \emph{IEEE Transactions on Network Science and Engineering},
+  10\penalty0 (5):\penalty0 3047--3057, 2022.
+
+\bibitem[Yang et~al.(2017)Yang, Zheng, Yang, and Leung]{15}
+Zhe Yang, Kan Zheng, Kan Yang, and Victor C.~M. Leung.
+\newblock A blockchain-based reputation system for data credibility assessment
+  in vehicular networks.
+\newblock \emph{IEEE}, 2017.
+
+\bibitem[Xie et~al.(2024)Xie, Jiang, Jiang, Huang, Zhao, Khan, Dai, Liu, and
+  Wu]{16}
+Qipeng Xie, Siyang Jiang, Linshan Jiang, Yongzhi Huang, Zhihe Zhao, Salabat
+  Khan, Wangchen Dai, Zhe Liu, and Kaishun Wu.
+\newblock Efficiency optimization techniques in privacy-preserving federated
+  learning with homomorphic encryption: A brief survey.
+\newblock \emph{IEEE Internet of Things Journal}, 11\penalty0 (14):\penalty0
+  24569--24580, 2024.
+
+\bibitem[Wang et~al.(2024)Wang, Zhang, Wu, and Yu]{17}
+Xin Wang, Haoji Zhang, Haoyu Wu, and Hongnian Yu.
+\newblock Dual-blockchain based multi-layer grouping federated learning scheme
+  for heterogeneous data in industrial iot.
+\newblock \emph{Blockchain: Research and Applications}, page 100195, 2024.
+
+\bibitem[Baek et~al.(2021)Baek, Kim, Nam, and Park]{19}
+Chunghun Baek, Sungwook Kim, Dongkyun Nam, and Jihoon Park.
+\newblock Enhancing differential privacy for federated learning at scale.
+\newblock \emph{IEEE Access}, 9:\penalty0 148090--148103, 2021.
+
+\bibitem[Uddin et~al.(2021)Uddin, Stranieri, Gondal, and Balasubramanian]{20}
+Md~Ashraf Uddin, Andrew Stranieri, Iqbal Gondal, and Venki Balasubramanian.
+\newblock A survey on the adoption of blockchain in iot: Challenges and
+  solutions.
+\newblock \emph{Blockchain: Research and Applications}, 2\penalty0
+  (2):\penalty0 100006, 2021.
+
+\bibitem[Al-Maslamani et~al.(2023)Al-Maslamani, Abdallah, and Ciftler]{21}
+Noora~Mohammed Al-Maslamani, Mohamed Abdallah, and Bekir~Sait Ciftler.
+\newblock Reputation-aware multi-agent drl for secure hierarchical federated
+  learning in iot.
+\newblock \emph{IEEE Open Journal of the Communications Society}, 4:\penalty0
+  1274--1284, 2023.
+
+\bibitem[Jin et~al.(2023)Jin, Yao, Han, Joe-Wong, Ravi, Avestimehr, and He]{22}
+Weizhao Jin, Yuhang Yao, Shanshan Han, Carlee Joe-Wong, Srivatsan Ravi, Salman
+  Avestimehr, and Chaoyang He.
+\newblock Fedml-he: An efficient homomorphic-encryption-based
+  privacy-preserving federated learning system.
+\newblock \emph{arXiv preprint arXiv:2303.10837}, 2023.
+
+\bibitem[Javaid et~al.(2021)Javaid, Haleem, Singh, Khan, and Suman]{23}
+Mohd Javaid, Abid Haleem, Ravi~Pratap Singh, Shahbaz Khan, and Rajiv Suman.
+\newblock Blockchain technology applications for industry 4.0: A
+  literature-based review.
+\newblock \emph{Blockchain: Research and Applications}, 2\penalty0
+  (4):\penalty0 100027, 2021.
+
+\bibitem[He et~al.(2023)He, Luo, Wu, Sun, Wu, Liu, and Xiao]{24}
+Yunhua He, Mingshun Luo, Bin Wu, Limin Sun, Yongdong Wu, Zhiquan Liu, and
+  Ke~Xiao.
+\newblock A game theory-based incentive mechanism for collaborative security of
+  federated learning in energy blockchain environment.
+\newblock \emph{IEEE Internet of Things Journal}, 10\penalty0 (24):\penalty0
+  21294--21308, 2023.
+
+\bibitem[Guo and Yu(2022)]{25}
+Huaqun Guo and Xingjie Yu.
+\newblock A survey on blockchain technology and its security.
+\newblock \emph{Blockchain: research and applications}, 3\penalty0
+  (2):\penalty0 100067, 2022.
+
+\bibitem[Wang et~al.(2023)Wang, Hu, and Xiong]{26}
+Zhilin Wang, Qin Hu, and Xu~Zehui Xiong.
+\newblock Incentive mechanism design for joint resource allocation in
+  blockchain-based federated learning.
+\newblock \emph{IEEE Transactions on Parallel and Distributed Systems: A
+  Publication of the IEEE Computer Society}, 34\penalty0 (5):\penalty0
+  1536--1547, 2023.
+
+\bibitem[Majeed et~al.(2023)Majeed, Khan, Hassan, Han, and Hong]{27}
+Umer Majeed, Latif~U Khan, Sheikh~Salman Hassan, Zhu Han, and Choong~Seon Hong.
+\newblock Fl-incentivizer: Fl-nft and fl-tokens for federated learning model
+  trading and training.
+\newblock \emph{IEEE Access}, 11:\penalty0 4381--4399, 2023.
+
+\bibitem[Zuo et~al.(2024)Zuo, Wang, Zhu, Zhang, Ye, Yu, and Zhou]{58}
+Xuhan Zuo, Minghao Wang, Tianqing Zhu, Lefeng Zhang, Dayong Ye, Shui Yu, and
+  Wanlei Zhou.
+\newblock Federated trustchain: Blockchain-enhanced llm training and
+  unlearning.
+\newblock \emph{arXiv preprint arXiv:2406.04076}, 2024.
+
+\bibitem[Zhou et~al.(2024)Zhou, Pang, Wang, Hu, Sun, and Ren]{62}
+Yajie Zhou, Xiaoyi Pang, Zhibo Wang, Jiahui Hu, Peng Sun, and Kui Ren.
+\newblock Towards efficient asynchronous federated learning in heterogeneous
+  edge environments.
+\newblock In \emph{IEEE INFOCOM 2024-IEEE conference on computer
+  communications}, pages 2448--2457. IEEE, 2024.
+
+\bibitem[Lu et~al.(2019{\natexlab{a}})Lu, Huang, Dai, Maharjan, and Zhang]{28}
+Yunlong Lu, Xiaohong Huang, Yueyue Dai, Sabita Maharjan, and Yan Zhang.
+\newblock Blockchain and federated learning for privacy-preserved data sharing
+  in industrial iot.
+\newblock \emph{IEEE Transactions on Industrial Informatics}, 16\penalty0
+  (6):\penalty0 4177--4186, 2019{\natexlab{a}}.
+
+\bibitem[Samuel et~al.(2022)Samuel, Omojo, Onuja, Sunday, Tiwari, Gupta,
+  Hafeez, Yahaya, Fatoba, and Shamshirband]{44}
+Omaji Samuel, Akogwu~Blessing Omojo, Abdulkarim~Musa Onuja, Yunisa Sunday,
+  Prayag Tiwari, Deepak Gupta, Ghulam Hafeez, Adamu~Sani Yahaya,
+  Oluwaseun~Jumoke Fatoba, and Shahab Shamshirband.
+\newblock Iomt: A covid-19 healthcare system driven by federated learning and
+  blockchain.
+\newblock \emph{IEEE Journal of Biomedical and Health Informatics}, 27\penalty0
+  (2):\penalty0 823--834, 2022.
+
+\bibitem[Zhao et~al.(2023)Zhao, Sun, Bashir, and Lin]{12}
+Zirun Zhao, Yi~Sun, Ali~Kashif Bashir, and Zhaowen Lin.
+\newblock Adadpfed: A differentially private federated learning algorithm with
+  adaptive noise on non-iid data.
+\newblock \emph{IEEE Transactions on Consumer Electronics}, 2023.
+
+\bibitem[Lu et~al.(2019{\natexlab{b}})Lu, Huang, Dai, Maharjan, and Zhang]{29}
+Yunlong Lu, Xiaohong Huang, Yueyue Dai, Sabita Maharjan, and Yan Zhang.
+\newblock Blockchain and federated learning for privacy-preserved data sharing
+  in industrial iot.
+\newblock \emph{IEEE Transactions on Industrial Informatics}, 16\penalty0
+  (6):\penalty0 4177--4186, 2019{\natexlab{b}}.
+
+\bibitem[Kalapaaking et~al.(2022)Kalapaaking, Khalil, Rahman, Atiquzzaman, Yi,
+  and Almashor]{36}
+Aditya~Pribadi Kalapaaking, Ibrahim Khalil, Mohammad~Saidur Rahman, Mohammed
+  Atiquzzaman, Xun Yi, and Mahathir Almashor.
+\newblock Blockchain-based federated learning with secure aggregation in
+  trusted execution environment for internet-of-things.
+\newblock \emph{IEEE Transactions on Industrial Informatics}, 19\penalty0
+  (2):\penalty0 1703--1714, 2022.
+
+\bibitem[Xu and Chen(2022)]{63}
+Zihuan Xu and Lei Chen.
+\newblock L2chain: Towards high-performance, confidential and secure layer-2
+  blockchain solution for decentralized applications.
+\newblock \emph{Proceedings of the VLDB Endowment}, 16\penalty0 (4):\penalty0
+  986--999, 2022.
+
+\bibitem[Wu et~al.(2024)Wu, Zhang, Xu, Choo, and Zhong]{65}
+Changti Wu, Lei Zhang, Lin Xu, Kim-Kwang~Raymond Choo, and Liangyu Zhong.
+\newblock Privacy-preserving serverless federated learning scheme for internet
+  of things.
+\newblock \emph{IEEE Internet of Things Journal}, 11\penalty0 (12):\penalty0
+  22429--22438, 2024.
+
+\bibitem[Li et~al.(2018)Li, Weng, Yang, Lu, Zhang, Hou, Liu, Xiang, and
+  Deng]{30}
+Ming Li, Jian Weng, Anjia Yang, Wei Lu, Yue Zhang, Lin Hou, Jia-Nan Liu, Yang
+  Xiang, and Robert~H Deng.
+\newblock Crowdbc: A blockchain-based decentralized framework for
+  crowdsourcing.
+\newblock \emph{IEEE transactions on parallel and distributed systems},
+  30\penalty0 (6):\penalty0 1251--1266, 2018.
+
+\bibitem[Wu and Seneviratne(2025)]{60}
+Bijun Wu and Oshani Seneviratne.
+\newblock Blockchain-based framework for scalable and incentivized federated
+  learning.
+\newblock In \emph{Companion Proceedings of the ACM on Web Conference 2025},
+  pages 1761--1767, 2025.
+
+\bibitem[Cui et~al.(2025)Cui, Ling, Zhou, Wang, Ding, and Gao]{59}
+Zixiang Cui, Xintong Ling, Xingyu Zhou, Jiaheng Wang, Zhi Ding, and Xiqi Gao.
+\newblock Bagchain: A dual-functional blockchain leveraging bagging-based
+  distributed learning.
+\newblock \emph{arXiv preprint arXiv:2502.11464}, 2025.
+
+\bibitem[Kang et~al.(2020)Kang, Xiong, Niyato, Zou, Zhang, and Guizani]{38}
+Jiawen Kang, Zehui Xiong, Dusit Niyato, Yuze Zou, Yang Zhang, and Mohsen
+  Guizani.
+\newblock Reliable federated learning for mobile networks.
+\newblock \emph{IEEE Wireless Communications}, 27\penalty0 (2):\penalty0
+  72--80, 2020.
+
+\bibitem[Alagha et~al.(2023)Alagha, Bentahar, Otrok, Singh, and Mizouni]{61}
+Ahmed Alagha, Jamal Bentahar, Hadi Otrok, Shakti Singh, and Rabeb Mizouni.
+\newblock Blockchain-assisted demonstration cloning for multiagent deep
+  reinforcement learning.
+\newblock \emph{IEEE Internet of Things Journal}, 11\penalty0 (5):\penalty0
+  7710--7723, 2023.
+
+\bibitem[Dai et~al.(2024)Dai, Tang, Zeng, Hu, and Zhao]{64}
+Guowen Dai, Jinjun Tang, Jie Zeng, Chen Hu, and Chuyun Zhao.
+\newblock Road network traffic flow prediction: A personalized federated
+  learning method based on client reputation.
+\newblock \emph{Computers and Electrical Engineering}, 120:\penalty0 109678,
+  2024.
+
+\bibitem[Liu et~al.(2008)Liu, Ting, and Zhou]{39}
+Fei~Tony Liu, Kai~Ming Ting, and Zhi-Hua Zhou.
+\newblock Isolation forest.
+\newblock In \emph{2008 eighth ieee international conference on data mining},
+  pages 413--422. IEEE, 2008.
+
+\bibitem[Qu et~al.(2022)Qu, Gao, Xiang, Shen, and Yu]{41}
+Youyang Qu, Longxiang Gao, Yong Xiang, Shigen Shen, and Shui Yu.
+\newblock Fedtwin: Blockchain-enabled adaptive asynchronous federated learning
+  for digital twin networks.
+\newblock \emph{IEEE Network}, 36\penalty0 (6):\penalty0 183--190, 2022.
+
+\bibitem[Hariri et~al.(2019)Hariri, Kind, and Brunner]{42}
+Sahand Hariri, Matias~Carrasco Kind, and Robert~J Brunner.
+\newblock Extended isolation forest.
+\newblock \emph{IEEE transactions on knowledge and data engineering},
+  33\penalty0 (4):\penalty0 1479--1489, 2019.
+
+\bibitem[Cai et~al.(2022)Cai, Li, and Liang]{57}
+Liang Cai, Qilei Li, and Xiubo Liang.
+\newblock Hyperchain application development fundamentals.
+\newblock In \emph{Advanced Blockchain Technology: Frameworks and
+  Enterprise-Level Practices}, pages 273--292. Springer, 2022.
+
+\end{thebibliography}

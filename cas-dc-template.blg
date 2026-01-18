@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: cas-dc-template.aux
+The style file: unsrtnat.bst
+Database file #1: cas-refs.bib
+Warning--empty journal in 18
+You've used 44 entries,
+            2481 wiz_defined-function locations,
+            766 strings with 13306 characters,
+and the built_in function-call counts, 20865 in all, are:
+= -- 1603
+> -- 1470
+< -- 9
++ -- 535
+- -- 446
+* -- 1896
+:= -- 3423
+add.period$ -- 135
+call.type$ -- 44
+change.case$ -- 88
+chr.to.int$ -- 43
+cite$ -- 45
+duplicate$ -- 906
+empty$ -- 1706
+format.name$ -- 496
+if$ -- 4313
+int.to.chr$ -- 2
+int.to.str$ -- 45
+missing$ -- 44
+newline$ -- 228
+num.names$ -- 132
+pop$ -- 350
+preamble$ -- 1
+purify$ -- 44
+quote$ -- 0
+skip$ -- 523
+stack$ -- 0
+substring$ -- 1135
+swap$ -- 153
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 308
+warning$ -- 1
+while$ -- 160
+width$ -- 0
+write$ -- 575
+(There was 1 warning)
