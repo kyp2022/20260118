@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.1)  25 SEP 2025 21:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.1)  17 FEB 2026 22:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -921,17 +921,17 @@ File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 Package hyperref Warning: Ignoring empty anchor on input line 205.
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 217--218
+Underfull \hbox (badness 1237) in paragraph at lines 218--219
 \T1/stix/m/n/10 ag-ing con-sen-sus mech-a-nisms to sup-press ma-li-cious be-
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 217--218
+Underfull \hbox (badness 1990) in paragraph at lines 218--219
 \T1/stix/m/n/10 re-ward and pun-ish-ment mech-a-nisms, en-hanc-ing sys-tem
  []
 
 LaTeX Font Info:    Trying to load font information for T1+cmss on input line 2
-18.
+19.
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 ) [1{d:/Program Files/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
@@ -940,14 +940,8 @@ File: t1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 
 {d:/Program Files/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.
 enc}]
-Overfull \hbox (6.80551pt too wide) in paragraph at lines 224--225
-[]\T1/stix/m/n/10 Proposes a ro-bust ma-li-cious be-hav-ior iden-ti-fi-ca-tion 
-method
- []
-
-
-Overfull \hbox (1.21553pt too wide) in paragraph at lines 224--225
-\T1/stix/m/n/10 com-bin-ing mul-ti-ple anomaly de-tec-tion mod-els with smart
+Overfull \hbox (1.14552pt too wide) in paragraph at lines 223--224
+[]\T1/stix/m/n/10 We present BRITE-FL, a consortium-blockchain-assisted
  []
 
 
@@ -957,30 +951,39 @@ ion <1.7>, but at most version <1.5> allowed
 <figs/1.pdf, id=64, 440.3652pt x 294.98708pt>
 File: figs/1.pdf Graphic file (type pdf)
 <use figs/1.pdf>
-Package pdftex.def Info: figs/1.pdf  used on input line 231.
+Package pdftex.def Info: figs/1.pdf  used on input line 233.
 (pdftex.def)             Requested size: 232.41812pt x 220.6141pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (1.36551pt too wide) in paragraph at lines 243--244
-[]\T1/stix/m/n/10 Alternative privacy-preserving tech-niques have also been
+Underfull \hbox (badness 1048) in paragraph at lines 251--273
+\T1/stix/m/n/10 ing and ag-gre-gates lo-cally com-puted up-dates. In cross-
  []
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 243--244
-\T1/stix/m/n/10 ho-mo-mor-phic en-cryp-tion, en-abling com-pu-ta-tion on en-
+Underfull \hbox (badness 1033) in paragraph at lines 251--273
+\T1/stix/m/n/10 organization IoT and edge set-tings, the co-or-di-na-tor can
  []
 
 
-Underfull \hbox (badness 1769) in paragraph at lines 243--244
-\T1/stix/m/n/10 im-prove-ments, such as Yang et al.[[]] who de-vel-oped
+Underfull \hbox (badness 1102) in paragraph at lines 251--273
+\T1/stix/m/n/10 in-tro-duced a committee-consensus-based de-sign (BFLC)
  []
 
 
-Overfull \hbox (20.1355pt too wide) in paragraph at lines 243--244
-\T1/stix/m/n/10 L2chain for high-performance and con-fi-den-tial layer-2 blockc
-hain
+Underfull \hbox (badness 1418) in paragraph at lines 251--273
+\T1/stix/m/n/10 up-dates and main-tain-ing the global model in a de-cen-
+ []
+
+
+Underfull \hbox (badness 1226) in paragraph at lines 251--273
+\T1/stix/m/n/10 un-der com-mu-ni-ca-tion con-straints [[]], and IoT-oriented
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 251--273
+\T1/stix/m/n/10 ex-tends blockchain-enabled FL to digital-twin net-works
  []
 
 [2
@@ -988,31 +991,52 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.244 
-       <./figs/1.pdf>]
-Underfull \hbox (badness 1286) in paragraph at lines 245--246
-\T1/stix/m/n/10 crit-i-cal chal-lenge in fed-er-ated learn-ing sys-tems. Sun et
+l.273 \subsection
+                 {Privacy Preservation and Robustness} <./figs/1.pdf>]
+Underfull \hbox (badness 1939) in paragraph at lines 275--296
+[]\T1/stix/m/n/10 Although blockchain pro-vides im-mutabil-ity and ac-
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 275--296
+\T1/stix/m/n/10 layer. Dif-fer-en-tial pri-vacy and cryp-to-graphic tech-niques
 
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 245--246
-\T1/stix/m/n/10 sys-tem to com-pen-sate par-tic-i-pants based on their con-
- []
-
-
-Underfull \hbox (badness 1189) in paragraph at lines 245--246
-\T1/stix/m/n/10 who in-tro-duced BagChain, a dual-functional blockchain
+Underfull \hbox (badness 1472) in paragraph at lines 275--296
+\T1/stix/m/n/10 For IoT de-ploy-ments, Kala-paak-ing et al. [[]] com-bine
  []
 
 [3]
-Overfull \hbox (3.72551pt too wide) in paragraph at lines 292--293
+Overfull \hbox (3.72551pt too wide) in paragraph at lines 394--395
 []\T1/stix/m/n/10 The fun-da-men-tal in-sight un-der-ly-ing iFor-est is that an
 oma-
  []
 
-[4]
-Overfull \hbox (7.28456pt too wide) in paragraph at lines 314--355
+[4
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.405 
+      ]
+Overfull \hbox (1.32417pt too wide) in paragraph at lines 420--420
+[]|\T1/cmss/bx/n/9 Parameter| 
+ []
+
+
+Overfull \hbox (1.32417pt too wide) in paragraph at lines 420--420
+[]|\T1/cmss/bx/n/9 Parameter| 
+ []
+
+
+Underfull \hbox (badness 5331) in paragraph at lines 426--427
+[]|\T1/cmss/m/n/9 Number of se-lected train-ing/validation nodes
+ []
+
+
+Overfull \hbox (28.61539pt too wide) in paragraph at lines 418--454
  [][] 
  []
 
@@ -1020,221 +1044,229 @@ Overfull \hbox (7.28456pt too wide) in paragraph at lines 314--355
 
 pdfTeX warning: pdflatex.exe (file ./figs/2.pdf): PDF inclusion: found PDF vers
 ion <1.7>, but at most version <1.5> allowed
-<figs/2.pdf, id=195, 963.6pt x 542.025pt>
+<figs/2.pdf, id=213, 963.6pt x 542.025pt>
 File: figs/2.pdf Graphic file (type pdf)
 <use figs/2.pdf>
-Package pdftex.def Info: figs/2.pdf  used on input line 361.
-(pdftex.def)             Requested size: 469.7715pt x 310.2394pt.
+Package pdftex.def Info: figs/2.pdf  used on input line 459.
+(pdftex.def)             Requested size: 479.66684pt x 310.2394pt.
 
-Underfull \hbox (badness 1297) in paragraph at lines 370--372
+Underfull \hbox (badness 1297) in paragraph at lines 469--471
 []\T1/stix/m/n/10 Participating Nodes: key en-ti-ties ex-e-cut-ing fed-er-ated
  []
 
-[5
+
+
+pdfTeX warning: pdflatex.exe (file ./figs/3.pdf): PDF inclusion: found PDF vers
+ion <1.7>, but at most version <1.5> allowed
+<figs/3.pdf, id=215, 414.01778pt x 651.73137pt>
+File: figs/3.pdf Graphic file (type pdf)
+<use figs/3.pdf>
+Package pdftex.def Info: figs/3.pdf  used on input line 488.
+(pdftex.def)             Requested size: 247.25017pt x 317.13351pt.
+
+Overfull \hbox (8.99573pt too wide) in paragraph at lines 488--489
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5] [6
+pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.501 
+      ]
+Underfull \hbox (badness 1048) in paragraph at lines 502--503
+\T1/stix/m/n/10 the smart con-tract has col-lected a suf-fi-cient num-ber of
+ []
+
+
+Underfull \hbox (badness 1221) in paragraph at lines 502--503
+\T1/stix/m/n/10 val-i-dated model up-dates and formed con-sen-sus, it ex-e-
+ []
+
+
+Underfull \hbox (badness 1383) in paragraph at lines 502--503
+\LS2/stixcal/m/n/10 M[] \LS1/stix/m/n/10 = 0$\T1/stix/m/n/10 ) to gen-er-ate ne
+w global model pa-ram-e-ters
+ []
+
+[7
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.377 	\item B
-              lockchain Network ($B$): As the system's infrastructure, respo...
- <./figs/2.pdf>]
-
-pdfTeX warning: pdflatex.exe (file ./figs/3.pdf): PDF inclusion: found PDF vers
-ion <1.7>, but at most version <1.5> allowed
-<figs/3.pdf, id=279, 414.01778pt x 651.73137pt>
-File: figs/3.pdf Graphic file (type pdf)
-<use figs/3.pdf>
-Package pdftex.def Info: figs/3.pdf  used on input line 388.
-(pdftex.def)             Requested size: 242.30997pt x 330.91673pt.
-
-Overfull \hbox (4.05553pt too wide) in paragraph at lines 388--389
- [][] 
+l.551 \end{equation}
+                     <./figs/2.pdf>]
+Underfull \hbox (badness 1688) in paragraph at lines 568--568
+[]\T1/stix/b/n/10 Algorithm 2: \T1/stix/m/n/10 Lo-cal Model Up-date (in global
  []
 
-[6
-pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
- been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.396 \textit{Step 2. }
-                       Training node registration and election.Participants ...
-
+[8
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.396 \textit{Step 2. }
-                       Training node registration and election.Participants ...
- <./figs/3.pdf>]
-Overfull \hbox (6.43045pt too wide) in paragraph at lines 396--397
-[]\T1/stix/m/it/10 Step 2. \T1/stix/m/n/10 Train-ing node reg-is-tra-tion and e
-lec-tion.Participants
- []
-
-[7
+l.593 \begin{enumerate}[1)]
+                           
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.453 \end{equation}
-                    ]
-Overfull \hbox (1.0957pt too wide) in paragraph at lines 548--549
-\T1/stix/m/n/10 tion nodes to form a val-i-da-tion group $\LS1/stix/m/it/10 V \
-LS1/stix/m/n/10 = ^\LS1/stix/m/it/10 v[]; v[]; :::; v[]\LS1/stix/m/n/10 `$\T1/s
-tix/m/n/10 . 
- []
-
-[8
+l.593 \begin{enumerate}[1)]
+                           
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.562 		\begin{equation}
-                        ] [9
+l.593 \begin{enumerate}[1)]
+                            <./figs/3.pdf>]
+Overfull \hbox (20.40038pt too wide) detected at line 682
+[][][][] \LS1/stix/m/n/10 = \LS1/stix/m/it/10 w[]\LS1/stix/m/n/10 .*\LS1/stix/m
+/it/10 Z[]\LS1/stix/m/n/10 / + \LS1/stix/m/it/10 w[]s[];  S[] \LS1/stix/m/n/10 
+= [][].[].[]//
+ []
+
+[9
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.640 A
-       t the beginning of the task, the publisher sets the total reward toke...
-] [10
+l.682 		\end{equation}
+                      ] [10
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.730 \subsection
-                 {Experimental Environment and Configuration}
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.5}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.730 \subsection
-                 {Experimental Environment and Configuration}]
+l.767 
+      ]
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-747.
-
-(d:/Program Files/texlive/2023/texmf-dist/tex/latex/base/ts1cmss.fd
+838.
+ (d:/Program Files/texlive/2023/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    Trying to load font information for TS1+stix on input line 
-762.
+855.
 
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/stix/ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
-Overfull \hbox (3.68382pt too wide) in paragraph at lines 768--769
+Overfull \hbox (3.68382pt too wide) in paragraph at lines 861--862
 []\T1/stix/m/n/10 Privacy-Preserving Server-less FL for IoT (PSFL-IoT)[[]]:
  []
 
 
-Overfull \hbox (3.1205pt too wide) in paragraph at lines 768--769
+Overfull \hbox (3.1205pt too wide) in paragraph at lines 861--862
 \T1/stix/m/n/10 party com-pu-ta-tion. The ap-proach elim-i-nates cen-tral serve
 r
  []
 
-
-Overfull \hbox (1.90468pt too wide) in paragraph at lines 774--775
+[11
+pdfTeX warning (ext4): destination with the same identifier (name{algocf.5}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.862 	
+       
+pdfTeX warning (ext4): destination with the same identifier (name{algocf.6}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.862 	
+       {d:/Program Files/texlive/2023/texmf-dist/fonts/enc/dvips/stix/stix-ts1.
+enc}]
+Overfull \hbox (1.90468pt too wide) in paragraph at lines 867--868
 []\T1/stix/m/n/10 Federated Learn-ing in IoT with Ma-li-cious Nodes (FedIoT-
  []
 
 
-Underfull \hbox (badness 1571) in paragraph at lines 774--775
+Underfull \hbox (badness 1571) in paragraph at lines 867--868
 \T1/stix/m/n/10 the Fe-dIoTs framework[[]]. We in-tro-duce ma-li-cious
  []
 
 
-Underfull \hbox (badness 1152) in paragraph at lines 774--775
+Underfull \hbox (badness 1152) in paragraph at lines 867--868
 \T1/stix/m/n/10 un-der ad-ver-sar-ial con-di-tions, pro-vid-ing a rep-re-sen-ta
 -
  []
 
 
-Underfull \hbox (badness 2057) in paragraph at lines 798--799
+Underfull \hbox (badness 2057) in paragraph at lines 891--892
 \T1/stix/m/n/10 and FM-NIST re-spec-tively, show-ing com-pet-i-tive per-for-
  []
 
-[11
-pdfTeX warning (ext4): destination with the same identifier (name{algocf.6}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.799 
-      {d:/Program Files/texlive/2023/texmf-dist/fonts/enc/dvips/stix/stix-ts1.e
-nc}] [12
-pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
- been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.807 
-      {d:/Program Files/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-sup
-er-ts1.enc}
+[12
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.807 
-      ]
+l.895 I
+       n data pollution attacks, malicious nodes inject corrupted or complet...
+{d:/Program Files/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1
+.enc}]
 
 pdfTeX warning: pdflatex.exe (file ./figs/4a.pdf): PDF inclusion: found PDF ver
 sion <1.7>, but at most version <1.5> allowed
-<figs/4a.pdf, id=502, 331.30446pt x 258.37328pt>
+<figs/4a.pdf, id=524, 331.30446pt x 258.37328pt>
 File: figs/4a.pdf Graphic file (type pdf)
 <use figs/4a.pdf>
-Package pdftex.def Info: figs/4a.pdf  used on input line 812.
+Package pdftex.def Info: figs/4a.pdf  used on input line 905.
 (pdftex.def)             Requested size: 158.24646pt x 123.41061pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./figs/4b.pdf): PDF inclusion: found PDF ver
 sion <1.7>, but at most version <1.5> allowed
-<figs/4b.pdf, id=503, 331.83975pt x 254.14949pt>
+<figs/4b.pdf, id=525, 331.83975pt x 254.14949pt>
 File: figs/4b.pdf Graphic file (type pdf)
 <use figs/4b.pdf>
-Package pdftex.def Info: figs/4b.pdf  used on input line 817.
+Package pdftex.def Info: figs/4b.pdf  used on input line 910.
 (pdftex.def)             Requested size: 158.24646pt x 121.19925pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./figs/4c.pdf): PDF inclusion: found PDF ver
 sion <1.7>, but at most version <1.5> allowed
-<figs/4c.pdf, id=504, 330.63524pt x 252.34274pt>
+<figs/4c.pdf, id=526, 330.63524pt x 252.34274pt>
 File: figs/4c.pdf Graphic file (type pdf)
 <use figs/4c.pdf>
-Package pdftex.def Info: figs/4c.pdf  used on input line 822.
+Package pdftex.def Info: figs/4c.pdf  used on input line 915.
 (pdftex.def)             Requested size: 158.24646pt x 120.7766pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./figs/5a.pdf): PDF inclusion: found PDF ver
 sion <1.7>, but at most version <1.5> allowed
-<figs/5a.pdf, id=505, 330.63524pt x 252.34274pt>
+<figs/5a.pdf, id=527, 330.63524pt x 252.34274pt>
 File: figs/5a.pdf Graphic file (type pdf)
 <use figs/5a.pdf>
-Package pdftex.def Info: figs/5a.pdf  used on input line 836.
+Package pdftex.def Info: figs/5a.pdf  used on input line 929.
 (pdftex.def)             Requested size: 158.24646pt x 120.7766pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./figs/5b.pdf): PDF inclusion: found PDF ver
 sion <1.7>, but at most version <1.5> allowed
-<figs/5b.pdf, id=506, 330.03299pt x 252.34274pt>
+<figs/5b.pdf, id=528, 330.03299pt x 252.34274pt>
 File: figs/5b.pdf Graphic file (type pdf)
 <use figs/5b.pdf>
-Package pdftex.def Info: figs/5b.pdf  used on input line 841.
+Package pdftex.def Info: figs/5b.pdf  used on input line 934.
 (pdftex.def)             Requested size: 158.24646pt x 120.99222pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./figs/5c.pdf): PDF inclusion: found PDF ver
 sion <1.7>, but at most version <1.5> allowed
-<figs/5c.pdf, id=507, 332.44202pt x 252.945pt>
+<figs/5c.pdf, id=529, 332.44202pt x 252.945pt>
 File: figs/5c.pdf Graphic file (type pdf)
 <use figs/5c.pdf>
-Package pdftex.def Info: figs/5c.pdf  used on input line 846.
+Package pdftex.def Info: figs/5c.pdf  used on input line 939.
 (pdftex.def)             Requested size: 158.24646pt x 120.40485pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./figs/7.pdf): PDF inclusion: found PDF vers
 ion <1.7>, but at most version <1.5> allowed
-<figs/7.pdf, id=510, 325.81726pt x 296.307pt>
+<figs/7.pdf, id=532, 325.81726pt x 296.307pt>
 File: figs/7.pdf Graphic file (type pdf)
 <use figs/7.pdf>
-Package pdftex.def Info: figs/7.pdf  used on input line 861.
+Package pdftex.def Info: figs/7.pdf  used on input line 954.
 (pdftex.def)             Requested size: 211.7787pt x 192.59726pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1243,26 +1275,44 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 pdfTeX warning: pdflatex.exe (file ./figs/6.pdf): PDF inclusion: found PDF vers
 ion <1.7>, but at most version <1.5> allowed
-<figs/6.pdf, id=511, 331.2375pt x 283.0575pt>
+<figs/6.pdf, id=533, 331.2375pt x 283.0575pt>
 File: figs/6.pdf Graphic file (type pdf)
 <use figs/6.pdf>
-Package pdftex.def Info: figs/6.pdf  used on input line 869.
+Package pdftex.def Info: figs/6.pdf  used on input line 962.
 (pdftex.def)             Requested size: 215.30182pt x 183.98518pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13
+pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.986 \end{table*}
+                  ] [14
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.876 
+l.992 
       
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.876 
+l.992 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.992 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.992 
        <./figs/4a.pdf> <./figs/4b.pdf
 
 pdfTeX warning: pdflatex.exe (file ./figs/4b.pdf): PDF inclusion: multiple pdfs
@@ -1283,41 +1333,39 @@ pdfTeX warning: pdflatex.exe (file ./figs/5b.pdf): PDF inclusion: multiple pdfs
 
 pdfTeX warning: pdflatex.exe (file ./figs/5c.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
+> <./figs/7.pdf
+
+pdfTeX warning: pdflatex.exe (file ./figs/7.pdf): PDF inclusion: multiple pdfs 
+with page group included in a single page
+> <./figs/6.pdf
+
+pdfTeX warning: pdflatex.exe (file ./figs/6.pdf): PDF inclusion: multiple pdfs 
+with page group included in a single page
 >]
 
 pdfTeX warning: pdflatex.exe (file ./figs/8.pdf): PDF inclusion: found PDF vers
 ion <1.7>, but at most version <1.5> allowed
-<figs/8.pdf, id=845, 392.667pt x 243.56798pt>
+<figs/8.pdf, id=888, 392.667pt x 243.56798pt>
 File: figs/8.pdf Graphic file (type pdf)
 <use figs/8.pdf>
-Package pdftex.def Info: figs/8.pdf  used on input line 909.
+Package pdftex.def Info: figs/8.pdf  used on input line 1002.
 (pdftex.def)             Requested size: 222.52832pt x 165.4642pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14
-pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has
+[15
+pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.918 		
-        
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
+l.1020 		
+         
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.918 		
-        
-pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.918 		
-         <./figs/7.pdf> <./figs/6.pdf
-
-pdfTeX warning: pdflatex.exe (file ./figs/6.pdf): PDF inclusion: multiple pdfs 
-with page group included in a single page
->] (./cas-dc-template.bbl
+l.1020 		
+          <./figs/8.pdf>] (./cas-dc-template.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 130--135
 []\T1/stix/m/n/8 Noora Mo-hammed Al-Maslamani, Mo-hamed Ab-dal-lah, and
  []
@@ -1328,83 +1376,88 @@ Underfull \hbox (badness 1005) in paragraph at lines 130--135
 e
  []
 
-[15
-pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.171 
-       <./figs/8.pdf>]
-Underfull \hbox (badness 3838) in paragraph at lines 179--184
+[16]
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 20
+0.
+ (d:/Program Files/texlive/2023/texmf-dist/tex/latex/inconsolata/t1zi4.fd
+File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
+)
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 6.80005pt on input line 200.
+
+Underfull \hbox (badness 1199) in paragraph at lines 196--201
+\T1/stix/m/n/8 Chen, and Shi Jin.  Blockchain-aided wire-less fed-er-ated learn
+-
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 196--201
+\T1/stix/m/n/8 ing: Re-source al-lo-ca-tion and client schedul-ing.  \T1/stix/m
+/it/8 arXiv preprint
+ []
+
+
+Underfull \hbox (badness 3838) in paragraph at lines 209--214
 \T1/stix/m/n/8 ong Ye, Shui Yu, and Wan-lei Zhou.  Fed-er-ated trustchain:
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 201--208
-\T1/stix/m/n/8 Yu-nisa Sun-day, Prayag Ti-wari, Deepak Gupta, Ghu-lam Hafeez,
- []
-
-
-Underfull \hbox (badness 3838) in paragraph at lines 201--208
-\T1/stix/m/n/8 Adamu Sani Ya-haya, Oluwaseun Jumoke Fa-toba, and Sha-hab
- []
-
-
-Underfull \hbox (badness 2027) in paragraph at lines 224--230
+Underfull \hbox (badness 2027) in paragraph at lines 224--231
 \T1/stix/m/n/8 Blockchain-based fed-er-ated learn-ing with se-cure ag-gre-ga-ti
 on in
  []
 
 
-Underfull \hbox (badness 2426) in paragraph at lines 262--266
-[]\T1/stix/m/n/8 Zixiang Cui, Xin-tong Ling, Xingyu Zhou, Ji-a-heng Wang, Zhi
+Underfull \hbox (badness 2478) in paragraph at lines 233--239
+[]\T1/stix/m/n/8 Yang Zhao, Jun Zhao, Lin-shan Jiang, Rui Tan, Dusit Niy-ato,
  []
 
 
-Underfull \hbox (badness 1571) in paragraph at lines 262--266
-\T1/stix/m/n/8 Ding, and Xiqi Gao.  Bagchain: A dual-functional blockchain
+Underfull \hbox (badness 1173) in paragraph at lines 278--282
+[]\T1/stix/m/n/8 Ming Tang, Fu Peng, and Vin-cent WS Wong.  A blockchain-
  []
 
 
-Underfull \hbox (badness 2512) in paragraph at lines 262--266
-\T1/stix/m/n/8 lever-ag-ing bagging-based dis-tributed learn-ing.  \T1/stix/m/i
-t/8 arXiv preprint
- []
-
-
-Underfull \hbox (badness 1226) in paragraph at lines 307--311
+Underfull \hbox (badness 1226) in paragraph at lines 296--300
 \T1/stix/m/it/8 works and Enterprise-Level Prac-tices\T1/stix/m/n/8 , pages 273
 --292. Springer,
  []
 
-) [16] (./cas-dc-template.aux)
+) [17{d:/Program Files/texlive/2023/texmf-dist/fonts/enc/dvips/inconsolata/i4-t
+1-0.enc}
+
+] (./cas-dc-template.aux)
 Package rerunfilecheck Info: File `cas-dc-template.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18890 strings out of 476025
- 290207 string characters out of 5786996
- 1887382 words of memory out of 5000000
- 38777 multiletter control sequences out of 15000+600000
- 611492 words of font info for 142 fonts, out of 8000000 for 9000
+ 18921 strings out of 476025
+ 290755 string characters out of 5786996
+ 1897382 words of memory out of 5000000
+ 38790 multiletter control sequences out of 15000+600000
+ 612624 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,21n,93p,1697b,653s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix/STIXGeneral
--Bold.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix/STI
-XGeneral-BoldItalic.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/p
-ublic/stix/STIXGeneral-Italic.pfb><d:/Program Files/texlive/2023/texmf-dist/fon
-ts/type1/public/stix/STIXGeneral-Regular.pfb><d:/Program Files/texlive/2023/tex
-mf-dist/fonts/type1/public/cm-super/sfss0900.pfb><d:/Program Files/texlive/2023
-/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb><d:/Program Files/texlive/
-2023/texmf-dist/fonts/type1/public/stix/stix-mathcal.pfb><d:/Program Files/texl
-ive/2023/texmf-dist/fonts/type1/public/stix/stix-mathex.pfb><d:/Program Files/t
-exlive/2023/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb><d:/Program File
-s/texlive/2023/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb><d:/Program F
-iles/texlive/2023/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb>
-Output written on cas-dc-template.pdf (16 pages, 2487989 bytes).
+ 90i,18n,93p,1697b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/inconsolata/Inco
+nsolata-zi4r.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/s
+tix/STIXGeneral-Bold.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/
+public/stix/STIXGeneral-BoldItalic.pfb><d:/Program Files/texlive/2023/texmf-dis
+t/fonts/type1/public/stix/STIXGeneral-Italic.pfb><d:/Program Files/texlive/2023
+/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb><d:/Program Files/t
+exlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsi0900.pfb><d:/Program Fil
+es/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb><d:/Program
+ Files/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb><d:/Pro
+gram Files/texlive/2023/texmf-dist/fonts/type1/public/stix/stix-mathcal.pfb><d:
+/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix/stix-mathex.pfb>
+<d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix/stix-mathit.p
+fb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix/stix-mathr
+m.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix/stix-ma
+thscr.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix/sti
+x-mathsf.pfb>
+Output written on cas-dc-template.pdf (17 pages, 2526071 bytes).
 PDF statistics:
- 1131 PDF objects out of 1200 (max. 8388607)
- 835 compressed objects within 9 object streams
- 231 named destinations out of 1000 (max. 500000)
+ 1173 PDF objects out of 1200 (max. 8388607)
+ 870 compressed objects within 9 object streams
+ 243 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
