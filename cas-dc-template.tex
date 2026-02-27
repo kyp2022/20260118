@@ -1074,14 +1074,86 @@ Figure \ref{FIG:8} clearly shows that the reputation values of honest node gradu
 	\label{FIG:8} % 这里只要改冒号后面的数字，图片几就是几。
 \end{figure}
 
-\subsection{Scalability and Overhead Analysis}
-To address the practical feasibility of our framework in large-scale IoT environments, we provide a theoretical analysis of its scalability and operational overheads.
+\subsubsection{Incentive Mechanism Dynamics}
+To validate the proposed incentive mechanism, we tracked the evolution of rewards, deposits, and penalties using the parameters specified in Table~\ref{tb6}. Table~\ref{tb:incentive} presents the key metrics for typical honest and malicious nodes over training rounds.
 
-\textbf{Scalability:} The proposed framework supports horizontal scalability. As the number of IoT devices increases, the role separation mechanism ensures that the burden of model validation is distributed among validation nodes. The complexity of the reputation management algorithm is $O(N)$, where $N$ is the number of participants. Since reputation updates are handled by smart contracts, the computational load is offloaded to the blockchain network. For a network scale of 100 to 1000 nodes, the communication overhead for model aggregation grows linearly. However, by utilizing a consortium blockchain with RBFT consensus, the system can handle thousands of transactions per second (TPS), which is sufficient for periodic FL model updates.
+\begin{table*}[h]
+	\caption{Incentive Mechanism Dynamics for Typical Honest and Malicious Nodes}
+	\label{tb:incentive}
+	\centering
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} c ccc cccc}
+		\toprule
+		\multirow{2}{*}{\textbf{Round}} & \multicolumn{3}{c}{\textbf{Honest Node}} & \multicolumn{4}{c}{\textbf{Malicious Node}} \\
+		\cmidrule{2-4} \cmidrule{5-8}
+		& Reputation & Reward & Deposit & Reputation & Reward & Deposit & Penalty \\
+		\midrule
+		0 & 10.0 & 0 & 100 & 10.0 & 0 & 100 & 0 \\
+		4 & 10.2 & 28 & 100 & 9.9 & 0 & 100 & 23 \\
+		8 & 10.4 & 56 & 100 & 9.5 & 0 & 168 & 52 \\
+		12 & 10.5 & 84 & 100 & 8.3 & 0 & 412 & 122 \\
+		16 & 10.7 & 112 & 100 & 6.0 & 0 & 875 & 279 \\
+		19 & 10.9 & 134 & 100 & 2.9* & 0 & 1465 & 494 \\
+		\bottomrule
+	\end{tabular*}
+	\raggedright\noindent{\footnotesize *Node excluded due to reputation falling below $R_{min}=3$.}
+\end{table*}
 
-\textbf{Computational Overhead:} The primary computational costs arise from local model training and isolation forest-based anomaly detection. Local training is performed off-chain and depends on the device's capability. The anomaly detection, executed by validation nodes, has a time complexity of $O(t \cdot \psi)$, where $t$ is the number of trees and $\psi$ is the subsampling size. This is computationally efficient compared to distance-based methods like K-means ($O(N^2)$) or cryptographic methods used in homomorphic encryption schemes.
+As shown in Table~\ref{tb:incentive}, the honest node maintains gradually increasing reputation (from 10.0 to 10.9), accumulates rewards steadily (reaching 134 tokens by round 19), and consistently requires only the minimum deposit of 100 tokens. In contrast, the malicious node experiences compounding negative consequences due to repeated detection.
 
-\textbf{Communication Overhead:} The communication cost consists of uploading model updates and blockchain transactions. For a standard CNN model (approx. 1.2MB parameters), the transmission delay is negligible on modern 4G/5G/WiFi networks. Blockchain transaction delays are primarily determined by the block generation time (typically 1-2 seconds in consortium chains) and consensus latency. Our choice of RBFT ensures that consensus latency remains low even as the number of validation nodes increases, making the framework feasible for time-sensitive IoT applications.
+First, the malicious node receives zero rewards throughout training because detected malicious updates are excluded from model aggregation. Second, as reputation declines according to Eq.~(18), the required deposit increases sharply following Eq.~(24): from 100 tokens initially to 1465 tokens by round 19. This reflects the mechanism design where lower-reputation nodes must provide larger deposits to participate. Third, cumulative penalties accumulate to 494 tokens through repeated deposit confiscation under Eq.~(26). Finally, when reputation falls below $R_{min}=3$ at round 19, the node is permanently excluded.
+
+These results demonstrate the coordinated operation of the incentive mechanism: reputation decline triggers reward forfeiture, escalating deposit requirements, and cumulative penalties simultaneously. The exponential penalty term $(e^{\kappa N_j^{(t)}}-1)$ in Eq.~(18) ensures that penalties accelerate with each detected malicious action, creating progressively stronger disincentives. Combined with the reputation dynamics shown in Figure~\ref{FIG:8}, these findings confirm that honest participation is the economically rational strategy for nodes seeking sustained returns.
+
+
+
+\subsection{Blockchain Performance and Scalability Evaluation}
+To validate the practical feasibility of integrating blockchain into the federated learning workflow, we conducted experiments measuring the system's runtime overhead, blockchain operational stability, and the proportion of blockchain-related costs relative to the overall training process. The experiments were performed on the same hardware and Hyperchain 2.12.0 platform described in Table \ref{tb6}, with the number of training nodes varied from 50 to 1000 while maintaining a 1:2 ratio of validation to training nodes.
+
+\subsubsection{Per-Round Time Decomposition}
+We measured the time breakdown of a single FL round under different network scales. Each round consists of six phases: local model training, model update upload, validation (isolation forest anomaly detection), blockchain consensus, smart contract execution (reputation update, aggregation trigger), and global model download. Figure \ref{FIG:9} presents the stacked time decomposition across five network scales.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/9.pdf}
+	\caption{Per-round time decomposition under varying network scales}
+	\label{FIG:9}
+\end{figure}
+
+As shown in Figure \ref{FIG:9}, local training time remains approximately constant (~12.5s) across all scales, as it depends solely on device capability and local dataset size. Communication overhead and validation time grow with the number of participants, which is expected since more model updates need to be transmitted and evaluated. Blockchain-related operations (consensus and smart contract execution) increase modestly from 1.4s at 50 nodes to 6.3s at 1000 nodes. The total per-round time at 1000 nodes remains under 85 seconds, which is acceptable for practical IoT federated learning tasks.
+
+\subsubsection{Block Generation Stability}
+To evaluate whether the consortium blockchain maintains stable performance throughout extended FL training, we recorded the block generation rate (blocks per FL round) over 250 training rounds under three network scales. Figure \ref{FIG:10} shows the results.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/10.pdf}
+	\caption{Block generation rate across 250 FL training rounds under different network scales}
+	\label{FIG:10}
+\end{figure}
+
+The block generation rate remains stable throughout the training process for all three configurations, with only minor fluctuations. This indicates that the RBFT-based consortium chain does not exhibit performance degradation over prolonged FL operation, and can reliably support continuous federated learning tasks.
+
+\subsubsection{Blockchain Overhead Ratio}
+Finally, we quantify the proportion of blockchain-related overhead (consensus and smart contract execution) relative to the total per-round time. Figure \ref{FIG:11} presents both the overhead ratio and absolute blockchain processing time across different network scales.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/11.pdf}
+	\caption{Blockchain overhead ratio and absolute processing time under varying network scales}
+	\label{FIG:11}
+\end{figure}
+
+Across all tested scales, the blockchain overhead consistently accounts for less than 9\% of the total round time. While the absolute blockchain processing time increases from 1.4s to 6.3s as the network scales from 50 to 1000 nodes, this growth is substantially slower than the increase in communication and validation costs. These results confirm that blockchain integration introduces only marginal additional overhead while providing decentralized coordination, tamper-resistant audit trails, and automated smart contract enforcement.
+
+
+
+
+
+
+
+
+
+
 
 \section{Conclusion}\label{sec:6}
 		We presented BRITE-FL, a blockchain-based secure federated learning framework that addresses IoT device heterogeneity through role-based participation and mitigates malicious attacks via reputation token incentives. Simultaneously, the framework utilizes blockchain's decentralized characteristics and smart contract technology to achieve dynamic management and reputation assessment of node behavior, identifying and suppressing malicious nodes while incentivizing honest nodes to contribute continuously.
