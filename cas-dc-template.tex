@@ -323,7 +323,7 @@ federated learning.
 	\centering
 	\small
 	\renewcommand{\arraystretch}{1.15}
-	\begin{tabular}{@{}lccccccc@{}}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccc@{}}
 		\toprule
 		\textbf{Indicator} &
 		\cite{28} &
@@ -343,7 +343,7 @@ federated learning.
 		Evidence$\to$Selection  & --        & $\circ$   & $\bullet$ & $\circ$   & --        & --        & $\bullet$ \\
 		Evidence$\to$Settlement & --        & --        & $\circ$   & $\bullet$ & $\bullet$ & --        & $\bullet$ \\
 		\bottomrule
-	\end{tabular}
+	\end{tabular*}
 \end{table*}
 
 
@@ -621,7 +621,7 @@ Validation nodes play a crucial role in this framework. In this section, $S_j^i$
 	Initialize $\{\mathcal{M}_j^{(t)}\} = 0$ for all training nodes\;
 	\For{each $v_i \in V^{(t)}$}{
 		Retrieve $\theta_g^{(t-1)}$ and $\{\Delta\theta_j^{(t)}\}$ from blockchain $B$\;
-		Train (or update) an isolation forest $\mathcal{F}_t$ using $\{\Delta\theta_j^{(t)}\}$\;
+		Construct a fresh isolation forest $\mathcal{F}_t$ from all current-round updates $\{\Delta\theta_j^{(t)}\}$\;
 		\For{each training node $j \in N_t'$}{
 			$\theta_j^{(t)} \leftarrow \theta_g^{(t-1)} + \Delta\theta_j^{(t)}$\;
 			$A_j^i = \text{Accuracy}(\theta_j^{(t)}, D_v)$\;
@@ -669,11 +669,11 @@ The validation process is as follows:
 		\end{equation}
 		where $\mu_i$ and $\sigma_i$ are the mean and standard deviation of $\{A_j^i\}_{j \in N_t'}$, and $\epsilon$ is a small constant for stability.
 		
-		\item Execute isolation forest anomaly detection and calculate anomaly scores:
+		\item Construct an isolation forest $\mathcal{F}_t$ using the full set of current-round updates $\{\Delta\theta_j^{(t)}\}_{j \in N_t'}$ as training samples, where each update is flattened into a high-dimensional feature vector as described in Section~\ref{sec:3}. The forest is rebuilt at each round to reflect the evolving update distribution as the global model converges. The anomaly score for each update is then computed as:
 		\begin{equation}
 			s_j^i = s(\Delta\theta_j^{(t)}, \mathcal{F}_t) = 2^{-\frac{\operatorname{E}[h(\Delta\theta_j^{(t)})]}{c(|N_t'|)}}
 		\end{equation}
-		where $h(\Delta\theta_j^{(t)})$ represents the average path length of update $\Delta\theta_j^{(t)}$ in the isolation forest $\mathcal{F}_t$, and $c(\cdot)$ is a constant related to the sample size (here, the number of updates).
+		where $h(\Delta\theta_j^{(t)})$ represents the average path length of update $\Delta\theta_j^{(t)}$ in the isolation forest $\mathcal{F}_t$, and $c(\cdot)$ is a constant related to the sample size (here, the number of updates). Since isolation forest identifies anomalies based on their ease of separation from the majority of data points~\cite{39}, no pre-labeled clean dataset is required; each validation node independently applies the same procedure to the same set of updates.
 		
 		\item Calculate normalized severity scores:
 		\begin{equation}
@@ -684,7 +684,7 @@ The validation process is as follows:
 	
 	\item Consistency Check: The smart contract $SC$ calculates the median score $S_j^{\text{median}}$ and score standard deviation $\sigma_{S_j}$ for each training node $j$. If $|S_j^i - S_j^{\text{median}}| > 2\sigma_{S_j}$, the score is discarded.
 	
-	\item Consensus Formation: If the number of remaining valid scores is $\geq \lceil 2k/3 \rceil$, the average of these scores is taken as the final score $S_j$ for training node $j$. Otherwise, the validation round fails; validation nodes are reassigned from $N_v'$ and the validation process is repeated.
+	\item Consensus Formation: If the number of remaining valid scores is $\geq \lceil 2k/3 \rceil$, the average of these scores is taken as the final score $S_j$ for training node $j$. Otherwise, the validation round fails and the smart contract reassigns validation nodes from $N_v'$ for a new attempt. If consensus is not reached within $L_{max}$ reassignment attempts, the current round is skipped: the global model retains $\theta_g^{(t-1)}$, and the protocol proceeds to round $t+1$.
 	
 	\item Validation Node Reputation Update: Based on the proximity of provided scores to the final scores, update the reputation value of validation nodes:
 	\begin{equation}
@@ -916,7 +916,7 @@ The hardware environment used for the experiments includes a workstation equippe
 			Loss Function & Cross-Entropy \\
 			Reputation Update Params $(\lambda_v, \lambda_h, \lambda_m, \kappa, R_{min})$ & (0.05, 0.05, 0.1, 0.15, 3) \\
 			Reputation Weights $(\alpha, \beta, \gamma, \delta_r, \delta_d)$ & (0.4, 0.3, 0.5, 0.3, 0.95) \\
-			Deposit Params $(C_{min}, \mu, \rho_{base}, \nu)$ & (100, 0.2, 0.5, 0.1) \\
+			Deposit Params $(\mathrm{Dep}_{min}, \mu, \rho_{base}, \nu)$ & (100, 0.2, 0.5, 0.1)\\
 			Scoring Weights $(w_1, w_2)$ & (0.6, 0.4) \\
 			\bottomrule
 		\end{tabular*}
@@ -937,7 +937,7 @@ To comprehensively evaluate the performance of our proposed scheme, we compared 
 	\item Federated Learning in IoT with Malicious Nodes (FedIoT-Malicious): This baseline represents standard federated learning implementations in IoT environments following the FedIoTs framework\cite{65}. We introduce malicious participants in this setting to evaluate system robustness under adversarial conditions, providing a representative baseline for assessing the effectiveness of security-enhanced federated learning approaches.
 \end{enumerate}
 
-Regarding attack scenarios, we rigorously defined the attack parameters to ensure reproducibility. For \textbf{data pollution attacks}, malicious clients replace 100\% of their local training samples with Gaussian noise ($\mu=0, \sigma=1$), effectively submitting random gradients. For \textbf{label flipping attacks}, malicious nodes flip the label $l$ of every training sample to $9-l$ (e.g., $0 \to 9, 1 \to 8$). Attacks are "always-on", meaning malicious nodes perform these actions in every round they are selected. We set malicious client proportions at 10\%, 20\%, and 30% for data pollution, and 10\%, 15\%, and 20% for label flipping.
+Regarding attack scenarios, we rigorously defined the attack parameters to ensure reproducibility. For \textbf{data pollution attacks}, malicious clients replace 100\% of their local training samples with Gaussian noise ($\mu=0, \sigma=1$), effectively submitting random gradients. For \textbf{label flipping attacks}, malicious nodes flip the label $l$ of every training sample to $9-l$ (e.g., $0 \to 9, 1 \to 8$). Both attack types are untargeted: data pollution applies random noise uniformly across all classes, and label flipping uses a fixed symmetric rule across the full label space. Attacks are "always-on", meaning malicious nodes perform these actions in every round they are selected. We set malicious client proportions at 10\%, 20\%, and 30\% for data pollution, and 10\%, 15\%, and 20\% for label flipping.
 
 
 \subsection{Experimental Results and Analysis}
@@ -1105,12 +1105,11 @@ First, the malicious node receives zero rewards throughout training because dete
 These results demonstrate the coordinated operation of the incentive mechanism: reputation decline triggers reward forfeiture, escalating deposit requirements, and cumulative penalties simultaneously. The exponential penalty term $(e^{\kappa N_j^{(t)}}-1)$ in Eq.~(18) ensures that penalties accelerate with each detected malicious action, creating progressively stronger disincentives. Combined with the reputation dynamics shown in Figure~\ref{FIG:8}, these findings confirm that honest participation is the economically rational strategy for nodes seeking sustained returns.
 
 
-
 \subsection{Blockchain Performance and Scalability Evaluation}
-To validate the practical feasibility of integrating blockchain into the federated learning workflow, we conducted experiments measuring the system's runtime overhead, blockchain operational stability, and the proportion of blockchain-related costs relative to the overall training process. The experiments were performed on the same hardware and Hyperchain 2.12.0 platform described in Table \ref{tb6}, with the number of training nodes varied from 50 to 1000 while maintaining a 1:2 ratio of validation to training nodes.
+To validate the practical feasibility of integrating blockchain into the federated learning workflow, we conducted experiments measuring the system's runtime composition and on-chain transaction performance under varying network scales. The experiments were performed on the same hardware and Hyperchain 2.12.0 platform described in Table \ref{tb6}, with the number of training nodes varied from 50 to 1000 while maintaining a 1:2 ratio of validation to training nodes.
 
 \subsubsection{Per-Round Time Decomposition}
-We measured the time breakdown of a single FL round under different network scales. Each round consists of six phases: local model training, model update upload, validation (isolation forest anomaly detection), blockchain consensus, smart contract execution (reputation update, aggregation trigger), and global model download. Figure \ref{FIG:9} presents the stacked time decomposition across five network scales.
+We measured the time breakdown of a single FL round under different network scales. Each round consists of six phases: local model training, model update upload, validation (isolation forest anomaly detection), blockchain consensus, smart contract execution, and global model download. Figure \ref{FIG:9} presents the stacked time decomposition across five network scales.
 
 \begin{figure}[h]
 	\centering
@@ -1119,31 +1118,19 @@ We measured the time breakdown of a single FL round under different network scal
 	\label{FIG:9}
 \end{figure}
 
-As shown in Figure \ref{FIG:9}, local training time remains approximately constant (~12.5s) across all scales, as it depends solely on device capability and local dataset size. Communication overhead and validation time grow with the number of participants, which is expected since more model updates need to be transmitted and evaluated. Blockchain-related operations (consensus and smart contract execution) increase modestly from 1.4s at 50 nodes to 6.3s at 1000 nodes. The total per-round time at 1000 nodes remains under 85 seconds, which is acceptable for practical IoT federated learning tasks.
+As shown in Figure \ref{FIG:9}, local training time remains approximately constant (~12.5s) across all scales, as it depends solely on device capability and local dataset size. Communication overhead and validation time grow with the number of participants due to increased model updates to be transmitted and evaluated. Blockchain-related operations (consensus and smart contract execution) account for less than 9\% of the total round time across all tested scales, increasing only modestly from 1.4s at 50 nodes to 6.3s at 1000 nodes. The total per-round time at 1000 nodes remains under 85 seconds, confirming the framework's feasibility for practical IoT deployments.
 
-\subsubsection{Block Generation Stability}
-To evaluate whether the consortium blockchain maintains stable performance throughout extended FL training, we recorded the block generation rate (blocks per FL round) over 250 training rounds under three network scales. Figure \ref{FIG:10} shows the results.
+\subsubsection{Transaction Confirmation Delay}
+We further evaluated the transaction confirmation delay (TCD) of on-chain operations across 250 FL rounds under different network scales. For each scale, we recorded the TCD of every transaction and report the distribution statistics including median, interquartile range (IQR), and extreme values. Figure \ref{FIG:10} shows the TCD distribution via box plots, with the average per-round time annotated for reference.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.45\textwidth]{figs/10.pdf}
-	\caption{Block generation rate across 250 FL training rounds under different network scales}
+	\caption{Transaction confirmation delay distribution under varying network scales}
 	\label{FIG:10}
 \end{figure}
 
-The block generation rate remains stable throughout the training process for all three configurations, with only minor fluctuations. This indicates that the RBFT-based consortium chain does not exhibit performance degradation over prolonged FL operation, and can reliably support continuous federated learning tasks.
-
-\subsubsection{Blockchain Overhead Ratio}
-Finally, we quantify the proportion of blockchain-related overhead (consensus and smart contract execution) relative to the total per-round time. Figure \ref{FIG:11} presents both the overhead ratio and absolute blockchain processing time across different network scales.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.45\textwidth]{figs/11.pdf}
-	\caption{Blockchain overhead ratio and absolute processing time under varying network scales}
-	\label{FIG:11}
-\end{figure}
-
-Across all tested scales, the blockchain overhead consistently accounts for less than 9\% of the total round time. While the absolute blockchain processing time increases from 1.4s to 6.3s as the network scales from 50 to 1000 nodes, this growth is substantially slower than the increase in communication and validation costs. These results confirm that blockchain integration introduces only marginal additional overhead while providing decentralized coordination, tamper-resistant audit trails, and automated smart contract enforcement.
+Across all tested scales, the median TCD remains below 0.7 seconds, and even the 95th-percentile TCD stays within 1.5 seconds at 1000 nodes. Compared to the total per-round time (18--81 seconds depending on scale), the TCD constitutes less than 3\% of a single round, indicating that on-chain transaction processing does not become a bottleneck for the federated learning workflow. The relatively tight IQR at each scale further confirms that the RBFT consensus provides consistent and predictable transaction latency under varying FL workloads.
 
 
 
@@ -1255,4 +1242,3 @@ Across all tested scales, the blockchain overhead consistently accounts for less
 		% \endbio
 		
 	\end{document}
-	
