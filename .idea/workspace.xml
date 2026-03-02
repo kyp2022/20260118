@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60fd7de0-8a3c-4b9e-ab30-3458f0f10c5d" name="Changes" comment="docs(paper): 更新论文引用和文档结构&#10;&#10;- 修复了多个文献引用编号错误，包括将引用2更改为18，引用22更改为16等&#10;- 添加了新的子小节4.4.1本地模型更新和4.4.2验证与声誉管理&#10;- 新增了激励兼容性分析小节4.6并添加相应标签&#10;- 调整了表格和图表的编号及位置，更新了页面引用&#10;- 添加了新的性能分析子小节5.4.1每轮时间分解和5.4.2交易确认延迟&#10;- 修复了文档中的格式警告和页面布局问题&#10;- 更新了最后页码从17到19以反映内容变化">
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.tex" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.tex" afterDir="false" />
+    <list default="true" id="60fd7de0-8a3c-4b9e-ab30-3458f0f10c5d" name="Changes" comment="docs(paper): 更新论文引用和参考文献格式&#10;&#10;- 替换了多个过时的文献引用编号，包括将引用[2]替换为[18]等&#10;- 更新了相关工作章节的文献引用顺序和编号&#10;- 修正了预备知识章节中的引用格式&#10;- 调整了算法部分新增内容的引用标记&#10;- 更新了实验分析部分的表格和图表引用&#10;- 重新排列了参考文献列表中的条目顺序&#10;- 修正了文献引用中的作者姓名和发表年份信息&#10;- 更新了系统性能分析部分的对比方案引用">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cas-dc-template.log" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cas-dc-template.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +100,21 @@
       <option name="project" value="LOCAL" />
       <updated>1772443973989</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="docs(paper): 更新论文相关工作章节和比较表格&#10;&#10;- 重写了区块链辅助联邦学习相关工作综述，增加去中心化协调和审计功能相关内容&#10;- 更新了隐私保护和鲁棒性机制的小节内容，完善了同态加密和差分隐私相关研究&#10;- 修改了激励和声誉机制小节，整合了经济建模和可编程结算相关工作&#10;- 重新设计了系统比较表格，更新了指标对比和文献引用编号&#10;- 修复了多个文献引用编号错误，统一了术语表述和章节结构&#10;- 优化了段落组织结构，增强了内容的逻辑性和完整性">
+      <created>1772455663436</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1772455663436</updated>
+    </task>
+    <task id="LOCAL-00005" summary="docs(paper): 更新论文引用和参考文献格式&#10;&#10;- 替换了多个过时的文献引用编号，包括将引用[2]替换为[18]等&#10;- 更新了相关工作章节的文献引用顺序和编号&#10;- 修正了预备知识章节中的引用格式&#10;- 调整了算法部分新增内容的引用标记&#10;- 更新了实验分析部分的表格和图表引用&#10;- 重新排列了参考文献列表中的条目顺序&#10;- 修正了文献引用中的作者姓名和发表年份信息&#10;- 更新了系统性能分析部分的对比方案引用">
+      <created>1772457426105</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772457426105</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +135,8 @@
     <MESSAGE value="perf(blockchain): 优化区块链性能评估并简化激励兼容性分析&#10;&#10;- 简化了激励兼容性分析部分的数学表达式和公式推导过程&#10;- 添加了完整的区块链性能和可扩展性评估子章节&#10;- 实现了每轮时间分解、区块生成稳定性、链上存储增长等性能测试&#10;- 量化了区块链相关开销占总时间的比例，在所有测试规模下均低于9%&#10;- 证明了区块链集成只引入边际额外开销同时提供关键安全保障" />
     <MESSAGE value="style(latex): 更新论文模板格式并优化内容结构&#10;&#10;- 添加浮动环境位置控制命令以确保图表按顺序排列&#10;- 简化引言部分的内容描述并重新组织贡献点表述&#10;- 重写相关工作章节的结构和内容组织方式&#10;- 更新表格和图表的浮动选项以改进布局&#10;- 调整参数表格格式增强可读性&#10;- 重构恶意行为检测算法的具体实现细节&#10;- 删除关于共识机制的冗余描述简化实验环境配置说明" />
     <MESSAGE value="fix(paper): 修复论文中的引用错误并优化技术实现细节&#10;&#10;- 修正了智能合约函数定义中的文献引用编号&#10;- 更新了隔离森林异常检测相关工作的引用&#10;- 修复了符号定义的一致性问题&#10;- 优化了奖励计算公式中的数值稳定性&#10;- 修正了验证节点组的表示方法&#10;- 简化了激励兼容性条件的数学表达式&#10;- 更新了实验参数表中的变量名称&#10;- 删除了区块链性能评估的冗余章节&#10;- 修正了参考文献中的作者姓名和出版信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(paper): 修复论文中的引用错误并优化技术实现细节&#10;&#10;- 修正了智能合约函数定义中的文献引用编号&#10;- 更新了隔离森林异常检测相关工作的引用&#10;- 修复了符号定义的一致性问题&#10;- 优化了奖励计算公式中的数值稳定性&#10;- 修正了验证节点组的表示方法&#10;- 简化了激励兼容性条件的数学表达式&#10;- 更新了实验参数表中的变量名称&#10;- 删除了区块链性能评估的冗余章节&#10;- 修正了参考文献中的作者姓名和出版信息" />
+    <MESSAGE value="docs(paper): 更新论文相关工作章节和比较表格&#10;&#10;- 重写了区块链辅助联邦学习相关工作综述，增加去中心化协调和审计功能相关内容&#10;- 更新了隐私保护和鲁棒性机制的小节内容，完善了同态加密和差分隐私相关研究&#10;- 修改了激励和声誉机制小节，整合了经济建模和可编程结算相关工作&#10;- 重新设计了系统比较表格，更新了指标对比和文献引用编号&#10;- 修复了多个文献引用编号错误，统一了术语表述和章节结构&#10;- 优化了段落组织结构，增强了内容的逻辑性和完整性" />
+    <MESSAGE value="docs(paper): 更新论文引用和参考文献格式&#10;&#10;- 替换了多个过时的文献引用编号，包括将引用[2]替换为[18]等&#10;- 更新了相关工作章节的文献引用顺序和编号&#10;- 修正了预备知识章节中的引用格式&#10;- 调整了算法部分新增内容的引用标记&#10;- 更新了实验分析部分的表格和图表引用&#10;- 重新排列了参考文献列表中的条目顺序&#10;- 修正了文献引用中的作者姓名和发表年份信息&#10;- 更新了系统性能分析部分的对比方案引用" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs(paper): 更新论文引用和参考文献格式&#10;&#10;- 替换了多个过时的文献引用编号，包括将引用[2]替换为[18]等&#10;- 更新了相关工作章节的文献引用顺序和编号&#10;- 修正了预备知识章节中的引用格式&#10;- 调整了算法部分新增内容的引用标记&#10;- 更新了实验分析部分的表格和图表引用&#10;- 重新排列了参考文献列表中的条目顺序&#10;- 修正了文献引用中的作者姓名和发表年份信息&#10;- 更新了系统性能分析部分的对比方案引用" />
   </component>
 </project>

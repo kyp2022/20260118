@@ -970,9 +970,16 @@ The FMNIST dataset presents more challenging attack scenarios due to its higher 
 	\label{FIG:5}
 \end{figure*}
 
-In label flipping attacks, malicious nodes intentionally mislabel part of the data to mislead the model. Figure \ref{FIG:6} and Figure \ref{FIG:7} show the experimental results under label flipping attack scenarios on MNIST and FMNIST datasets, respectively. On the MNIST dataset, FedIoT-Malicious achieves test accuracies of 82.4\%, 76.7\%, and 66.2\% under 10\%, 15\%, and 20\% malicious node proportions. The serverless architecture's distributed nature makes it challenging to detect coordinated label manipulation attacks across multiple nodes. PFL-CR performs better at 84.1\%, 78.5\%, and 68.9\% respectively, leveraging its reputation mechanism to identify and mitigate the impact of malicious clients, though its approach primarily targets traffic flow prediction scenarios. ADPFL shows the poorest performance at 72.3\%, 68.6\%, and 60.1\%, as the added noise amplifies the confusion caused by incorrect labels. Our scheme maintains test accuracies of 91.8\%, 90.4\%, and 88.6\% in these three scenarios, benefiting from its specialized anomaly detection and security-focused reputation updates.
+In label flipping attacks, malicious nodes intentionally mislabel part of the data to mislead the model. Figure \ref{FIG:6} and Figure \ref{FIG:7} show the experimental results under label flipping attack scenarios on MNIST and FMNIST datasets, respectively. On the MNIST dataset, FedIoT-Malicious achieves test accuracies of 82.4\%, 76.7\%, and 66.2\% under 10\%, 15\%, and 20\% malicious node proportions. The serverless architecture's distributed nature makes it challenging to detect coordinated label manipulation attacks across multiple nodes. PFL-CR performs better at 87.3\%, 86.6\%, and 83.7\% respectively, leveraging its reputation mechanism to identify and mitigate the impact of malicious clients, though its approach primarily targets traffic flow prediction scenarios. ADPFL shows the poorest performance at 84.1\%, 78.2\%, and 67.7\%, as the added noise amplifies the confusion caused by incorrect labels. Our scheme maintains test accuracies of 91.8\%, 90.4\%, and 88.6\% in these three scenarios, benefiting from its specialized anomaly detection and security-focused reputation updates.
 
-On the FMNIST dataset, the impact of label flipping attacks becomes more pronounced due to the increased complexity of fashion item classification. FedIoT-Malicious achieves test accuracies of 70.5\%, 66.7\%, and 58.3\% under 10\%, 15\%, and 20\% malicious node proportions, showing larger performance degradation compared to MNIST. PFL-CR performs slightly better at 72.1\%, 68.9\%, and 60.8\% respectively, demonstrating that its malicious attack defense mechanisms provide improved resilience across different data complexities. ADPFL maintains similar performance patterns at 72.3\%, 68.6\%, and 60.1\%, with the differential privacy mechanism showing consistent but limited effectiveness against label manipulation. Our scheme maintains test accuracies of 77.0\%, 75.9\%, and 73.2\% in these scenarios, demonstrating that security-oriented design principles become increasingly important as data complexity grows.		
+On the FMNIST dataset, the impact of label flipping attacks becomes more pronounced due to the increased complexity of fashion item classification. FedIoT-Malicious achieves test accuracies of 70.5\%, 66.7\%, and 58.3\% under 10\%, 15\%, and 20\% malicious node proportions, showing larger performance degradation compared to MNIST. PFL-CR performs slightly better at 74.2\%, 71.7\%, and 69.3\% respectively, demonstrating that its malicious attack defense mechanisms provide improved resilience across different data complexities. ADPFL maintains similar performance patterns at 72.3\%, 68.6\%, and 60.1\%, with the differential privacy mechanism showing consistent but limited effectiveness against label manipulation. Our scheme maintains test accuracies of 77.4\%, 75.9\%, and 74.5\% in these scenarios, demonstrating that security-oriented design principles become increasingly important as data complexity grows.
+
+
+
+
+
+
+		
 \begin{figure}[h] 
 	\centering % 居中
 	\includegraphics[scale=0.65]{figs/7.pdf}	
@@ -988,6 +995,13 @@ On the FMNIST dataset, the impact of label flipping attacks becomes more pronoun
 	\caption{Comparison of Model Performance Under Label Flipping Attacks on FMNIST Dataset} % 图片标题	
 	\label{FIG:7} % 这里只要改冒号后面的数字，图片几就是几。
 \end{figure}
+
+
+
+
+
+
+
 \subsubsection{Malicious Node Identification Rate}
 Beyond model performance evaluation, we assess the framework's capability to identify and isolate malicious participants. Our detection mechanism operates by monitoring reputation score changes and anomaly patterns in model updates. A node is flagged as malicious when its reputation falls below a threshold of 3.0 or exhibits consistent anomalous behavior patterns over multiple rounds. For comparison, PFL-CR identifies dishonest clients based on their credibility evaluation and removes clients whose data quality significantly impacts the personalized model performance. Table \ref{tb3} presents the detection performance comparison between the two reputation-based schemes.
 
