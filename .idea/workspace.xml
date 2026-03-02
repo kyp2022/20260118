@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="60fd7de0-8a3c-4b9e-ab30-3458f0f10c5d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.aux" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.log" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.synctex.gz" afterDir="false" />
+    <list default="true" id="60fd7de0-8a3c-4b9e-ab30-3458f0f10c5d" name="Changes" comment="style(latex): 更新论文模板格式并优化内容结构&#10;&#10;- 添加浮动环境位置控制命令以确保图表按顺序排列&#10;- 简化引言部分的内容描述并重新组织贡献点表述&#10;- 重写相关工作章节的结构和内容组织方式&#10;- 更新表格和图表的浮动选项以改进布局&#10;- 调整参数表格格式增强可读性&#10;- 重构恶意行为检测算法的具体实现细节&#10;- 删除关于共识机制的冗余描述简化实验环境配置说明">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cas-dc-template.tex" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cas-refs.bib" beforeDir="false" afterPath="$PROJECT_DIR$/cas-refs.bib" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,20 +17,51 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "kyp2022"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/kyp2022/20260118.git",
+    "accountId": "e3f46e57-c05f-4502-bf54-0eb08c4fcd1a"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
   <component name="ProjectId" id="38QKNfWb3nt2wB4t5S6sAJjmDBX" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../risc0-zreo/ghostlink" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "kyp-fix",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/ppg/Desktop/kyp/20260118",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -44,7 +73,25 @@
       <updated>1768726324096</updated>
       <workItem from="1768726325532" duration="243000" />
       <workItem from="1769262744918" duration="337000" />
+      <workItem from="1772416038398" duration="8674000" />
     </task>
+    <task id="LOCAL-00001" summary="perf(blockchain): 优化区块链性能评估并简化激励兼容性分析&#10;&#10;- 简化了激励兼容性分析部分的数学表达式和公式推导过程&#10;- 添加了完整的区块链性能和可扩展性评估子章节&#10;- 实现了每轮时间分解、区块生成稳定性、链上存储增长等性能测试&#10;- 量化了区块链相关开销占总时间的比例，在所有测试规模下均低于9%&#10;- 证明了区块链集成只引入边际额外开销同时提供关键安全保障">
+      <option name="closed" value="true" />
+      <created>1772416180926</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1772416180926</updated>
+    </task>
+    <task id="LOCAL-00002" summary="style(latex): 更新论文模板格式并优化内容结构&#10;&#10;- 添加浮动环境位置控制命令以确保图表按顺序排列&#10;- 简化引言部分的内容描述并重新组织贡献点表述&#10;- 重写相关工作章节的结构和内容组织方式&#10;- 更新表格和图表的浮动选项以改进布局&#10;- 调整参数表格格式增强可读性&#10;- 重构恶意行为检测算法的具体实现细节&#10;- 删除关于共识机制的冗余描述简化实验环境配置说明">
+      <option name="closed" value="true" />
+      <created>1772418400849</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1772418400849</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -60,5 +107,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="perf(blockchain): 优化区块链性能评估并简化激励兼容性分析&#10;&#10;- 简化了激励兼容性分析部分的数学表达式和公式推导过程&#10;- 添加了完整的区块链性能和可扩展性评估子章节&#10;- 实现了每轮时间分解、区块生成稳定性、链上存储增长等性能测试&#10;- 量化了区块链相关开销占总时间的比例，在所有测试规模下均低于9%&#10;- 证明了区块链集成只引入边际额外开销同时提供关键安全保障" />
+    <MESSAGE value="style(latex): 更新论文模板格式并优化内容结构&#10;&#10;- 添加浮动环境位置控制命令以确保图表按顺序排列&#10;- 简化引言部分的内容描述并重新组织贡献点表述&#10;- 重写相关工作章节的结构和内容组织方式&#10;- 更新表格和图表的浮动选项以改进布局&#10;- 调整参数表格格式增强可读性&#10;- 重构恶意行为检测算法的具体实现细节&#10;- 删除关于共识机制的冗余描述简化实验环境配置说明" />
+    <option name="LAST_COMMIT_MESSAGE" value="style(latex): 更新论文模板格式并优化内容结构&#10;&#10;- 添加浮动环境位置控制命令以确保图表按顺序排列&#10;- 简化引言部分的内容描述并重新组织贡献点表述&#10;- 重写相关工作章节的结构和内容组织方式&#10;- 更新表格和图表的浮动选项以改进布局&#10;- 调整参数表格格式增强可读性&#10;- 重构恶意行为检测算法的具体实现细节&#10;- 删除关于共识机制的冗余描述简化实验环境配置说明" />
   </component>
 </project>
