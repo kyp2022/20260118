@@ -6,43 +6,43 @@ Database file #1: cas-refs.bib
 Warning--empty journal in 18
 You've used 42 entries,
             2481 wiz_defined-function locations,
-            761 strings with 12948 characters,
-and the built_in function-call counts, 19693 in all, are:
-= -- 1536
-> -- 1350
-< -- 7
-+ -- 493
-- -- 408
-* -- 1787
-:= -- 3231
-add.period$ -- 134
+            765 strings with 12945 characters,
+and the built_in function-call counts, 19599 in all, are:
+= -- 1531
+> -- 1338
+< -- 8
++ -- 489
+- -- 404
+* -- 1758
+:= -- 3209
+add.period$ -- 135
 call.type$ -- 42
 change.case$ -- 84
 chr.to.int$ -- 41
 cite$ -- 43
-duplicate$ -- 854
-empty$ -- 1622
-format.name$ -- 454
-if$ -- 4071
+duplicate$ -- 865
+empty$ -- 1617
+format.name$ -- 450
+if$ -- 4066
 int.to.chr$ -- 2
 int.to.str$ -- 43
 missing$ -- 42
 newline$ -- 224
 num.names$ -- 126
-pop$ -- 325
+pop$ -- 332
 preamble$ -- 1
 purify$ -- 42
 quote$ -- 0
-skip$ -- 487
+skip$ -- 498
 stack$ -- 0
-substring$ -- 1096
-swap$ -- 137
-text.length$ -- 5
+substring$ -- 1051
+swap$ -- 147
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 294
 warning$ -- 1
-while$ -- 151
+while$ -- 150
 width$ -- 0
 write$ -- 560
 (There was 1 warning)

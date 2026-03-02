@@ -11,14 +11,12 @@ Juncen Zhu, Jiannong Cao, Divya Saxena, Shan Jiang, and Houda Ferradi.
   future directions.
 \newblock \emph{ACM Computing Surveys}, 55\penalty0 (11):\penalty0 1--31, 2023.
 
-\bibitem[Zhao et~al.(2020)Zhao, Zhao, Yang, Wang, Wang, Lyu, Niyato, and
-  Lam]{2}
-Yang Zhao, Jun Zhao, Mengmeng Yang, Teng Wang, Ning Wang, Lingjuan Lyu, Dusit
-  Niyato, and Kwok-Yan Lam.
-\newblock Local differential privacy-based federated learning for internet of
-  things.
-\newblock \emph{IEEE Internet of Things Journal}, 8\penalty0 (11):\penalty0
-  8836--8853, 2020.
+\bibitem[Mcmahan et~al.(2016)Mcmahan, Moore, Ramage, Hampson, and Arcas]{18}
+H.~Brendan Mcmahan, Eider Moore, Daniel Ramage, Seth Hampson, and Blaise
+  Agüera~y Arcas.
+\newblock Communication-efficient learning of deep networks from decentralized
+  data.
+\newblock 2016.
 
 \bibitem[Ali et~al.(2021)Ali, Karimipour, and Tariq]{3}
 Mansoor Ali, Hadis Karimipour, and Muhammad Tariq.
@@ -65,13 +63,6 @@ Liang Gao, Li~Li, Yingwen Chen, ChengZhong Xu, and Ming Xu.
 Unal Tatar, Yasir Gokce, and Brian Nussbaum.
 \newblock Law versus technology: Blockchain, gdpr, and tough tradeoffs.
 \newblock \emph{Computer Law \& Security Review}, 38:\penalty0 105454, 2020.
-
-\bibitem[Mcmahan et~al.(2016)Mcmahan, Moore, Ramage, Hampson, and Arcas]{18}
-H.~Brendan Mcmahan, Eider Moore, Daniel Ramage, Seth Hampson, and Blaise
-  Agüera~y Arcas.
-\newblock Communication-efficient learning of deep networks from decentralized
-  data.
-\newblock 2016.
 
 \bibitem[Truex et~al.(2020)Truex, Liu, Chow, Gursoy, and Wei]{13}
 Stacey Truex, Ling Liu, Ka-Ho Chow, Mehmet~Emre Gursoy, and Wenqi Wei.
@@ -133,12 +124,13 @@ Noora~Mohammed Al-Maslamani, Mohamed Abdallah, and Bekir~Sait Ciftler.
 \newblock \emph{IEEE Open Journal of the Communications Society}, 4:\penalty0
   1274--1284, 2023.
 
-\bibitem[Majeed et~al.(2023{\natexlab{a}})Majeed, Khan, Hassan, Han, and
-  Hong]{22}
-Umer Majeed, Latif~U Khan, Sheikh~Salman Hassan, Zhu Han, and Choong~Seon Hong.
-\newblock Fl-incentivizer: Fl-nft and fl-tokens for federated learning model
-  trading and training.
-\newblock \emph{IEEE Access}, 11:\penalty0 4381--4399, 2023{\natexlab{a}}.
+\bibitem[Jin et~al.(2023)Jin, Yao, Han, Gu, Joe-Wong, Ravi, Avestimehr, and
+  He]{22}
+Weizhao Jin, Yuhang Yao, Shanshan Han, Jiajun Gu, Carlee Joe-Wong, Srivatsan
+  Ravi, Salman Avestimehr, and Chaoyang He.
+\newblock Fedml-he: An efficient homomorphic-encryption-based
+  privacy-preserving federated learning system.
+\newblock \emph{arXiv preprint arXiv:2303.10837}, 2023.
 
 \bibitem[Javaid et~al.(2021)Javaid, Haleem, Singh, Khan, and Suman]{23}
 Mohd Javaid, Abid Haleem, Ravi~Pratap Singh, Shahbaz Khan, and Rajiv Suman.
@@ -161,21 +153,19 @@ Huaqun Guo and Xingjie Yu.
 \newblock \emph{Blockchain: research and applications}, 3\penalty0
   (2):\penalty0 100067, 2022.
 
-\bibitem[Wang et~al.(2023)Wang, Hu, and Xiong]{26}
-Zhilin Wang, Qin Hu, and Xu~Zehui Xiong.
+\bibitem[Wang et~al.(2023{\natexlab{a}})Wang, Hu, Li, Xu, and Xiong]{26}
+Zhilin Wang, Qin Hu, Ruinian Li, Minghui Xu, and Zehui Xiong.
 \newblock Incentive mechanism design for joint resource allocation in
   blockchain-based federated learning.
-\newblock \emph{IEEE Transactions on Parallel and Distributed Systems: A
-  Publication of the IEEE Computer Society}, 34\penalty0 (5):\penalty0
-  1536--1547, 2023.
+\newblock \emph{IEEE Transactions on Parallel and Distributed Systems},
+  34\penalty0 (5):\penalty0 1536--1547, 2023{\natexlab{a}}.
 
-\bibitem[Majeed et~al.(2023{\natexlab{b}})Majeed, Khan, Hassan, Han, and
-  Hong]{27}
+\bibitem[Majeed et~al.(2023)Majeed, Khan, Hassan, Han, and Hong]{27}
 Umer Majeed, Latif~U. Khan, Sheikh~Salman Hassan, Zhu Han, and Choong~Seon
   Hong.
 \newblock Fl-incentivizer: Fl-nft and fl-tokens for federated learning model
   trading and training.
-\newblock \emph{IEEE Access}, 11:\penalty0 4381--4399, 2023{\natexlab{b}}.
+\newblock \emph{IEEE Access}, 11:\penalty0 4381--4399, 2023.
 \newblock \doi{10.1109/ACCESS.2023.3235484}.
 
 \bibitem[Lu et~al.(2019)Lu, Huang, Dai, Maharjan, and Zhang]{28}
@@ -229,19 +219,19 @@ Aditya~Pribadi Kalapaaking, Ibrahim Khalil, Mohammad~Saidur Rahman, Mohammed
   (2):\penalty0 1703--1714, 2023.
 \newblock \doi{10.1109/TII.2022.3170348}.
 
-\bibitem[Zhao et~al.(2021)Zhao, Zhao, Jiang, Tan, Niyato, Li, Lyu, and Liu]{65}
-Yang Zhao, Jun Zhao, Linshan Jiang, Rui Tan, Dusit Niyato, Zengxiang Li,
-  Lingjuan Lyu, and Yingbo Liu.
-\newblock Privacy-preserving blockchain-based federated learning for iot
-  devices.
-\newblock \emph{IEEE Internet of Things Journal}, 8\penalty0 (3):\penalty0
-  1817--1829, 2021.
+\bibitem[Wu et~al.(2024)Wu, Zhang, Xu, Choo, and Zhong]{65}
+Changti Wu, Lei Zhang, Lin Xu, Kim-Kwang~Raymond Choo, and Liangyu Zhong.
+\newblock Privacy-preserving serverless federated learning scheme for internet
+  of things.
+\newblock \emph{IEEE Internet of Things Journal}, 11\penalty0 (12):\penalty0
+  22429--22438, 2024.
 
-\bibitem[Wang et~al.(2020)Wang, Zhao, and Fang]{40}
+\bibitem[Wang et~al.(2023{\natexlab{b}})Wang, Zhao, and Fang]{40}
 Tao Wang, Bo~Zhao, and Liming Fang.
 \newblock Flforest: Byzantine-robust federated learning through isolated
   forest.
-\newblock \emph{IEEE Access}, 8:\penalty0 175215--175223, 2020.
+\newblock In \emph{2022 IEEE 28th International Conference on Parallel and
+  Distributed Systems (ICPADS)}, pages 296--303. IEEE, 2023{\natexlab{b}}.
 
 \bibitem[Dai et~al.(2024)Dai, Tang, Zeng, Hu, and Zhao]{64}
 Guowen Dai, Jinjun Tang, Jie Zeng, Chen Hu, and Chuyun Zhao.
@@ -291,6 +281,11 @@ Sahand Hariri, Matias~Carrasco Kind, and Robert~J Brunner.
 \newblock Extended isolation forest.
 \newblock \emph{IEEE transactions on knowledge and data engineering},
   33\penalty0 (4):\penalty0 1479--1489, 2019.
+
+\bibitem[Karczmarek et~al.(2020)Karczmarek, Kiersztyn, Pedrycz, and Al]{43}
+Pawe{\l} Karczmarek, Adam Kiersztyn, Witold Pedrycz, and Ebru Al.
+\newblock K-means-based isolation forest.
+\newblock \emph{Knowledge-based systems}, 195:\penalty0 105659, 2020.
 
 \bibitem[Cai et~al.(2022)Cai, Li, and Liang]{57}
 Liang Cai, Qilei Li, and Xiubo Liang.

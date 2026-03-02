@@ -227,7 +227,7 @@ This paper proposes a reputation-driven blockchain federated learning framework 
 \end{enumerate}
 
 The remainder of this paper is organized as follows. Section \ref{sec:2} reviews related work. Section \ref{sec:3} presents the preliminaries of Blockchain Technology, Federated Learning, and Isolation Forest. Section \ref{sec:4} details the proposed framework, including the system model, operation workflow, reputation-based participant selection, and token mechanisms. Section \ref{sec:5} evaluates the framework's performance through comprehensive experiments, and Section \ref{sec:6} concludes the paper.
-\begin{figure}[H]
+\begin{figure}[h]
 	\centering % 居中
 	%	\includegraphics[scale=0.17]{figs/1.png}% 图片地址，可以pdf可以jpg，scale是缩放比例。
 	\includegraphics[width=0.47\textwidth,height=0.32\textheight]{figs/1.pdf}	
@@ -417,66 +417,36 @@ This section proposes a blockchain-based Internet of Things (IoT) federated lear
 		\toprule
 		\textbf{Parameter} & \textbf{Definition} & \textbf{Parameter} & \textbf{Definition} \\
 		\midrule
-		$T$ & Task Publisher \\
-		$G$ & Task Goal \\
-		$D_r$ & Data Requirement \\
-		$M$ & Model Type \\
-		$R_{total}$ & Total Reward Tokens \\
-		$B$ & Blockchain Network \\
-		$SC$ & Smart Contract \\
-		$N_t$ & Set of Candidate Training Nodes \\
-		$N_v$ & Set of Candidate Validation Nodes \\
-		$k_t, k_v$ & Number of selected training/validation nodes ($|N_t'|=k_t$, $|N_v'|=k_v$) \\
-		$N_t',N_v'$ & Selected Training/Validation Node Sets \\
-		$k$ & Size of per-round validation group ($k \le |N_v'|$) \\
-		$V^{(t)}$ & Validation group in round $t$, $V^{(t)} \subseteq N_v'$, $|V^{(t)}|=k$ \\
-		$n_{ti}$ & The $i$-th Training Node \\
-		$n_{vi}$ & The $i$-th Validation Node \\
-		$D_{ti}$ & Local Dataset of Training Node $n_{ti}$ \\
-		$D_v$ & Public Dataset for Validation \\
-		$\theta_{ti,e}^{(t)}$ & Local parameters of $n_{ti}$ after $e$ local steps in global round $t$ \\
-		$\theta_g^{(t)}$ & Global Model Parameters in the $t$-th Round \\
-		$\Delta\theta_{ti}^{(t)}$ & Model update uploaded by $n_{ti}$ in round $t$ \\
-		$L$ & Loss Function used for model training \\
-		$f$ & Aggregation function (FedAvg on accepted updates) \\
-		$\eta$ & Learning rate \\
-		$E$ & Number of local update steps/epochs per global round \\
-		$C_i$ & Amount of staked tokens by participant $i$ (registration stake) \\
-		$C_{avg}$ & Average amount of tokens staked by all participants \\
-		$R_i$ & Reputation value of participant $i$ (generic) \\
-		$R_{init,i}$ & Initial reputation value of participant $i$ \\
-		$\delta_d$ & Reputation decay factor \\
-		$\Delta R_i^{\mathrm{decay}}$ & Reputation reduction due to decay in selection stage \\
-		$\alpha,\beta,\gamma,\delta_r$ & Weight coefficients in the selection score \\
-		$S_i$ & Comprehensive selection score of participant $i$ \\
-		$R_{ti}^{(t)},R_{vi}^{(t)}$ & Reputation of training node $n_{ti}$ / validation node $n_{vi}$ at round $t$ \\
-		$R_{min}$ & Minimum reputation threshold for accepting updates \\
-		$A_j^i$ & Accuracy of candidate model from training node $j$ evaluated by validation node $i$ \\
-		$Z_j^i$ & Z-score of model accuracy for training node $j$ by validation node $i$ \\
-		$s_j^i$ & iForest anomaly score for training node $j$ by validation node $i$ \\
-		$w_1,w_2$ & Weight coefficients for $Z_j^i$ and $s_j^i$ in validation scoring \\
-		$S_j^i$ & Normalized severity score reported by validation node $i$ for training node $j$ \\
-		$S_j$ & Final aggregated severity score of training node $j$ after consensus \\
-		$\tau$ & Severity threshold for malicious update detection \\
-		$\mathcal{M}_j^{(t)}$ & Malicious behavior indicator for node $j$ in round $t$ \\
-		$N_j^{(t)}$ & Cumulative number of detected malicious behaviors by node $j$ up to round $t$ \\
-		$\lambda_h,\lambda_m,\kappa$ & Training-node reputation update parameters \\
-		$\lambda_t,\lambda_v$ & Reward ratios for training/validation nodes ($\lambda_t+\lambda_v=1$) \\
-		$\eta_v$ & Validation-node reputation adjustment factor \\
-		$T_{round}$ & Total number of training rounds \\
-		$\mathcal{C}_{end}$ & Termination conditions \\
-		$\Phi_{ti}$ & Contribution score of training node $n_{ti}$ for reward calculation \\
-		$W_{ti}$ & Reward for training node $n_{ti}$ \\
-		$W_{vi}$ & Reward for validation node $n_{vi}$ \\
-		$\bar{R}_i$ & Normalized reputation in $[0,1]$ (used for deposit sizing) \\
-		$\mathrm{Dep}_i$ & Task deposit locked for participant $i$ (penalty mechanism) \\
-		$\mathrm{Dep}_{min}$ & Minimum task deposit requirement \\
-		$\mu$ & Deposit coefficient \\
-		$\rho_{base}$ & Base confiscation ratio \\
-		$\nu$ & Confiscation adjustment coefficient \\
-		$\mathrm{Sev}_i$ & Severity score used for penalty ($[0,1]$) \\
-		$L_{max}$ & Maximum number of validation reassignment attempts per round \\
-        $\epsilon$ & A small constant for numerical stability \\
+		$T$ & Task Publisher & $N_t',N_v'$ & Selected Training/Validation Node Sets \\
+		$G$ & Task Goal & $k$ & Size of per-round validation group ($k \le |N_v'|$) \\
+		$D_r$ & Data Requirement & $V^{(t)}$ & Validation group in round $t$, $V^{(t)} \subseteq N_v'$, $|V^{(t)}|=k$ \\
+		$M$ & Model Type & $n_{ti}$ & The $i$-th Training Node \\
+		$R_{total}$ & Total Reward Tokens & $n_{vi}$ & The $i$-th Validation Node \\
+		$B$ & Blockchain Network & $D_{ti}$ & Local Dataset of Training Node $n_{ti}$ \\
+		$SC$ & Smart Contract & $D_v$ & Public Dataset for Validation \\
+		$N_t$ & Set of Candidate Training Nodes & $\theta_{ti,e}^{(t)}$ & Local parameters of $n_{ti}$ after $e$ local steps in global round $t$ \\
+		$N_v$ & Set of Candidate Validation Nodes & $\theta_g^{(t)}$ & Global Model Parameters in the $t$-th Round \\
+		$k_t, k_v$ & Number of selected training/validation nodes ($|N_t'|=k_t$, $|N_v'|=k_v$) & $\Delta\theta_{ti}^{(t)}$ & Model update uploaded by $n_{ti}$ in round $t$ \\
+		$L$ & Loss Function used for model training & $C_i$ & Amount of staked tokens by participant $i$ (registration stake) \\
+		$f$ & Aggregation function (FedAvg on accepted updates) & $C_{avg}$ & Average amount of tokens staked by all participants \\
+		$\eta$ & Learning rate & $R_i$ & Reputation value of participant $i$ (generic) \\
+		$E$ & Number of local update steps/epochs per global round & $R_{init,i}$ & Initial reputation value of participant $i$ \\
+		$\delta_d$ & Reputation decay factor & $S_i$ & Comprehensive selection score of participant $i$ \\
+		$\Delta R_i^{\mathrm{decay}}$ & Reputation reduction due to decay in selection stage & $R_{ti}^{(t)},R_{vi}^{(t)}$ & Reputation of training node $n_{ti}$ / validation node $n_{vi}$ at round $t$ \\
+		$\alpha,\beta,\gamma,\delta_r$ & Weight coefficients in the selection score & $R_{min}$ & Minimum reputation threshold for accepting updates \\
+		$A_j^i$ & Accuracy of candidate model from training node $j$ evaluated by validation node $i$ & $Z_j^i$ & Z-score of model accuracy for training node $j$ by validation node $i$ \\
+		$s_j^i$ & iForest anomaly score for training node $j$ by validation node $i$ & $w_1,w_2$ & Weight coefficients for $Z_j^i$ and $s_j^i$ in validation scoring \\
+		$S_j^i$ & Normalized severity score reported by validation node $i$ for training node $j$ & $S_j$ & Final aggregated severity score of training node $j$ after consensus \\
+		$\tau$ & Severity threshold for malicious update detection & $\mathcal{M}_j^{(t)}$ & Malicious behavior indicator for node $j$ in round $t$ \\
+		$N_j^{(t)}$ & Cumulative number of detected malicious behaviors by node $j$ up to round $t$ & $\lambda_h,\lambda_m,\kappa$ & Training-node reputation update parameters \\
+		$\lambda_t,\lambda_v$ & Reward ratios for training/validation nodes ($\lambda_t+\lambda_v=1$) & $\eta_v$ & Validation-node reputation adjustment factor \\
+		$T_{round}$ & Total number of training rounds & $\Phi_{ti}$ & Contribution score of training node $n_{ti}$ for reward calculation \\
+		$\mathcal{C}_{end}$ & Termination conditions & $W_{ti}$ & Reward for training node $n_{ti}$ \\
+		$W_{vi}$ & Reward for validation node $n_{vi}$ & $\bar{R}_i$ & Normalized reputation in $[0,1]$ (used for deposit sizing) \\
+		$\mathrm{Dep}_i$ & Task deposit locked for participant $i$ (penalty mechanism) & $\mathrm{Dep}_{min}$ & Minimum task deposit requirement \\
+		$\mu$ & Deposit coefficient & $\rho_{base}$ & Base confiscation ratio \\
+		$\nu$ & Confiscation adjustment coefficient & $\mathrm{Sev}_i$ & Severity score used for penalty ($[0,1]$) \\
+		$L_{max}$ & Maximum number of validation reassignment attempts per round & $\epsilon$ & A small constant for numerical stability \\
         \bottomrule
 	\end{tabular}
 \end{table*}
@@ -1097,7 +1067,8 @@ We measured the time breakdown of a single FL round under different network scal
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figs/9.pdf}
+	% \includegraphics[width=0.45\textwidth]{figs/9.pdf}
+	% TODO: Add figure 9.pdf
 	\caption{Per-round time decomposition under varying network scales}
 	\label{FIG:9}
 \end{figure}
@@ -1109,7 +1080,8 @@ We further evaluated the transaction confirmation delay (TCD) of on-chain operat
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figs/10.pdf}
+	% \includegraphics[width=0.45\textwidth]{figs/10.pdf}
+	% TODO: Add figure 10.pdf
 	\caption{Transaction confirmation delay distribution under varying network scales}
 	\label{FIG:10}
 \end{figure}
