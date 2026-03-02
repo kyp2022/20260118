@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60fd7de0-8a3c-4b9e-ab30-3458f0f10c5d" name="Changes" comment="fix(paper): 修复论文中的引用错误并优化技术实现细节&#10;&#10;- 修正了智能合约函数定义中的文献引用编号&#10;- 更新了隔离森林异常检测相关工作的引用&#10;- 修复了符号定义的一致性问题&#10;- 优化了奖励计算公式中的数值稳定性&#10;- 修正了验证节点组的表示方法&#10;- 简化了激励兼容性条件的数学表达式&#10;- 更新了实验参数表中的变量名称&#10;- 删除了区块链性能评估的冗余章节&#10;- 修正了参考文献中的作者姓名和出版信息">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="60fd7de0-8a3c-4b9e-ab30-3458f0f10c5d" name="Changes" comment="docs(paper): 更新论文引用和文档结构&#10;&#10;- 修复了多个文献引用编号错误，包括将引用2更改为18，引用22更改为16等&#10;- 添加了新的子小节4.4.1本地模型更新和4.4.2验证与声誉管理&#10;- 新增了激励兼容性分析小节4.6并添加相应标签&#10;- 调整了表格和图表的编号及位置，更新了页面引用&#10;- 添加了新的性能分析子小节5.4.1每轮时间分解和5.4.2交易确认延迟&#10;- 修复了文档中的格式警告和页面布局问题&#10;- 更新了最后页码从17到19以反映内容变化">
       <change beforePath="$PROJECT_DIR$/cas-dc-template.tex" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,46 +13,47 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="0302" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "kyp2022"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/kyp2022/20260118.git",
-    "accountId": "e3f46e57-c05f-4502-bf54-0eb08c4fcd1a"
-  }
-}]]></component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="kyp-fix" />
+                    <option name="lastUsedInstant" value="1772455578" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="0302" />
+                    <option name="lastUsedInstant" value="1772455553" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
   <component name="ProjectId" id="38QKNfWb3nt2wB4t5S6sAJjmDBX" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "kyp-fix",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/ppg/Desktop/kyp/20260118",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

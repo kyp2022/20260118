@@ -236,47 +236,49 @@ The remainder of this paper is organized as follows. Section \ref{sec:2} reviews
 \end{figure}
 
 
+
 \section{Related work}\label{sec:2}
-
-Blockchain-assisted federated learning has received increasing attention as a
-means to improve coordination, auditability, and incentive alignment in
-distributed learning environments. This section reviews key research directions
-and their relationship to the present work.
-
+Blockchain-assisted federated learning (BFL), also referred to as blockchain-enabled FL (BC-FL),
+has been explored to mitigate the reliance on a trusted central coordinator by providing decentralized
+coordination, immutable logging, and programmable settlement. Recent surveys summarize architectural
+patterns, security threats, and open challenges when combining blockchain with FL in IoT/edge
+environments~\cite{1,3}. Building on these overviews, this section reviews representative studies
+along three dimensions: (i) decentralized coordination and auditability in IoT, (ii) privacy
+preservation and robustness, and (iii) incentives and reputation mechanisms.
 % ----------------------------------------------------------------------------
-\subsection{Blockchain-Assisted FL Coordination}
+\subsection{Decentralized Coordination and Auditability in IoT}
 % ----------------------------------------------------------------------------
-
-A primary motivation for introducing blockchain into FL is to reduce reliance
-on a single coordinating entity and provide tamper-evident logging of model
-updates. McMahan et al.~\cite{18} introduced the Federated Averaging (FedAvg)
-algorithm, which forms the algorithmic foundation for most practical FL
-workflows. Li et al.~\cite{4} proposed a blockchain-based decentralized FL
-framework (BFLC) with committee consensus to coordinate model-update publication
-and reduce dependence on a central server. Kalapaaking et al.~\cite{36}
-explored blockchain-assisted FL with secure aggregation using trusted execution
-environments, targeting IoT settings where privacy and auditability are both
-important. Recent work includes Zuo et al.~\cite{58}, who developed
-Federated TrustChain for blockchain-enhanced large language model training
-and unlearning, and Zhou et al.~\cite{62}, who addressed asynchronous FL
-coordination in heterogeneous edge environments using blockchain as the
-synchronization substrate.
-
-These works establish blockchain as a viable substrate for decentralized
-coordination and tamper-resistant logging. The pathway from validation
-evidence to reputation updates and economic settlement, however, is often
-not formalized at the protocol level.
-
+Federated Averaging (FedAvg)~\cite{18} is a seminal optimization scheme for FL, where a server
+coordinates training and aggregates locally computed updates. In cross-organization IoT and edge
+settings, the coordinator can become a single point of failure and a trusted third party. To reduce
+this reliance, Lu et al.~\cite{28} proposed a permissioned-blockchain-assisted FL architecture for
+privacy-preserved data sharing in industrial IoT, leveraging the ledger to record model updates and
+enable traceability. Li et al.~\cite{4} further introduced a committee-consensus-based design (BFLC)
+to improve coordination efficiency when publishing model updates and maintaining the global model in a
+decentralized manner. Towards fully decentralized coordination, Biscotti~\cite{66} co-designs a
+peer-to-peer training workflow with a blockchain ledger and cryptographic protocols, where committees
+validate updates and support robust aggregation.
+Beyond basic coordination, recent studies have investigated efficiency and domain adaptations.
+Blockchain-aided wireless FL considers resource allocation and client scheduling under communication
+constraints~\cite{67}, and IoT-oriented designs further optimize resource usage for blockchain-based
+FL~\cite{9}. Application-specific BFL frameworks have also been studied in industrial IoT,
+for example, blockchain-based FL for device failure detection~\cite{6}. FedTwin~\cite{41} extends
+blockchain-enabled FL to digital-twin networks and introduces an adaptive asynchronous workflow,
+highlighting the need to cope with heterogeneous and dynamic industrial assets. Related to emerging
+workloads, Federated TrustChain~\cite{58} explores blockchain-enhanced transparency and unlearning in
+federated large language model training. These efforts collectively show that blockchain can serve as
+a coordination and audit layer, while system performance and device heterogeneity remain key
+considerations.
 % ----------------------------------------------------------------------------
-\subsection{Privacy-Preserving Mechanisms}
+\subsection{Privacy Preservation and Robustness}
 % ----------------------------------------------------------------------------
 Although blockchain provides immutability and accountability, confidentiality of local updates and
 resilience to adversarial behaviors must still be ensured at the learning layer. Differential privacy
 and cryptographic techniques are common choices. Zhao et al.~\cite{12} adaptively calibrates differential
 privacy (DP) noise for non-IID FL to improve the privacy--utility trade-off against inference attacks.
-Xie et al.~\cite{16} survey efficiency optimization techniques 
-for homomorphic-encryption-based privacy-preserving FL, 
-highlighting the trade-off between confidentiality and 
+Xie et al.~\cite{16} survey efficiency optimization techniques
+for homomorphic-encryption-based privacy-preserving FL,
+highlighting the trade-off between confidentiality and
 computational overhead. For IoT
 deployments, Kalapaaking et al.~\cite{36} combine blockchain with trusted execution environments to
 realize secure aggregation with auditability, while Wu et al.~\cite{65} propose a privacy-preserving
@@ -295,86 +297,55 @@ non-trivial in blockchain-assisted IoT settings.
 % ----------------------------------------------------------------------------
 \subsection{Incentives and Reputation Mechanisms}
 % ----------------------------------------------------------------------------
-
-Sustained participation in open environments often requires economic incentives,
-and several blockchain-FL studies integrate rewards with contribution assessment.
-Gao et al.~\cite{7} proposed FGFL, a blockchain-based fair incentive governor
-that uses reputation and contribution indicators to guide reward allocation and
-includes mechanisms for handling attackers. Kang et al.~\cite{37} explored
-incentive design combining reputation and contract theory for reliable FL,
-demonstrating game-theoretic foundations for participant motivation.
-Hierarchical incentive mechanisms have also been studied for federated
-machine learning in mobile networks~\cite{56}. Zhang et al.~\cite{9}
-investigated adaptive resource allocation for blockchain-based FL in IoT,
-considering both computational and communication constraints.
-
-These incentive and reputation designs provide useful building blocks.
-The relationship between empirically measured update quality (via validation
-or anomaly detection) and economic settlement is, however, not always
-explicitly specified at the protocol level.
-
+Sustaining collaborative training among self-interested parties requires incentives beyond purely
+technical security mechanisms. Prior work has investigated incentive design using economic modeling,
+such as contract-theoretic schemes coupled with reputation estimation~\cite{37}, and hierarchical
+incentive mechanisms in mobile environments~\cite{56}. Blockchain-based approaches offer programmable
+settlement and transparent accounting. FGFL~\cite{7} assesses participants through reputation and
+contribution indicators to support fair reward distribution and attacker deterrence.
+FL-Incentivizer~\cite{27} tokenizes model assets and governs training/trading via smart contracts,
+whereas Wu and Seneviratne~\cite{60} focus on scalability and incentive compatibility in
+blockchain-based FL. Further, cross-silo incentive mechanisms and joint resource-allocation designs
+have been studied in blockchain-based FL~\cite{10,26}, illustrating the coupling between system
+performance and reward allocation.
+Despite the progress, a recurring limitation is that contribution evaluation, robustness signals, and
+economic settlement are often handled in separate modules, making it difficult to form an end-to-end
+workflow where update-quality evidence can consistently drive participant selection, reputation
+evolution, and automated reward/penalty execution. Motivated by this gap, we design BRITE-FL to
+integrate multi-source evidence, reputation dynamics, and on-chain settlement for IoT-oriented
+federated learning.
 % ----------------------------------------------------------------------------
-\subsection{Robustness and Byzantine Resistance}
+% Comparison table
 % ----------------------------------------------------------------------------
-
-Robustness against poisoning and Byzantine behaviors is a central concern in
-FL, particularly for IoT and edge deployments. Wang et al.~\cite{40} proposed
-FLForest, a Byzantine-robust FL approach using isolation forest techniques to
-filter malicious updates during aggregation. Kang et al.~\cite{38} studied
-reliable FL for mobile networks, incorporating reputation-based participant
-selection to improve resilience. Dai et al.~\cite{64} proposed personalized
-FL for traffic flow prediction with client reputation mechanisms, demonstrating
-that reputation-guided aggregation can reduce the impact of dishonest clients.
-Hierarchical FL with reputation-aware decision-making has also been explored
-for IoT environments~\cite{21}.
-
-These robustness-oriented works provide important detection and filtering
-techniques. The coupling between detected anomalies, reputation evolution,
-and automated economic penalties is generally not specified within a unified
-protocol workflow.
-
-% ----------------------------------------------------------------------------
-% Comparison table (transposed)
-% ----------------------------------------------------------------------------
-
-Table~\ref{tab:comparison} provides a feature comparison across representative
-blockchain-assisted FL frameworks relevant to reputation, incentives, and
-robustness mechanisms. BRITE-FL incorporates explicit formulations for
-reputation dynamics (non-linear decay with exponential penalty), multi-dimensional
-anomaly detection (z-score, Isolation Forest, validation consensus), and
-reputation-linked dynamic deposit requirements.
-
-\begin{table*}[H]
-\caption{System-level comparison of representative \emph{blockchain-assisted FL frameworks}.
-$\bullet$: explicitly supported; $\circ$: partially/implicitly supported; --: not reported/unclear.
-This table focuses on blockchain-assisted \emph{protocol/framework} designs.
-Learning-level baselines used in experiments (e.g., AdaDpFed~\cite{12}, PFL-CR~\cite{64}, PSFL-IoT~\cite{65})
-are discussed separately in Section~\ref{sec:5}.}
-\label{tab:comparison}
-\centering
-\small
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{@{}lccccccc@{}}
-\toprule
-\textbf{Indicator} &
-\cite{28} &
-\cite{68} &
-\cite{4} &
-\cite{7} &
-\cite{27} &
-\cite{36} &
-\textbf{Ours} \\
-\midrule
-Reputation              & --        & $\bullet$ & $\circ$   & $\bullet$ & --        & --        & $\bullet$ \\
-Reward / Penalty        & --        & $\bullet$ & $\circ$   & $\bullet$ & $\bullet$ & --        & $\bullet$ \\
-Stake Deposit           & --        & --        & --        & --        & --        & --        & $\bullet$ \\
-Update Verif.           & $\circ$   & $\circ$   & $\bullet$ & $\circ$   & $\circ$   & $\circ$   & $\bullet$ \\
-Malicious Det.          & --        & --        & $\circ$   & $\bullet$ & --        & --        & $\bullet$ \\
-Hetero.\ Roles          & --        & $\circ$   & $\bullet$ & --        & --        & $\circ$   & $\bullet$ \\
-Evidence$\to$Sel.       & --        & $\bullet$ & $\bullet$ & $\circ$   & --        & --        & $\bullet$ \\
-Evidence$\to$Settl.     & --        & $\bullet$ & $\bullet$ & $\bullet$ & $\circ$   & --        & $\bullet$ \\
-\bottomrule
-\end{tabular}
+\begin{table*}[t]
+	\caption{System-level comparison of representative \emph{blockchain-assisted FL frameworks}.
+		$\bullet$: explicitly supported; $\circ$: partially/implicitly supported; --: not reported/unclear.
+		We only mark features that are explicitly stated in the corresponding paper.}
+	\label{tab:comparison}
+	\centering
+	\small
+	\renewcommand{\arraystretch}{1.15}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccc@{}}
+		\toprule
+		\textbf{Indicator} &
+		\cite{28} &
+		\cite{4} &
+		\cite{66} &
+		\cite{7} &
+		\cite{27} &
+		\cite{36} &
+		\textbf{BRITE-FL} \\
+		\midrule
+		Reputation              & --        & --        & $\circ$   & $\bullet$ & --        & --        & $\bullet$ \\
+		Reward / Penalty        & --        & --        & $\circ$   & $\bullet$ & $\bullet$ & --        & $\bullet$ \\
+		Stake / Deposit         & --        & --        & $\circ$   & --        & --        & --        & $\bullet$ \\
+		Update Verif. / Audit   & $\circ$   & $\bullet$ & $\bullet$ & $\circ$   & $\circ$   & $\circ$   & $\bullet$ \\
+		Malicious Det./ Robust  & --        & --        & $\bullet$ & $\circ$   & --        & --        & $\bullet$ \\
+		Hetero.\ Roles          & --        & $\bullet$ & $\bullet$ & --        & $\circ$   & $\circ$   & $\bullet$ \\
+		Evidence$\to$Selection  & --        & $\circ$   & $\bullet$ & $\circ$   & --        & --        & $\bullet$ \\
+		Evidence$\to$Settlement & --        & --        & $\circ$   & $\bullet$ & $\bullet$ & --        & $\bullet$ \\
+		\bottomrule
+	\end{tabular*}
 \end{table*}
 
 \section{Preliminaries}\label{sec:3}
