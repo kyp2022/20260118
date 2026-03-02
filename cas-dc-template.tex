@@ -40,6 +40,8 @@
 	
 	\usepackage[numbers]{natbib}
 	\usepackage{float}
+	\floatplacement{figure}{H}
+	\floatplacement{table}{H}
 	%\usepackage[authoryear]{natbib}
 	%\usepackage[authoryear,longnamesfirst]{natbib}
 	
@@ -216,18 +218,16 @@ Federated Learning (FL) has emerged as a promising solution to these challenges,
 While existing research has made progress in addressing these issues, current solutions remain inadequate\cite{18}. Many FL frameworks rely heavily on central server coordination, introducing risks of single-point failure and privacy leakage\cite{18,19,20}. Furthermore, these studies often overlook the inherent heterogeneity of IoT environments by assuming uniform computational capabilities across participating nodes\cite{21}. Particularly concerning is the lack of sophisticated mechanisms for handling malicious nodes, as existing reputation-based incentive systems fail to effectively address scenarios where high-reputation nodes engage in malicious activities\cite{22}.
 
 Blockchain technology, with its decentralized and immutable characteristics, offers a promising approach to addressing these limitations \cite{23}. By incorporating blockchain into federated learning, systems can achieve peer-to-peer collaboration without third-party intervention while leveraging consensus mechanisms to suppress malicious behavior \cite{24}. Blockchain's distributed ledgers can securely record model updates, while smart contracts can automate reward and punishment mechanisms, enhancing system transparency and credibility\cite{25,26,27}. Despite these advantages, existing blockchain-FL approaches often treat security, trust assessment, and economic incentives as separate components, making it difficult to establish clear causal relationships between participant behavior and system-wide consequences. Furthermore, most frameworks assume homogeneous device capabilities, limiting their applicability to heterogeneous IoT ecosystems where computational resources vary significantly across participants.
-
-This paper proposes BRITE-FL, a blockchain-based reputation and incentive token enhanced federated learning framework specifically designed for heterogeneous IoT environments. The main contributions of this work are:
-
-\begin{enumerate}[1)]
-	\item We present BRITE-FL, a consortium-blockchain-assisted federated learning framework for IoT, where smart contracts and consensus mechanisms provide auditable registration of model updates and automated execution of protocol rules.
-	\item We specify a dynamic, time-indexed reputation-token scheme that evaluates participants using both current contribution signals and historical behavior, and uses the resulting reputations as a common input to participant selection \emph{and} on-chain settlement, making the evidence-to-decision pathway explicit.
-	\item We formalize a role separation between training nodes and validation nodes to accommodate IoT heterogeneity; validation results (including consensus outcomes) serve as evidence that feeds reputation evolution and settlement decisions.
-	\item We incorporate a multi-dimensional malicious behavior identification procedure based on anomaly detection over model updates, and couple detected abnormality evidence to smart-contract-based punishment mechanisms within the protocol workflow.
+This paper proposes a reputation-driven blockchain federated learning framework specifically designed for IoT environments. Our framework makes several key contributions:
+	\begin{enumerate}[1)]
+	\item Introduces a novel architecture integrating consortium blockchain with federated learning, establishing trust between IoT federations through smart contracts and consensus mechanisms.
+	\item Introduces a dynamic reputation token system that comprehensively evaluates node contributions based on both current performance and historical behavior, providing targeted incentives for high-quality participation.
+	\item Designs an innovative role separation mechanism, dividing participating nodes into training nodes and validation nodes to accommodate the heterogeneity of IoT devices. This separation mechanism enhances system security and reliability while providing participation opportunities for devices with varying computational capabilities.
+	\item Proposes a robust malicious behavior identification method combining multiple anomaly detection models with smart contract-based punishment mechanisms.
 \end{enumerate}
 
 The remainder of this paper is organized as follows. Section \ref{sec:2} reviews related work. Section \ref{sec:3} presents the preliminaries of Blockchain Technology, Federated Learning, and Isolation Forest. Section \ref{sec:4} details the proposed framework, including the system model, operation workflow, reputation-based participant selection, and token mechanisms. Section \ref{sec:5} evaluates the framework's performance through comprehensive experiments, and Section \ref{sec:6} concludes the paper.
-\begin{figure}[h] 
+\begin{figure}[H]
 	\centering % 居中
 	%	\includegraphics[scale=0.17]{figs/1.png}% 图片地址，可以pdf可以jpg，scale是缩放比例。
 	\includegraphics[width=0.47\textwidth,height=0.32\textheight]{figs/1.pdf}	
@@ -236,41 +236,39 @@ The remainder of this paper is organized as follows. Section \ref{sec:2} reviews
 \end{figure}
 
 
-
 \section{Related work}\label{sec:2}
-Blockchain-assisted federated learning (BFL), also referred to as blockchain-enabled FL (BC-FL),
-has been explored to mitigate the reliance on a trusted central coordinator by providing decentralized
-coordination, immutable logging, and programmable settlement. Recent surveys summarize architectural
-patterns, security threats, and open challenges when combining blockchain with FL in IoT/edge
-environments~\cite{1,3}. Building on these overviews, this section reviews representative studies
-along three dimensions: (i) decentralized coordination and auditability in IoT, (ii) privacy
-preservation and robustness, and (iii) incentives and reputation mechanisms.
+
+Blockchain-assisted federated learning has received increasing attention as a
+means to improve coordination, auditability, and incentive alignment in
+distributed learning environments. This section reviews key research directions
+and their relationship to the present work.
+
 % ----------------------------------------------------------------------------
-\subsection{Decentralized Coordination and Auditability in IoT}
+\subsection{Blockchain-Assisted FL Coordination}
 % ----------------------------------------------------------------------------
-Federated Averaging (FedAvg)~\cite{18} is a seminal optimization scheme for FL, where a server
-coordinates training and aggregates locally computed updates. In cross-organization IoT and edge
-settings, the coordinator can become a single point of failure and a trusted third party. To reduce
-this reliance, Lu et al.~\cite{28} proposed a permissioned-blockchain-assisted FL architecture for
-privacy-preserved data sharing in industrial IoT, leveraging the ledger to record model updates and
-enable traceability. Li et al.~\cite{4} further introduced a committee-consensus-based design (BFLC)
-to improve coordination efficiency when publishing model updates and maintaining the global model in a
-decentralized manner. Towards fully decentralized coordination, Biscotti~\cite{66} co-designs a
-peer-to-peer training workflow with a blockchain ledger and cryptographic protocols, where committees
-validate updates and support robust aggregation.
-Beyond basic coordination, recent studies have investigated efficiency and domain adaptations.
-Blockchain-aided wireless FL considers resource allocation and client scheduling under communication
-constraints~\cite{67}, and IoT-oriented designs further optimize resource usage for blockchain-based
-FL~\cite{9}. Application-specific BFL frameworks have also been studied in industrial IoT,
-for example, blockchain-based FL for device failure detection~\cite{6}. FedTwin~\cite{41} extends
-blockchain-enabled FL to digital-twin networks and introduces an adaptive asynchronous workflow,
-highlighting the need to cope with heterogeneous and dynamic industrial assets. Related to emerging
-workloads, Federated TrustChain~\cite{58} explores blockchain-enhanced transparency and unlearning in
-federated large language model training. These efforts collectively show that blockchain can serve as
-a coordination and audit layer, while system performance and device heterogeneity remain key
-considerations.
+
+A primary motivation for introducing blockchain into FL is to reduce reliance
+on a single coordinating entity and provide tamper-evident logging of model
+updates. McMahan et al.~\cite{18} introduced the Federated Averaging (FedAvg)
+algorithm, which forms the algorithmic foundation for most practical FL
+workflows. Li et al.~\cite{4} proposed a blockchain-based decentralized FL
+framework (BFLC) with committee consensus to coordinate model-update publication
+and reduce dependence on a central server. Kalapaaking et al.~\cite{36}
+explored blockchain-assisted FL with secure aggregation using trusted execution
+environments, targeting IoT settings where privacy and auditability are both
+important. Recent work includes Zuo et al.~\cite{58}, who developed
+Federated TrustChain for blockchain-enhanced large language model training
+and unlearning, and Zhou et al.~\cite{62}, who addressed asynchronous FL
+coordination in heterogeneous edge environments using blockchain as the
+synchronization substrate.
+
+These works establish blockchain as a viable substrate for decentralized
+coordination and tamper-resistant logging. The pathway from validation
+evidence to reputation updates and economic settlement, however, is often
+not formalized at the protocol level.
+
 % ----------------------------------------------------------------------------
-\subsection{Privacy Preservation and Robustness}
+\subsection{Privacy-Preserving Mechanisms}
 % ----------------------------------------------------------------------------
 Although blockchain provides immutability and accountability, confidentiality of local updates and
 resilience to adversarial behaviors must still be ensured at the learning layer. Differential privacy
@@ -297,69 +295,94 @@ non-trivial in blockchain-assisted IoT settings.
 % ----------------------------------------------------------------------------
 \subsection{Incentives and Reputation Mechanisms}
 % ----------------------------------------------------------------------------
-Sustaining collaborative training among self-interested parties requires incentives beyond purely
-technical security mechanisms. Prior work has investigated incentive design using economic modeling,
-such as contract-theoretic schemes coupled with reputation estimation~\cite{37}, and hierarchical
-incentive mechanisms in mobile environments~\cite{56}. Blockchain-based approaches offer programmable
-settlement and transparent accounting. FGFL~\cite{7} assesses participants through reputation and
-contribution indicators to support fair reward distribution and attacker deterrence.
-FL-Incentivizer~\cite{27} tokenizes model assets and governs training/trading via smart contracts,
-whereas Wu and Seneviratne~\cite{60} focus on scalability and incentive compatibility in
-blockchain-based FL. Further, cross-silo incentive mechanisms and joint resource-allocation designs
-have been studied in blockchain-based FL~\cite{10,26}, illustrating the coupling between system
-performance and reward allocation.
-Despite the progress, a recurring limitation is that contribution evaluation, robustness signals, and
-economic settlement are often handled in separate modules, making it difficult to form an end-to-end
-workflow where update-quality evidence can consistently drive participant selection, reputation
-evolution, and automated reward/penalty execution. Motivated by this gap, we design BRITE-FL to
-integrate multi-source evidence, reputation dynamics, and on-chain settlement for IoT-oriented
-federated learning.
+
+Sustained participation in open environments often requires economic incentives,
+and several blockchain-FL studies integrate rewards with contribution assessment.
+Gao et al.~\cite{7} proposed FGFL, a blockchain-based fair incentive governor
+that uses reputation and contribution indicators to guide reward allocation and
+includes mechanisms for handling attackers. Kang et al.~\cite{37} explored
+incentive design combining reputation and contract theory for reliable FL,
+demonstrating game-theoretic foundations for participant motivation.
+Hierarchical incentive mechanisms have also been studied for federated
+machine learning in mobile networks~\cite{56}. Zhang et al.~\cite{9}
+investigated adaptive resource allocation for blockchain-based FL in IoT,
+considering both computational and communication constraints.
+
+These incentive and reputation designs provide useful building blocks.
+The relationship between empirically measured update quality (via validation
+or anomaly detection) and economic settlement is, however, not always
+explicitly specified at the protocol level.
+
 % ----------------------------------------------------------------------------
-% Comparison table
+\subsection{Robustness and Byzantine Resistance}
 % ----------------------------------------------------------------------------
-\begin{table*}[t]
-	\caption{System-level comparison of representative \emph{blockchain-assisted FL frameworks}.
-		$\bullet$: explicitly supported; $\circ$: partially/implicitly supported; --: not reported/unclear.
-		We only mark features that are explicitly stated in the corresponding paper.}
-	\label{tab:comparison}
-	\centering
-	\small
-	\renewcommand{\arraystretch}{1.15}
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccc@{}}
-		\toprule
-		\textbf{Indicator} &
-		\cite{28} &
-		\cite{4} &
-		\cite{66} &
-		\cite{7} &
-		\cite{27} &
-		\cite{36} &
-		\textbf{BRITE-FL} \\
-		\midrule
-		Reputation              & --        & --        & $\circ$   & $\bullet$ & --        & --        & $\bullet$ \\
-		Reward / Penalty        & --        & --        & $\circ$   & $\bullet$ & $\bullet$ & --        & $\bullet$ \\
-		Stake / Deposit         & --        & --        & $\circ$   & --        & --        & --        & $\bullet$ \\
-		Update Verif. / Audit   & $\circ$   & $\bullet$ & $\bullet$ & $\circ$   & $\circ$   & $\circ$   & $\bullet$ \\
-		Malicious Det./ Robust  & --        & --        & $\bullet$ & $\circ$   & --        & --        & $\bullet$ \\
-		Hetero.\ Roles          & --        & $\bullet$ & $\bullet$ & --        & $\circ$   & $\circ$   & $\bullet$ \\
-		Evidence$\to$Selection  & --        & $\circ$   & $\bullet$ & $\circ$   & --        & --        & $\bullet$ \\
-		Evidence$\to$Settlement & --        & --        & $\circ$   & $\bullet$ & $\bullet$ & --        & $\bullet$ \\
-		\bottomrule
-	\end{tabular*}
+
+Robustness against poisoning and Byzantine behaviors is a central concern in
+FL, particularly for IoT and edge deployments. Wang et al.~\cite{40} proposed
+FLForest, a Byzantine-robust FL approach using isolation forest techniques to
+filter malicious updates during aggregation. Kang et al.~\cite{38} studied
+reliable FL for mobile networks, incorporating reputation-based participant
+selection to improve resilience. Dai et al.~\cite{64} proposed personalized
+FL for traffic flow prediction with client reputation mechanisms, demonstrating
+that reputation-guided aggregation can reduce the impact of dishonest clients.
+Hierarchical FL with reputation-aware decision-making has also been explored
+for IoT environments~\cite{21}.
+
+These robustness-oriented works provide important detection and filtering
+techniques. The coupling between detected anomalies, reputation evolution,
+and automated economic penalties is generally not specified within a unified
+protocol workflow.
+
+% ----------------------------------------------------------------------------
+% Comparison table (transposed)
+% ----------------------------------------------------------------------------
+
+Table~\ref{tab:comparison} provides a feature comparison across representative
+blockchain-assisted FL frameworks relevant to reputation, incentives, and
+robustness mechanisms. BRITE-FL incorporates explicit formulations for
+reputation dynamics (non-linear decay with exponential penalty), multi-dimensional
+anomaly detection (z-score, Isolation Forest, validation consensus), and
+reputation-linked dynamic deposit requirements.
+
+\begin{table*}[H]
+\caption{System-level comparison of representative \emph{blockchain-assisted FL frameworks}.
+$\bullet$: explicitly supported; $\circ$: partially/implicitly supported; --: not reported/unclear.
+This table focuses on blockchain-assisted \emph{protocol/framework} designs.
+Learning-level baselines used in experiments (e.g., AdaDpFed~\cite{12}, PFL-CR~\cite{64}, PSFL-IoT~\cite{65})
+are discussed separately in Section~\ref{sec:5}.}
+\label{tab:comparison}
+\centering
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+\textbf{Indicator} &
+\cite{28} &
+\cite{68} &
+\cite{4} &
+\cite{7} &
+\cite{27} &
+\cite{36} &
+\textbf{Ours} \\
+\midrule
+Reputation              & --        & $\bullet$ & $\circ$   & $\bullet$ & --        & --        & $\bullet$ \\
+Reward / Penalty        & --        & $\bullet$ & $\circ$   & $\bullet$ & $\bullet$ & --        & $\bullet$ \\
+Stake Deposit           & --        & --        & --        & --        & --        & --        & $\bullet$ \\
+Update Verif.           & $\circ$   & $\circ$   & $\bullet$ & $\circ$   & $\circ$   & $\circ$   & $\bullet$ \\
+Malicious Det.          & --        & --        & $\circ$   & $\bullet$ & --        & --        & $\bullet$ \\
+Hetero.\ Roles          & --        & $\circ$   & $\bullet$ & --        & --        & $\circ$   & $\bullet$ \\
+Evidence$\to$Sel.       & --        & $\bullet$ & $\bullet$ & $\circ$   & --        & --        & $\bullet$ \\
+Evidence$\to$Settl.     & --        & $\bullet$ & $\bullet$ & $\bullet$ & $\circ$   & --        & $\bullet$ \\
+\bottomrule
+\end{tabular}
 \end{table*}
-
-
-
-
-
-
 
 \section{Preliminaries}\label{sec:3}
 \subsection{Blockchain Technology}
 
 Blockchain technology has revolutionized data management and transaction processing by providing a decentralized, immutable, and transparent framework. At its core, a blockchain is a distributed ledger maintained by a network of participants, each holding a copy of the ledger. The ledger is composed of a series of blocks, each containing a set of transactions, linked together using cryptographic hashes to form a tamper-proof chain \cite{25}. In a permissioned blockchain, such as a consortium blockchain, the network is managed by a group of pre-selected participants responsible for validating transactions and appending new blocks to the chain \cite{23}. This type of blockchain is well-suited for applications that require a controlled environment, such as federated learning, where only authorized participants can join the network and contribute to the process.
 
-One of the key features of blockchain technology is the use of smart contracts, which are self-executing programs stored on the blockchain that can be triggered by specific events or conditions \cite{8}. A smart contract can be formally defined as a tuple $SC = (S, F, R)$, where $S$ represents the state variables, $F$ is the set of functions that can be invoked by the participants, and $R$ denotes the rules and conditions governing the execution of the contract \cite{24}. The execution of a smart contract is triggered by a transaction sent to the blockchain, which invokes one of the contract's functions. The transaction is then validated by the network participants through the consensus mechanism, and if deemed valid, the corresponding function is executed, resulting in a change of the contract's state.The combination of blockchain technology and smart contracts offers several advantages, such as increased security, transparency, and automation. By leveraging the security and immutability of the blockchain, along with the self-executing nature of smart contracts, we can create a trustworthy and efficient environment for collaborative model training and aggregation in the context of federated learning. Blockchain and smart contracts can be utilized to ensure the integrity and confidentiality of the learning process, while also providing a mechanism for incentivizing participants to contribute high-quality data and model updates\cite{20}.
+One of the key features of blockchain technology is the use of smart contracts, which are self-executing programs stored on the blockchain that can be triggered by specific events or conditions \cite{25}. A smart contract can be formally defined as a tuple $SC = (S, F, R)$, where $S$ represents the state variables, $F$ is the set of functions that can be invoked by the participants, and $R$ denotes the rules and conditions governing the execution of the contract \cite{24}. The execution of a smart contract is triggered by a transaction sent to the blockchain, which invokes one of the contract's functions. The transaction is then validated by the network participants through the consensus mechanism, and if deemed valid, the corresponding function is executed, resulting in a change of the contract's state.The combination of blockchain technology and smart contracts offers several advantages, such as increased security, transparency, and automation. By leveraging the security and immutability of the blockchain, along with the self-executing nature of smart contracts, we can create a trustworthy and efficient environment for collaborative model training and aggregation in the context of federated learning. Blockchain and smart contracts can be utilized to ensure the integrity and confidentiality of the learning process, while also providing a mechanism for incentivizing participants to contribute high-quality data and model updates\cite{20}.
 
 
 \subsection{Federated Learning}
@@ -371,7 +394,7 @@ Federated learning (FL) is a distributed machine learning paradigm that enables 
 
 where $N$ is the number of participants, $n_i = |D_i|$ is the size of the local dataset belonging to participant $P_i$, $n = \sum_{i=1}^{N} n_i$ is the total number of data samples across all participants, and $F_i(\theta)$ is the local objective function of participant $P_i$.
 
-The Federated Averaging (FedAvg) algorithm \cite{2} is a popular approach to solve this optimization problem. In each round $t$ of FedAvg, the server selects a random subset of participants $S_t \subseteq \mathcal{P}$ and broadcasts the current global model $\theta_t$ to them. The selected participants then perform local training on their respective datasets to update the model parameters:
+The Federated Averaging (FedAvg) algorithm \cite{18} is a popular approach to solve this optimization problem. In each round $t$ of FedAvg, the server selects a random subset of participants $S_t \subseteq \mathcal{P}$ and broadcasts the current global model $\theta_t$ to them. The selected participants then perform local training on their respective datasets to update the model parameters:
 
 \begin{equation}
 	\theta_i^{t+1} = \theta_i^t - \eta \nabla F_i(\theta_i^t)
@@ -413,6 +436,8 @@ In distributed computing environments, iForest's design supports natural paralle
 \section{Proposed protocol}\label{sec:4}
 This section proposes a blockchain-based Internet of Things (IoT) federated learning framework designed to promote the participation of high-quality nodes and encourage honest behavior through a reputation token incentive mechanism. The framework primarily consists of four key components: task publishers, participating nodes, blockchain network, and smart contracts. Figure \ref{FIG:2} illustrates the overall architecture of the system and the interactions among various components. Table \ref{table1} lists the main parameters used in this paper and their definitions.
 
+
+
 \begin{table*}[htbp]
 	\centering
 	\caption{System Parameters Definition} \label{table1}
@@ -421,44 +446,74 @@ This section proposes a blockchain-based Internet of Things (IoT) federated lear
 		\toprule
 		\textbf{Parameter} & \textbf{Definition} & \textbf{Parameter} & \textbf{Definition} \\
 		\midrule
-		$T$ & Task Publisher & $G$ & Task Goal \\
-		$D_r$ & Data Requirement & $M$ & Model Type \\
-		$R_{total}$ & Total Reward Tokens & $B$ & Blockchain Network \\
-		$SC$ & Smart Contract & $N_t$ & Set of Candidate Training Nodes \\
-		$N_v$ & Set of Candidate Validation Nodes & $k_t, k_v$ & Number of selected training/validation nodes ($|N_t'|=k_t$, $|N_v'|=k_v$) \\
-		$N_t',N_v'$ & Selected Training/Validation Node Sets & $k$ & Size of per-round validation group ($k \le |N_v'|$) \\
-		$V^{(t)}$ & Validation group in round $t$, $V^{(t)} \subseteq N_v'$, $|V^{(t)}|=k$ & $n_{ti}$ & The $i$-th Training Node \\
-		$n_{vi}$ & The $i$-th Validation Node & $D_{ti}$ & Local Dataset of Training Node $n_{ti}$ \\
-		$D_v$ & Public Dataset for Validation & $\theta_{ti,e}^{(t)}$ & Local parameters of $n_{ti}$ after $e$ local steps in global round $t$ \\
-		$\theta_g^{(t)}$ & Global Model Parameters in the $t$-th Round & $\Delta\theta_{ti}^{(t)}$ & Model update uploaded by $n_{ti}$ in round $t$ \\
-		$L$ & Loss Function used for model training & $f$ & Aggregation function (FedAvg on accepted updates) \\
-		$\eta$ & Learning rate & $E$ & Number of local update steps/epochs per global round \\
-		$C_i$ & Amount of staked tokens by participant $i$ (registration stake) & $C_{avg}$ & Average amount of tokens staked by all participants \\
-		$R_i$ & Reputation value of participant $i$ (generic) & $R_{init,i}$ & Initial reputation value of participant $i$ \\
-		$\delta_d$ & Reputation decay factor & $\Delta R_i^{\mathrm{decay}}$ & Reputation reduction due to decay in selection stage \\
-		$\alpha,\beta,\gamma,\delta_r$ & Weight coefficients in the selection score & $S_i$ & Comprehensive selection score of participant $i$ \\
-		$R_{ti}^{(t)},R_{vi}^{(t)}$ & Reputation of training node $n_{ti}$ / validation node $n_{vi}$ at round $t$ & $R_{min}$ & Minimum reputation threshold for accepting updates \\
-		$A_j^i$ & Accuracy of candidate model from training node $j$ evaluated by validation node $i$ & $Z_j^i$ & Z-score of model accuracy for training node $j$ by validation node $i$ \\
-		$s_j^i$ & iForest anomaly score for training node $j$ by validation node $i$ & $w_1,w_2$ & Weight coefficients for $Z_j^i$ and $s_j^i$ in validation scoring \\
-		$S_j^i$ & Normalized severity score reported by validation node $i$ for training node $j$ & $S_j$ & Final aggregated severity score of training node $j$ after consensus \\
-		$\tau$ & Severity threshold for malicious update detection & $\mathcal{M}_j^{(t)}$ & Malicious behavior indicator for node $j$ in round $t$ \\
-		$N_j^{(t)}$ & Cumulative number of detected malicious behaviors by node $j$ up to round $t$ & $\lambda_h,\lambda_m,\kappa$ & Training-node reputation update parameters \\
-		$\lambda_t,\lambda_v$ & Reward ratios for training/validation nodes ($\lambda_t+\lambda_v=1$) & $\eta_v$ & Validation-node reputation adjustment factor \\
-		$T_{round}$ & Total number of training rounds & $\mathcal{C}_{end}$ & Termination conditions \\
-		$C_{ti}$ & Contribution score of training node $n_{ti}$ for reward calculation & $W_{ti}$ & Reward for training node $n_{ti}$ \\
-		$W_{vi}$ & Reward for validation node $n_{vi}$ & $\bar{R}_i$ & Normalized reputation in $[0,1]$ (used for deposit sizing) \\
-		$\mathrm{Dep}_i$ & Task deposit locked for participant $i$ (penalty mechanism) & $\mathrm{Dep}_{min}$ & Minimum task deposit requirement \\
-		$\mu$ & Deposit coefficient & $\rho_{base}$ & Base confiscation ratio \\
-		$\nu$ & Confiscation adjustment coefficient & $\mathrm{Sev}_i$ & Severity score used for penalty ($[0,1]$) \\
-		$\epsilon$ & A small constant for numerical stability & & \\
-		\bottomrule
+		$T$ & Task Publisher \\
+		$G$ & Task Goal \\
+		$D_r$ & Data Requirement \\
+		$M$ & Model Type \\
+		$R_{total}$ & Total Reward Tokens \\
+		$B$ & Blockchain Network \\
+		$SC$ & Smart Contract \\
+		$N_t$ & Set of Candidate Training Nodes \\
+		$N_v$ & Set of Candidate Validation Nodes \\
+		$k_t, k_v$ & Number of selected training/validation nodes ($|N_t'|=k_t$, $|N_v'|=k_v$) \\
+		$N_t',N_v'$ & Selected Training/Validation Node Sets \\
+		$k$ & Size of per-round validation group ($k \le |N_v'|$) \\
+		$V^{(t)}$ & Validation group in round $t$, $V^{(t)} \subseteq N_v'$, $|V^{(t)}|=k$ \\
+		$n_{ti}$ & The $i$-th Training Node \\
+		$n_{vi}$ & The $i$-th Validation Node \\
+		$D_{ti}$ & Local Dataset of Training Node $n_{ti}$ \\
+		$D_v$ & Public Dataset for Validation \\
+		$\theta_{ti,e}^{(t)}$ & Local parameters of $n_{ti}$ after $e$ local steps in global round $t$ \\
+		$\theta_g^{(t)}$ & Global Model Parameters in the $t$-th Round \\
+		$\Delta\theta_{ti}^{(t)}$ & Model update uploaded by $n_{ti}$ in round $t$ \\
+		$L$ & Loss Function used for model training \\
+		$f$ & Aggregation function (FedAvg on accepted updates) \\
+		$\eta$ & Learning rate \\
+		$E$ & Number of local update steps/epochs per global round \\
+		$C_i$ & Amount of staked tokens by participant $i$ (registration stake) \\
+		$C_{avg}$ & Average amount of tokens staked by all participants \\
+		$R_i$ & Reputation value of participant $i$ (generic) \\
+		$R_{init,i}$ & Initial reputation value of participant $i$ \\
+		$\delta_d$ & Reputation decay factor \\
+		$\Delta R_i^{\mathrm{decay}}$ & Reputation reduction due to decay in selection stage \\
+		$\alpha,\beta,\gamma,\delta_r$ & Weight coefficients in the selection score \\
+		$S_i$ & Comprehensive selection score of participant $i$ \\
+		$R_{ti}^{(t)},R_{vi}^{(t)}$ & Reputation of training node $n_{ti}$ / validation node $n_{vi}$ at round $t$ \\
+		$R_{min}$ & Minimum reputation threshold for accepting updates \\
+		$A_j^i$ & Accuracy of candidate model from training node $j$ evaluated by validation node $i$ \\
+		$Z_j^i$ & Z-score of model accuracy for training node $j$ by validation node $i$ \\
+		$s_j^i$ & iForest anomaly score for training node $j$ by validation node $i$ \\
+		$w_1,w_2$ & Weight coefficients for $Z_j^i$ and $s_j^i$ in validation scoring \\
+		$S_j^i$ & Normalized severity score reported by validation node $i$ for training node $j$ \\
+		$S_j$ & Final aggregated severity score of training node $j$ after consensus \\
+		$\tau$ & Severity threshold for malicious update detection \\
+		$\mathcal{M}_j^{(t)}$ & Malicious behavior indicator for node $j$ in round $t$ \\
+		$N_j^{(t)}$ & Cumulative number of detected malicious behaviors by node $j$ up to round $t$ \\
+		$\lambda_h,\lambda_m,\kappa$ & Training-node reputation update parameters \\
+		$\lambda_t,\lambda_v$ & Reward ratios for training/validation nodes ($\lambda_t+\lambda_v=1$) \\
+		$\eta_v$ & Validation-node reputation adjustment factor \\
+		$T_{round}$ & Total number of training rounds \\
+		$\mathcal{C}_{end}$ & Termination conditions \\
+		$\Phi_{ti}$ & Contribution score of training node $n_{ti}$ for reward calculation \\
+		$W_{ti}$ & Reward for training node $n_{ti}$ \\
+		$W_{vi}$ & Reward for validation node $n_{vi}$ \\
+		$\bar{R}_i$ & Normalized reputation in $[0,1]$ (used for deposit sizing) \\
+		$\mathrm{Dep}_i$ & Task deposit locked for participant $i$ (penalty mechanism) \\
+		$\mathrm{Dep}_{min}$ & Minimum task deposit requirement \\
+		$\mu$ & Deposit coefficient \\
+		$\rho_{base}$ & Base confiscation ratio \\
+		$\nu$ & Confiscation adjustment coefficient \\
+		$\mathrm{Sev}_i$ & Severity score used for penalty ($[0,1]$) \\
+		$L_{max}$ & Maximum number of validation reassignment attempts per round \\
+        $\epsilon$ & A small constant for numerical stability \\
+        \bottomrule
 	\end{tabular}
 \end{table*}
 
 
 \begin{figure*}[h] 
 	\centering
-	\includegraphics[width=0.97\textwidth,height=0.45\textheight]{figs/2.pdf}	
+	\includegraphics[width=0.97\textwidth,height=0.45\textheight]{figs/2.pdf}
 	\caption{System Model for a Blockchain-based Federated Learning Framework in the Internet of Things (IoT)}
 	\label{FIG:2}
 \end{figure*}
@@ -467,7 +522,7 @@ This section proposes a blockchain-based Internet of Things (IoT) federated lear
 The core components of this framework and their main functions are as follows:
 \begin{enumerate}[1)]
 	\item Task Publisher ($T$): As the initiator of the system, responsible for publishing federated learning tasks on the blockchain. Task information includes task objectives ($G$), data requirements ($D_r$), model type ($M$), and total reward tokens ($R_{total}$). This information is publicly released through the blockchain ($B$), which ensures that all potential participants can access and understand the task requirements.
-	
+
 	\item Participating Nodes: key entities executing federated learning tasks, divided into two roles: training nodes and validation nodes.
 	\begin{enumerate}
 		\item Training Nodes ($n_{ti} \in N_t$): Responsible for providing local data and executing model training. Each training node possesses a local dataset $D_{ti}$, performs model training based on the global model parameters $\theta_g^{(t-1)}$ and local data, and uploads the model update $\Delta\theta_{ti}^{(t)}$ to the blockchain network.
@@ -475,10 +530,10 @@ The core components of this framework and their main functions are as follows:
 		\item Validation Nodes ($n_{vi} \in N_v$): Responsible for validating the effectiveness of training results. Validation nodes retrieve updates $\{\Delta\theta_{tj}^{(t)}\}$ submitted by training nodes and the corresponding $\theta_g^{(t-1)}$ from the blockchain network and evaluate reconstructed candidate models $\theta_j^{(t)}=\theta_g^{(t-1)}+\Delta\theta_{tj}^{(t)}$ using the public validation dataset $D_v$. Evaluation results are uploaded to the smart contract as scores, used to update reputation values of training nodes.
 	\end{enumerate}
 	\hspace*{1em} Participants can choose their roles based on their resources and willingness. They need to stake a certain amount of tokens $C_i$ during registration. These tokens are locked by the smart contract and converted into initial reputation values $R_{init,i}$, serving as proof of qualification for task participation.
-	
+
 	\item Blockchain Network ($B$): As the system's infrastructure, responsible for storing task information, participant information, and model updates/parameters, and recording key data during each training round. The blockchain network design ensures transparency and traceability of the entire federated learning process, avoiding the risk of single-point failure associated with centralized storage.
-	
-	\item Smart Contract($SC$): An automatically executed program deployed on the blockchain network, responsible for managing the entire federated learning process. Main functions include participant selection, token management, training process coordination, reputation value updates, and reward distribution. The smart contract selects the final participating nodes ($N_t'$ and $N_v'$) from the corresponding candidate sets ($N_t$ and $N_v$) based on participants' reputation values $R_i$ and staked token amounts $C_i$. After each training round, the smart contract aggregates the \emph{accepted} updates (i.e., those not marked as malicious by validation) to obtain new global model parameters, i.e., $\theta_g^{(t)} = f(\theta_g^{(t-1)}, \{\Delta\theta_{ti}^{(t)}:\mathcal{M}_i^{(t)}=0\})$, and distributes $\theta_g^{(t)}$ to training nodes to start the next round.
+
+	\item Smart Contract($SC$): An automatically executed program deployed on the blockchain network, responsible for managing the entire federated learning process. Main functions include participant selection, token management, training process coordination, reputation value updates, and reward distribution. The smart contract selects the final participating nodes ($N_t'$ and $N_v'$) from the corresponding candidate sets ($N_t$ and $N_v$) based on participants' reputation values $R_i$ and staked token amounts $C_i$. After each training round, the smart contract aggregates the \emph{accepted} updates (i.e., those not marked as malicious by validation) to obtain new global model parameters, i.e., $\theta_g^{(t)} = f(\theta_g^{(t-1)}, \{\Delta\theta_{tj}^{(t)}:\mathcal{M}_j^{(t)}=0\})$, and distributes $\theta_g^{(t)}$ to training nodes to start the next round.
 \end{enumerate}
 
 
@@ -487,7 +542,7 @@ The core components of this framework and their main functions are as follows:
 Figure \ref{FIG:3} illustrates the overall system operation process, detailing the interactions between different components. The entire process can be divided into the following steps:
 \begin{figure}[h] 
 	\centering
-	\includegraphics[width=0.5\textwidth,height=0.46\textheight]{figs/3.pdf}	
+	\includegraphics[width=0.5\textwidth,height=0.46\textheight]{figs/3.pdf}
 	\caption{System Workflow Diagram}
 	\label{FIG:3}
 \end{figure}
@@ -501,7 +556,7 @@ Figure \ref{FIG:3} illustrates the overall system operation process, detailing t
 
 \textit{Step 4.} Local model training and validation. The selected training nodes $n_{ti} \in N_t'$ perform local training based on the global model parameters $\theta_g^{(t-1)}$ and local datasets $D_{ti}$, and upload the model updates $\Delta\theta_{ti}^{(t)}$ to the blockchain network $B$. Subsequently, the validation nodes $n_{vi} \in N_v'$ are assigned into a validation group $V^{(t)}$ and evaluate candidate models reconstructed from $\theta_g^{(t-1)}$ and $\Delta\theta_{ti}^{(t)}$ using the validation dataset $D_v$. The evaluation scores are fed back to the smart contract, which are used to update the corresponding training nodes' reputation values $R_i$.
 
-\textit{Step 5.} Global model aggregation and distribution. Once the smart contract has collected a sufficient number of validated model updates and formed consensus, it executes parameter aggregation over the accepted updates (i.e., $\mathcal{M}_i^{(t)}=0$) to generate new global model parameters $\theta_g^{(t)} = f(\theta_g^{(t-1)}, \{\Delta\theta_{ti}^{(t)}:\mathcal{M}_i^{(t)}=0\})$. The aggregated model parameters are then distributed to the training nodes, initiating a new round of training.
+\textit{Step 5.} Global model aggregation and distribution. Once the smart contract has collected a sufficient number of validated model updates and formed consensus, it executes parameter aggregation over the accepted updates (i.e., $\mathcal{M}_j^{(t)}=0$) to generate new global model parameters $\theta_g^{(t)} = f(\theta_g^{(t-1)}, \{\Delta\theta_{tj}^{(t)}:\mathcal{M}_j^{(t)}=0\})$. The aggregated model parameters are then distributed to the training nodes, initiating a new round of training.
 
 \textit{Step 6.} Iterate the loop. Steps 4--5 are repeated until the predetermined termination conditions $\mathcal{C}_{end}$ are met. These conditions may include a preset number of training rounds, a model accuracy threshold, etc.
 
@@ -528,7 +583,7 @@ The participant selection and reputation value management mechanism is a key com
 			$R_i \leftarrow R_i^{old} \cdot \delta_d$\;
 			$\Delta R_i^{\mathrm{decay}} \leftarrow R_i^{old} - R_i$\;
 		}
-		$S_i = \alpha \cdot R_i + \beta \cdot (\frac{C_i}{C_{avg}})^{\gamma} + \delta_r \cdot \Delta R_i^{\mathrm{decay}}$\;
+	    $S_i = \alpha \cdot R_i + \beta \cdot (\frac{C_i}{C_{avg}})^{\gamma} + \delta_r \cdot \Delta R_i^{\mathrm{decay}}$\;
 	}
 	
 	Sort nodes in $N_t$ in descending order based on $S_i$\;
@@ -558,7 +613,7 @@ and the decay-induced change used in selection is:
 
 Finally, the calculation of the comprehensive score $S_i$ considers reputation value $R_i$, staked tokens $C_i$, and decay-induced change $\Delta R_i^{\mathrm{decay}}$:
 \begin{equation}
-	S_i = \alpha \cdot R_i + \beta \cdot \left( \frac{C_i}{C_{avg}} \right)^{\gamma} + \delta_r \cdot \Delta R_i^{\mathrm{decay}} 
+	S_i = \alpha \cdot R_i + \beta \cdot \left( \frac{C_i}{C_{avg}} \right)^{\gamma} + \delta_r \cdot \Delta R_i^{\mathrm{decay}}
 \end{equation}
 After completing the comprehensive score calculation, the system ranks participants by $S_i$ within $N_t$ and $N_v$, and selects the top-ranking nodes as the final training nodes $N_t'$ and validation nodes $N_v'$.
 
@@ -599,7 +654,7 @@ When the smart contract $SC$ determines the final set of training nodes $N_t'$, 
 	\begin{equation}
 		\theta_{ti,e}^{(t)} = \theta_{ti,e-1}^{(t)} - \eta \nabla L(\theta_{ti,e-1}^{(t)}, D_{ti}), \quad e=1,\ldots,E
 	\end{equation}
-	
+
 	\item Update Upload: After completing $E$ local steps in round $t$, training nodes upload the update:
 	\begin{equation}
 		\Delta \theta_{ti}^{(t)} = \theta_{ti,E}^{(t)} - \theta_g^{(t-1)}
@@ -618,7 +673,7 @@ Validation nodes play a crucial role in this framework. In this section, $S_j^i$
 \begin{algorithm}
 	\caption{Validation Process}
 	\label{sf3}
-	\KwIn{Validation group $V^{(t)} = \{v_1, ..., v_k\}\subseteq N_v'$, global model $\theta_g^{(t-1)}$, submitted updates $\{\Delta\theta_j^{(t)}\}$, validation dataset $D_v$, weights $w_1, w_2$, severity threshold $\tau$}
+	\KwIn{Validation group $V^{(t)} = \{v_1, ..., v_k\}\subseteq N_v'$, global model $\theta_g^{(t-1)}$, submitted updates $\{\Delta\theta_j^{(t)}\}$, validation dataset $D_v$, weights $w_1, w_2$, severity threshold $\tau$, max reassignment attempts $L_{max}$}
 	\KwOut{Final scores $\{S_j\}$, malicious behavior indicators $\{\mathcal{M}_j^{(t)}\}$}
 	Initialize $\{\mathcal{M}_j^{(t)}\} = 0$ for all training nodes\;
 	\For{each $v_i \in V^{(t)}$}{
@@ -633,7 +688,7 @@ Validation nodes play a crucial role in this framework. In this section, $S_j^i$
 		\For{each training node $j \in N_t'$}{
 			$Z_j^i = \frac{A_j^i - \mu_i}{\max(\sigma_i,\epsilon)}$\;
 			$\tilde{S}_j^i = w_1(-Z_j^i) + w_2 s_j^i$\;
-			$S_j^i = \text{Clip}_{[0,1]}(\text{Normalize}(\tilde{S}_j^i))$\;
+            			$S_j^i = \frac{\tilde{S}_j^i - \min_{j'} \tilde{S}_{j'}^i}{\max_{j'} \tilde{S}_{j'}^i - \min_{j'} \tilde{S}_{j'}^i + \epsilon}$\;
 		}
 	}
 	\For{each training node $j \in N_t'$}{
@@ -677,11 +732,14 @@ The validation process is as follows:
 		\end{equation}
 		where $h(\Delta\theta_j^{(t)})$ represents the average path length of update $\Delta\theta_j^{(t)}$ in the isolation forest $\mathcal{F}_t$, and $c(\cdot)$ is a constant related to the sample size (here, the number of updates). Since isolation forest identifies anomalies based on their ease of separation from the majority of data points~\cite{39}, no pre-labeled clean dataset is required; each validation node independently applies the same procedure to the same set of updates.
 		
-		\item Calculate normalized severity scores:
-		\begin{equation}
-			\tilde{S}_j^i = w_1(-Z_j^i) + w_2 s_j^i,\qquad 
-			S_j^i = \text{Clip}_{[0,1]}(\text{Normalize}(\tilde{S}_j^i))
-		\end{equation}
+		\item Calculate normalized severity scores. First compute the raw severity:
+        		\begin{equation}
+        			\tilde{S}_j^i = w_1(-Z_j^i) + w_2 s_j^i
+        		\end{equation}
+        		Then apply min--max normalization across all training nodes evaluated by $v_i$ in the current round and clip to $[0,1]$:
+        		\begin{equation}
+        			S_j^i = \frac{\tilde{S}_j^i - \min_{j'} \tilde{S}_{j'}^i}{\max_{j'} \tilde{S}_{j'}^i - \min_{j'} \tilde{S}_{j'}^i + \epsilon}
+        		\end{equation}
 	\end{enumerate}
 	
 	\item Consistency Check: The smart contract $SC$ calculates the median score $S_j^{\text{median}}$ and score standard deviation $\sigma_{S_j}$ for each training node $j$. If $|S_j^i - S_j^{\text{median}}| > 2\sigma_{S_j}$, the score is discarded.
@@ -733,11 +791,11 @@ At the beginning of the task, the publisher sets the total reward token amount $
 
 The reward calculation for training nodes is based on their contribution to the model and reputation value:
 \begin{equation}
-	W_{ti} = R_{train} \cdot \frac{C_{ti} \cdot R_{ti}}{\sum_j (C_{tj} \cdot R_{tj})}
+	W_{ti} = R_{train} \cdot \frac{\Phi_{ti} \cdot R_{ti}}{\sum_j (\Phi_{tj} \cdot R_{tj})}
 \end{equation}
 where $R_{ti}$ reflects the node's historical performance, and the contribution score is defined as:
 \begin{equation}
-	C_{ti} = \frac{1}{T_{round}} \sum_{r=1}^{T_{round}} \frac{\|\Delta\theta_{ti}^{(r)}\|_2}{\|\theta_g^{(r)} - \theta_g^{(r-1)}\|_2}
+	\Phi_{ti} = \frac{1}{T_{round}} \sum_{r=1}^{T_{round}} \frac{\|\Delta\theta_{ti}^{(r)}\|_2}{\max(\|\theta_g^{(r)} - \theta_g^{(r-1)}\|_2,\;\epsilon)}
 \end{equation}
 
 The reward for validation nodes is similarly based on their consistency and reputation value:
@@ -749,7 +807,7 @@ Validation consistency $A_{vi}$ is calculated by comparing the score provided by
 \begin{equation}
 	A_{vi} = 1 - \frac{1}{|N_t'|} \sum_{j \in N_t'} |S_j^i - \overline{S}_j|
 \end{equation}
-where $\overline{S}_j = \frac{1}{|N_v'|}\sum_{k \in N_v'} S_j^k$.
+where $\overline{S}_j = \frac{1}{|V^{(t)}|}\sum_{k \in V^{(t)}} S_j^k$.
 
 This framework introduces a task deposit mechanism. Participating nodes lock a task deposit $\mathrm{Dep}_i$ (managed by $SC$) for penalty enforcement. For clarity, we denote the deposit separately from the registration stake, while both can be locked and managed by the same smart contract in implementation.
 The deposit size is determined based on the task scale and the node's historical behavior:
@@ -770,20 +828,19 @@ where $\rho_{base}$ is the base confiscation ratio, $\nu$ is the adjustment coef
 \begin{algorithm}
 	\caption{Token Reward Distribution}
 	\label{sf5}
-	\KwIn{Total reward $R_{total}$, reward ratios $\lambda_t, \lambda_v$, training nodes $N_t'$, validation nodes $N_v'$, submitted updates $\{\Delta\theta_{ti}^{(t)}\}$, global parameters $\{\theta_g^{(t)}\}$, node reputations $\{R_{ti}\}, \{R_{vi}\}$, validation scores $\{S_j^i\}$, total rounds $T_{round}$}
-	\KwOut{Node rewards $\{W_{ti}\}, \{W_{vi}\}$}
+    \KwIn{Total reward $R_{total}$, reward ratios $\lambda_t, \lambda_v$, training nodes $N_t'$, validation group $V^{(t)}$, submitted updates $\{\Delta\theta_{ti}^{(t)}\}$, global parameters $\{\theta_g^{(t)}\}$, node reputations $\{R_{ti}\}, \{R_{vi}\}$, validation scores $\{S_j^i\}$, total rounds $T_{round}$}	\KwOut{Node rewards $\{W_{ti}\}, \{W_{vi}\}$}
 	
 	$R_{train} = \lambda_t \cdot R_{total}$; $R_{verify} = \lambda_v \cdot R_{total}$\;
 	
 	\For{each $n_{ti} \in N_t'$}{
-		$C_{ti} = \frac{1}{T_{round}} \sum_{r=1}^{T_{round}} \frac{\|\Delta\theta_{ti}^{(r)}\|_2}{\|\theta_g^{(r)} - \theta_g^{(r-1)}\|_2}$\;
-		$W_{ti} = R_{train} \cdot \frac{C_{ti} \cdot R_{ti}}{\sum_j (C_{tj} \cdot R_{tj})}$\;
+		$\Phi_{ti} = \frac{1}{T_{round}} \sum_{r=1}^{T_{round}} \frac{\|\Delta\theta_{ti}^{(r)}\|_2}{\max(\|\theta_g^{(r)} - \theta_g^{(r-1)}\|_2,\;\epsilon)}$\;
+        		$W_{ti} = R_{train} \cdot \frac{\Phi_{ti} \cdot R_{ti}}{\sum_j (\Phi_{tj} \cdot R_{tj})}$\;
 	}
 	
 	\For{each training node $j \in N_t'$}{
-		$\overline{S}_j = \frac{1}{|N_v'|} \sum_{k \in N_v'} S_j^k$\;
+		$\overline{S}_j = \frac{1}{|V^{(t)}|} \sum_{k \in V^{(t)}} S_j^k$\;
 	}
-	\For{each $n_{vi} \in N_v'$}{
+	\For{each $n_{vi} \in V^{(t)}$}{
 		$A_{vi} = 1 - \frac{1}{|N_t'|} \sum_{j \in N_t'} |S_j^i - \overline{S}_j|$\;
 		$A_{vi} \leftarrow \max(0, \min(1, A_{vi}))$\;
 		$W_{vi} = R_{verify} \cdot \frac{A_{vi} \cdot R_{vi}}{\sum_j (A_{vj} \cdot R_{vj})}$\;
@@ -814,85 +871,38 @@ where $\rho_{base}$ is the base confiscation ratio, $\nu$ is the adjustment coef
 
 \subsection{Incentive Compatibility Analysis}\label{sec:ic}
 
-This subsection examines whether BRITE-FL encourages rational 
-participants to behave honestly. We consider two strategies available 
-to a training node $n_{ti}$: an \emph{honest strategy} $\sigma_H$, 
-under which the node submits genuine local model updates, and a 
-\emph{malicious strategy} $\sigma_M$, under which the node submits 
-corrupted, poisoned, or intentionally low-effort updates.
+This subsection examines whether BRITE-FL encourages rational participants to behave honestly. We consider two strategies available to a training node $n_{ti}$: an \emph{honest strategy} $\sigma_H$, under which the node submits genuine local model updates, and a \emph{malicious strategy} $\sigma_M$, under which the node submits corrupted or intentionally harmful updates.
 
-Let $p_d$ denote the probability that a deviating update is detected 
-in a given round through the proposed validation and anomaly-checking 
-process. Denote by $W_{ti}$ the training reward defined in Eq.~(17), 
-by $C_i$ the staked deposit in Eq.~(20), and by $\rho_i$ the 
-confiscation ratio in Eq.~(21). The expected net payoff of each 
-strategy in round $t$ is defined as follows:
+Let $p_d$ denote the probability that a malicious update is detected through the validation process (Algorithm~\ref{sf3}). Denote by $W_{ti}$ the training reward defined in Eq.~(20), by $\mathrm{Dep}_i$ the task deposit in Eq.~(24), and by $\rho_i$ the confiscation ratio in Eq.~(26). The expected single-round payoff of each strategy is:
 
 \begin{equation}
-    \Pi_H^{(t)} = W_{ti}^{H} - c_H
+    \Pi_H = W_{ti}^{H} - c_H
 \end{equation}
 
 \begin{equation}
-    \Pi_M^{(t)} = (1-p_d)\,(W_{ti}^{M} - c_M) - p_d \cdot \rho_i 
-    \cdot C_i
+    \Pi_M = (1-p_d)(W_{ti}^{M} - c_M) - p_d(\rho_i \cdot \mathrm{Dep}_i + c_M)
 \end{equation}
 
-where $c_H$ and $c_M$ denote the local computation and communication 
-costs under $\sigma_H$ and $\sigma_M$ respectively, with $c_M \le 
-c_H$ in general since malicious updates typically require less 
-computation. The penalty term $p_d \cdot \rho_i \cdot C_i$ captures 
-the stake slashing executed by the smart contract (Algorithm~\ref{sf6}); 
-any additional consequences such as reward forfeiture or participation 
-exclusion only strengthen the incentive structure. A sufficient 
-condition for making deviation economically unattractive in a single 
-round is therefore:
+\noindent where $c_H$ and $c_M$ denote the local computation costs under $\sigma_H$ and $\sigma_M$ respectively, with $c_M \le c_H$ since malicious updates typically require less computation. Detected malicious updates are excluded from aggregation and receive no reward.
 
-\begin{equation}\label{eq:ic_one_round}
-    p_d \cdot \rho_i \cdot C_i \;\geq\; 
-    \left(W_{ti}^{M} - W_{ti}^{H}\right) + \left(c_H - c_M\right)
+For honest behavior to be economically preferable in a single round, we require $\Pi_H > \Pi_M$, which yields:
+
+\begin{equation}\label{eq:ic_condition}
+    p_d \cdot \rho_i \cdot \mathrm{Dep}_i > (1-p_d) W_{ti}^{M} - W_{ti}^{H} + (c_H - c_M)
 \end{equation}
 
-This condition is consistent with the design of BRITE-FL: when 
-detection is reliable and slashing is non-trivial, the expected 
-penalty offsets any short-term gain from free-riding or poisoning. 
-In particular, in the worst case where an undetected deviating update 
-receives a similar within-round settlement (i.e., $W_{ti}^{M} \approx W_{ti}^{H}$), 
-Eq.~\eqref{eq:ic_one_round} reduces to requiring the expected slashing 
-to exceed the saved effort cost.
+This condition holds when the detection probability $p_d$ and the confiscation amount $\rho_i \cdot \mathrm{Dep}_i$ are sufficiently large relative to the potential gain from deviation.
 
-Beyond a single round, BRITE-FL further discourages deviation through 
-reputation dynamics (Eq.~(10)) and reputation-driven participant 
-selection (Algorithm~\ref{sf1}). Under honest behavior, reputation 
-remains stable or improves over time, which produces compounding 
-benefits: (i) a higher reward share in Eq.~(17), since $W_{ti} 
-\propto C_{ti} \cdot R_{ti}$; (ii) a lower future deposit requirement 
-in Eq.~(20), since $C_i$ decreases as $R_i$ increases; and (iii) a 
-higher probability of being selected in subsequent rounds. Under 
-malicious behavior, each detected deviation reduces reputation through 
-the nonlinear update mechanism in Eq.~(10), and the cumulative 
-malicious counter $N_i^{(t)}$ causes penalty accumulation to 
-accelerate over time, which progressively reduces future reward shares 
-and selection chances while increasing required deposits. Once $R_i$ 
-falls below the exclusion threshold $R_{\min}$, the participant is 
-excluded from training in subsequent rounds/tasks.
+Beyond single-round incentives, BRITE-FL incorporates reputation dynamics that affect long-term payoffs. Under honest behavior, reputation increases according to Eq.~(18) with $S_j$ close to 0, leading to: (i) higher reward shares in Eq.~(20), since $W_{ti} \propto R_{ti}$; (ii) lower deposit requirements in Eq.~(24), since $\mathrm{Dep}_i$ decreases as $\bar{R}_i$ increases; and (iii) higher selection probability through Algorithm~\ref{sf1}. Under malicious behavior, detected deviations reduce reputation through the exponential penalty term $\lambda_m(e^{\kappa N_j^{(t)}}-1)S_j$ in Eq.~(18), where the cumulative count $N_j^{(t)}$ causes penalties to accelerate. Once $R_i$ falls below $R_{\min}$, the node is excluded from subsequent rounds.
 
-The same rationale applies to validation nodes. Since validator 
-rewards depend on both validation accuracy and reputation, and 
-validator reputation is updated based on consistency with the 
-aggregated consensus outcome, systematic misreporting reduces $R_{vi}$ 
-and thus lowers future reward shares while increasing deposit exposure. 
-Therefore, truthful and consistent validation is economically preferable 
-for rational long-term participants in BRITE-FL.
-
-
-
+For validation nodes, rewards in Eq.~(22) depend on consistency $A_{vi}$ and reputation $R_{vi}$, both of which decrease under systematic misreporting according to Eq.~(16). Thus, truthful validation yields higher expected long-term payoffs than strategic misreporting.
 
 
 \section{Performance Analysis}\label{sec:5}
 This section provides a detailed description of the experimental evaluation process for our proposed reputation-based federated learning scheme. We designed a series of experiments to assess the framework's performance in terms of model performance, malicious node identification rate, and changes in node reputation.
 \subsection{Experimental Environment and Configuration}
-The hardware environment used for the experiments includes a workstation equipped with an Intel i7-10700K CPU, 32GB RAM, and an NVIDIA RTX 3080 GPU, running Ubuntu 20.04 LTS as the operating system. The programming environment for the experiments is Python 3.8, primarily utilizing the PyTorch framework for model training and testing. The blockchain component simulation was implemented using Hyperchain 2.12.0\cite{57}, managed with Docker containers to simulate the distributed ledger operating environment. The underlying consensus mechanism employed is the Robust Byzantine Fault Tolerance (RBFT) algorithm, which ensures consistency and liveness even in the presence of malicious nodes. In our setup, the committee consists of a subset of validation nodes that participate in the consensus process, responsible for ordering transactions and generating blocks. The validation nodes not only evaluate model updates but also act as consensus nodes to maintain the integrity of the ledger. Table \ref{tb6} lists the configuration of various parameters in our scheme as well as the experimental environment setup.
-\begin{table*}
+The hardware environment used for the experiments includes a workstation equipped with an Intel i7-10700K CPU, 32GB RAM, and an NVIDIA RTX 3080 GPU, running Ubuntu 20.04 LTS as the operating system. The programming environment for the experiments is Python 3.8, primarily utilizing the PyTorch framework for model training and testing. The blockchain component simulation was implemented using Hyperchain 2.12.0\cite{57}, managed with Docker containers to simulate the distributed ledger operating environment. Table \ref{tb6} lists the configuration of various parameters in our scheme as well as the experimental environment setup.
+\begin{table*}[H]
 	\begin{center}
 		\caption{Experimental Environment and Key Parameter Configurations}
 		\label{tb6}
@@ -916,11 +926,12 @@ The hardware environment used for the experiments includes a workstation equippe
 			Batch Size & 32 \\
 			Total Training Epochs & 250 \\
 			Loss Function & Cross-Entropy \\
-			Reputation Update Params $(\lambda_v, \lambda_h, \lambda_m, \kappa, R_{min})$ & (0.05, 0.05, 0.1, 0.15, 3) \\
-			Reputation Weights $(\alpha, \beta, \gamma, \delta_r, \delta_d)$ & (0.4, 0.3, 0.5, 0.3, 0.95) \\
+            Reputation Update Params $(\eta_v, \lambda_h, \lambda_m, \kappa, R_{min})$ & (0.05, 0.05, 0.1, 0.15, 3) \\
+            Reputation Weights $(\alpha, \beta, \gamma, \delta_r, \delta_d)$ & (0.4, 0.3, 0.5, 0.3, 0.95) \\
 			Deposit Params $(\mathrm{Dep}_{min}, \mu, \rho_{base}, \nu)$ & (100, 0.2, 0.5, 0.1)\\
 			Scoring Weights $(w_1, w_2)$ & (0.6, 0.4) \\
-			\bottomrule
+            Reward Ratios $(\lambda_t, \lambda_v)$ & (0.7, 0.3) \\
+            \bottomrule
 		\end{tabular*}
 	\end{center}
 \end{table*}
@@ -1133,10 +1144,6 @@ We further evaluated the transaction confirmation delay (TCD) of on-chain operat
 \end{figure}
 
 Across all tested scales, the median TCD remains below 0.7 seconds, and even the 95th-percentile TCD stays within 1.5 seconds at 1000 nodes. Compared to the total per-round time (18--81 seconds depending on scale), the TCD constitutes less than 3\% of a single round, indicating that on-chain transaction processing does not become a bottleneck for the federated learning workflow. The relatively tight IQR at each scale further confirms that the RBFT consensus provides consistent and predictable transaction latency under varying FL workloads.
-
-
-
-
 
 
 
