@@ -671,7 +671,7 @@ Validation nodes play a crucial role in this framework. In this section, $S_j^i$
 \begin{algorithm}
 	\caption{Validation Process}
 	\label{sf3}
-	\KwIn{Validation group $V^{(t)} = \{v_1, ..., v_k\}\subseteq N_v'$, global model $\theta_g^{(t-1)}$, submitted updates $\{\Delta\theta_j^{(t)}\}$, validation dataset $D_v$, weights $w_1, w_2$, severity threshold $\tau$}
+	\KwIn{Validation group $V^{(t)} = \{v_1, ..., v_k\}\subseteq N_v'$, global model $\theta_g^{(t-1)}$, submitted updates $\{\Delta\theta_j^{(t)}\}$, validation dataset $D_v$, weights $w_1, w_2$, severity threshold $\tau$, max reassignment attempts $L_{max}$}
 	\KwOut{Final scores $\{S_j\}$, malicious behavior indicators $\{\mathcal{M}_j^{(t)}\}$}
 	Initialize $\{\mathcal{M}_j^{(t)}\} = 0$ for all training nodes\;
 	\For{each $v_i \in V^{(t)}$}{
