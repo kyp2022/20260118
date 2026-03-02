@@ -812,78 +812,31 @@ where $\rho_{base}$ is the base confiscation ratio, $\nu$ is the adjustment coef
 
 \subsection{Incentive Compatibility Analysis}\label{sec:ic}
 
-This subsection examines whether BRITE-FL encourages rational 
-participants to behave honestly. We consider two strategies available 
-to a training node $n_{ti}$: an \emph{honest strategy} $\sigma_H$, 
-under which the node submits genuine local model updates, and a 
-\emph{malicious strategy} $\sigma_M$, under which the node submits 
-corrupted, poisoned, or intentionally low-effort updates.
+This subsection examines whether BRITE-FL encourages rational participants to behave honestly. We consider two strategies available to a training node $n_{ti}$: an \emph{honest strategy} $\sigma_H$, under which the node submits genuine local model updates, and a \emph{malicious strategy} $\sigma_M$, under which the node submits corrupted or intentionally harmful updates.
 
-Let $p_d$ denote the probability that a deviating update is detected 
-in a given round through the proposed validation and anomaly-checking 
-process. Denote by $W_{ti}$ the training reward defined in Eq.~(17), 
-by $C_i$ the staked deposit in Eq.~(20), and by $\rho_i$ the 
-confiscation ratio in Eq.~(21). The expected net payoff of each 
-strategy in round $t$ is defined as follows:
+Let $p_d$ denote the probability that a malicious update is detected through the validation process (Algorithm~\ref{sf3}). Denote by $W_{ti}$ the training reward defined in Eq.~(20), by $\mathrm{Dep}_i$ the task deposit in Eq.~(24), and by $\rho_i$ the confiscation ratio in Eq.~(26). The expected single-round payoff of each strategy is:
 
 \begin{equation}
-    \Pi_H^{(t)} = W_{ti}^{H} - c_H
+    \Pi_H = W_{ti}^{H} - c_H
 \end{equation}
 
 \begin{equation}
-    \Pi_M^{(t)} = (1-p_d)\,(W_{ti}^{M} - c_M) - p_d \cdot \rho_i 
-    \cdot C_i
+    \Pi_M = (1-p_d)(W_{ti}^{M} - c_M) - p_d(\rho_i \cdot \mathrm{Dep}_i + c_M)
 \end{equation}
 
-where $c_H$ and $c_M$ denote the local computation and communication 
-costs under $\sigma_H$ and $\sigma_M$ respectively, with $c_M \le 
-c_H$ in general since malicious updates typically require less 
-computation. The penalty term $p_d \cdot \rho_i \cdot C_i$ captures 
-the stake slashing executed by the smart contract (Algorithm~\ref{sf6}); 
-any additional consequences such as reward forfeiture or participation 
-exclusion only strengthen the incentive structure. A sufficient 
-condition for making deviation economically unattractive in a single 
-round is therefore:
+\noindent where $c_H$ and $c_M$ denote the local computation costs under $\sigma_H$ and $\sigma_M$ respectively, with $c_M \le c_H$ since malicious updates typically require less computation. Detected malicious updates are excluded from aggregation and receive no reward.
 
-\begin{equation}\label{eq:ic_one_round}
-    p_d \cdot \rho_i \cdot C_i \;\geq\; 
-    \left(W_{ti}^{M} - W_{ti}^{H}\right) + \left(c_H - c_M\right)
+For honest behavior to be economically preferable in a single round, we require $\Pi_H > \Pi_M$, which yields:
+
+\begin{equation}\label{eq:ic_condition}
+    p_d \cdot \rho_i \cdot \mathrm{Dep}_i > (1-p_d)(W_{ti}^{M} - W_{ti}^{H}) + (c_H - c_M) - p_d \cdot c_M
 \end{equation}
 
-This condition is consistent with the design of BRITE-FL: when 
-detection is reliable and slashing is non-trivial, the expected 
-penalty offsets any short-term gain from free-riding or poisoning. 
-In particular, in the worst case where an undetected deviating update 
-receives a similar within-round settlement (i.e., $W_{ti}^{M} \approx W_{ti}^{H}$), 
-Eq.~\eqref{eq:ic_one_round} reduces to requiring the expected slashing 
-to exceed the saved effort cost.
+This condition holds when the detection probability $p_d$ and the confiscation amount $\rho_i \cdot \mathrm{Dep}_i$ are sufficiently large relative to the potential gain from deviation.
 
-Beyond a single round, BRITE-FL further discourages deviation through 
-reputation dynamics (Eq.~(10)) and reputation-driven participant 
-selection (Algorithm~\ref{sf1}). Under honest behavior, reputation 
-remains stable or improves over time, which produces compounding 
-benefits: (i) a higher reward share in Eq.~(17), since $W_{ti} 
-\propto C_{ti} \cdot R_{ti}$; (ii) a lower future deposit requirement 
-in Eq.~(20), since $C_i$ decreases as $R_i$ increases; and (iii) a 
-higher probability of being selected in subsequent rounds. Under 
-malicious behavior, each detected deviation reduces reputation through 
-the nonlinear update mechanism in Eq.~(10), and the cumulative 
-malicious counter $N_i^{(t)}$ causes penalty accumulation to 
-accelerate over time, which progressively reduces future reward shares 
-and selection chances while increasing required deposits. Once $R_i$ 
-falls below the exclusion threshold $R_{\min}$, the participant is 
-excluded from training in subsequent rounds/tasks.
+Beyond single-round incentives, BRITE-FL incorporates reputation dynamics that affect long-term payoffs. Under honest behavior, reputation increases according to Eq.~(18) with $S_j$ close to 0, leading to: (i) higher reward shares in Eq.~(20), since $W_{ti} \propto R_{ti}$; (ii) lower deposit requirements in Eq.~(24), since $\mathrm{Dep}_i$ decreases as $\bar{R}_i$ increases; and (iii) higher selection probability through Algorithm~\ref{sf1}. Under malicious behavior, detected deviations reduce reputation through the exponential penalty term $\lambda_m(e^{\kappa N_j^{(t)}}-1)S_j$ in Eq.~(18), where the cumulative count $N_j^{(t)}$ causes penalties to accelerate. Once $R_i$ falls below $R_{\min}$, the node is excluded from subsequent rounds.
 
-The same rationale applies to validation nodes. Since validator 
-rewards depend on both validation accuracy and reputation, and 
-validator reputation is updated based on consistency with the 
-aggregated consensus outcome, systematic misreporting reduces $R_{vi}$ 
-and thus lowers future reward shares while increasing deposit exposure. 
-Therefore, truthful and consistent validation is economically preferable 
-for rational long-term participants in BRITE-FL.
-
-
-
+For validation nodes, rewards in Eq.~(22) depend on consistency $A_{vi}$ and reputation $R_{vi}$, both of which decrease under systematic misreporting according to Eq.~(16). Thus, truthful validation yields higher expected long-term payoffs than strategic misreporting.
 
 
 \section{Performance Analysis}\label{sec:5}
@@ -1136,6 +1089,63 @@ Across all tested scales, the median TCD remains below 0.7 seconds, and even the
 
 
 
+
+
+
+
+
+
+
+\subsection{Blockchain Performance and Scalability Evaluation}
+To validate the practical feasibility of integrating blockchain into the federated learning workflow, we conducted a series of experiments measuring the system's runtime overhead, blockchain operational stability, on-chain storage consumption, and the proportion of blockchain-related costs relative to the overall training process. The experiments were performed on the same hardware and Hyperchain 2.12.0 platform described in Table \ref{tb6}, with the number of training nodes varied from 50 to 1000 while maintaining a 1:2 ratio of validation to training nodes.
+
+\subsubsection{Per-Round Time Decomposition}
+We first measured the time breakdown of a single FL round under different network scales. Each round consists of six phases: local model training, model update upload, validation (isolation forest anomaly detection), blockchain consensus, smart contract execution (reputation update, aggregation trigger), and global model download. Figure \ref{FIG:9} presents the stacked time decomposition across five network scales.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/9.pdf}
+	\caption{Per-round time decomposition under varying network scales}
+	\label{FIG:9}
+\end{figure}
+
+As shown in Figure \ref{FIG:9}, local training time remains approximately constant (~12.5s) across all scales, as it depends solely on device capability and local dataset size. Communication overhead (model upload and download) and validation time grow with the number of participants, which is expected since more model updates need to be transmitted and evaluated. Blockchain-related operations (consensus and smart contract execution) increase modestly from 1.4s at 50 nodes to 6.3s at 1000 nodes. The total per-round time at 1000 nodes remains under 85 seconds, which is acceptable for practical IoT federated learning tasks where training rounds typically operate on the order of minutes.
+
+\subsubsection{Block Generation Stability}
+To evaluate whether the consortium blockchain maintains stable performance throughout extended FL training, we recorded the block generation rate (blocks per FL round) over 250 training rounds under three network scales (100, 200, and 500 training nodes). Figure \ref{FIG:10} shows the results.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/10.pdf}
+	\caption{Block generation rate across 250 FL training rounds under different network scales}
+	\label{FIG:10}
+\end{figure}
+
+The block generation rate remains stable throughout the training process for all three configurations, with only minor fluctuations. This indicates that the RBFT-based consortium chain does not exhibit performance degradation over prolonged FL operation, and the blockchain layer can reliably support continuous federated learning tasks without requiring periodic maintenance or reconfiguration.
+
+\subsubsection{On-Chain Storage Growth}
+We further monitored the cumulative on-chain storage consumption over 250 training rounds with 100 training nodes and 50 validation nodes. The stored data includes model update hashes, reputation update records, and transaction logs. Figure \ref{FIG:11} shows the cumulative storage growth.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/11.pdf}
+	\caption{Cumulative on-chain storage growth over training rounds}
+	\label{FIG:11}
+\end{figure}
+
+The storage grows linearly with the number of training rounds, reaching approximately 232 MB after 250 rounds. Model update hashes account for the largest share (~45\%), followed by transaction logs (~30\%) and reputation records (~20\%). The linear and predictable growth pattern facilitates capacity planning for long-term deployments. Moreover, since only model hashes rather than full model parameters are stored on-chain, the storage overhead remains manageable even for extended training tasks.
+
+\subsubsection{Blockchain Overhead Ratio}
+Finally, we quantify the proportion of blockchain-related overhead (consensus and smart contract execution) relative to the total per-round time. Figure \ref{FIG:12} presents both the overhead ratio and absolute blockchain processing time across different network scales.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/12.pdf}
+	\caption{Blockchain overhead ratio and absolute processing time under varying network scales}
+	\label{FIG:12}
+\end{figure}
+
+Across all tested scales, the blockchain overhead consistently accounts for less than 9\% of the total round time. While the absolute blockchain processing time increases from 1.4s to 6.3s as the network scales from 50 to 1000 nodes, this growth is substantially slower than the increase in communication and validation costs. These results confirm that blockchain integration introduces only marginal additional overhead while providing essential guarantees including decentralized coordination, tamper-resistant audit trails, and automated smart contract enforcement.
 
 
 
