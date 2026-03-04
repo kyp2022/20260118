@@ -1,2 +1,29 @@
-With the rapid development of Internet of Things (IoT) technologies, effectively utilizing distributed data while preserving privacy has become a critical challenge. This paper proposes a secure federated learning framework integrating blockchain and reputation token mechanisms to address data privacy protection, security maintenance, and participant incentivization in IoT environments.The framework leverages blockchain's decentralization and immutability to design a dynamic reputation token mechanism via smart contracts, which rewards participants based on their model training contributions and long-term performance. To mitigate potential malicious behaviors, the proposed approach introduces multi-dimensional anomaly detection models that comprehensively assess nodes' historical behaviors and current contributions. Moreover, the framework implements a role-based participation model, enabling devices with diverse computational capabilities to engage and receive corresponding incentives.Experimental results demonstrate the framework's robustness: when confronted with data pollution and label flipping attacks from up to 30\% malicious nodes, the method limits model performance degradation within 5\% and achieves a malicious node detection rate exceeding 94\%. The innovative reputation evaluation mechanism systematically distinguishes participant behaviors, causing honest nodes' reputations to progressively increase while malicious nodes' reputations exponentially decline with each malicious act. These findings suggest significant potential for secure and efficient federated learning in IoT and edge computing domains.
-		
+Blockchain-assisted federated learning has emerged as a promising paradigm
+	for privacy-preserving collaborative training across IoT devices. However,
+	most existing frameworks treat malicious behavior detection, trust evaluation,
+	and economic incentives as independent modules, making it difficult to
+	establish clear causal links between a participant's actions and the
+	resulting system-wide consequences.
+	To address this limitation, this paper presents BRITE-FL, a federated
+	learning framework that unifies behavioral evidence, reputation dynamics,
+	and token-based settlement into a single closed-loop workflow governed
+	by on-chain smart contracts.
+	The framework separates heterogeneous IoT devices into training and
+	validation roles, where validators independently score each submitted
+	update and reach detection consensus through a majority-based protocol.
+	The detection outcome is fed into a reputation mechanism with
+	exponentially escalating penalties, which in turn determines each
+	node's deposit requirement, reward share, and continued eligibility,
+	forming a self-reinforcing closed loop between behavioral evidence
+	and economic consequences.
+	Experiments on MNIST and Fashion-MNIST under data poisoning and label
+	flipping attacks with up to 30\% malicious participants show that
+	BRITE-FL limits model accuracy degradation to within 5\% and achieves
+	a detection rate exceeding 94\%, outperforming four baseline schemes.
+	Blockchain integration introduces less than 9\% overhead per training
+	round, with median transaction confirmation delay below 0.7 seconds
+	at scales up to 1000 nodes.
+	These results demonstrate that tightly coupling behavioral evidence
+	with on-chain reputation and economic enforcement provides an effective
+	and scalable approach to securing federated learning in heterogeneous
+	IoT environments.

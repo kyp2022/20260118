@@ -180,9 +180,37 @@
 		%\cortext[2]{Principal corresponding author} 
 		
 		% Here goes the abstract
-		\begin{abstract}
-			With the rapid development of Internet of Things (IoT) technologies, effectively utilizing distributed data while preserving privacy has become a critical challenge. This paper proposes a secure federated learning framework integrating blockchain and reputation token mechanisms to address data privacy protection, security maintenance, and participant incentivization in IoT environments.The framework leverages blockchain's decentralization and immutability to design a dynamic reputation token mechanism via smart contracts, which rewards participants based on their model training contributions and long-term performance. To mitigate potential malicious behaviors, the proposed approach introduces multi-dimensional anomaly detection models that comprehensively assess nodes' historical behaviors and current contributions. Moreover, the framework implements a role-based participation model, enabling devices with diverse computational capabilities to engage and receive corresponding incentives.Experimental results demonstrate the framework's robustness: when confronted with data pollution and label flipping attacks from up to 30\% malicious nodes, the method limits model performance degradation within 5\% and achieves a malicious node detection rate exceeding 94\%. The innovative reputation evaluation mechanism systematically distinguishes participant behaviors, causing honest nodes' reputations to progressively increase while malicious nodes' reputations exponentially decline with each malicious act. These findings suggest significant potential for secure and efficient federated learning in IoT and edge computing domains.
-		\end{abstract}
+\begin{abstract}
+	Blockchain-assisted federated learning has emerged as a promising paradigm 
+	for privacy-preserving collaborative training across IoT devices. However, 
+	most existing frameworks treat malicious behavior detection, trust evaluation, 
+	and economic incentives as independent modules, making it difficult to 
+	establish clear causal links between a participant's actions and the 
+	resulting system-wide consequences.
+	To address this limitation, this paper presents BRITE-FL, a federated 
+	learning framework that unifies behavioral evidence, reputation dynamics, 
+	and token-based settlement into a single closed-loop workflow governed 
+	by on-chain smart contracts.
+	The framework separates heterogeneous IoT devices into training and 
+	validation roles, where validators independently score each submitted 
+	update and reach detection consensus through a majority-based protocol. 
+	The detection outcome is fed into a reputation mechanism with 
+	exponentially escalating penalties, which in turn determines each 
+	node's deposit requirement, reward share, and continued eligibility, 
+	forming a self-reinforcing closed loop between behavioral evidence 
+	and economic consequences.
+	Experiments on MNIST and Fashion-MNIST under data poisoning and label 
+	flipping attacks with up to 30\% malicious participants show that 
+	BRITE-FL limits model accuracy degradation to within 5\% and achieves 
+	a detection rate exceeding 94\%, outperforming four baseline schemes. 
+	Blockchain integration introduces less than 9\% overhead per training 
+	round, with median transaction confirmation delay below 0.7 seconds 
+	at scales up to 1000 nodes.
+	These results demonstrate that tightly coupling behavioral evidence 
+	with on-chain reputation and economic enforcement provides an effective 
+	and scalable approach to securing federated learning in heterogeneous 
+	IoT environments.
+\end{abstract}
 		
 		% Use if graphical abstract is present
 		%\begin{graphicalabstract}
@@ -218,12 +246,39 @@ Federated Learning (FL) has emerged as a promising solution to these challenges,
 While existing research has made progress in addressing these issues, current solutions remain inadequate\cite{18}. Many FL frameworks rely heavily on central server coordination, introducing risks of single-point failure and privacy leakage\cite{18,19,20}. Furthermore, these studies often overlook the inherent heterogeneity of IoT environments by assuming uniform computational capabilities across participating nodes\cite{21}. Particularly concerning is the lack of sophisticated mechanisms for handling malicious nodes, as existing reputation-based incentive systems fail to effectively address scenarios where high-reputation nodes engage in malicious activities\cite{22}.
 
 Blockchain technology, with its decentralized and immutable characteristics, offers a promising approach to addressing these limitations \cite{23}. By incorporating blockchain into federated learning, systems can achieve peer-to-peer collaboration without third-party intervention while leveraging consensus mechanisms to suppress malicious behavior \cite{24}. Blockchain's distributed ledgers can securely record model updates, while smart contracts can automate reward and punishment mechanisms, enhancing system transparency and credibility\cite{25,26,27}. Despite these advantages, existing blockchain-FL approaches often treat security, trust assessment, and economic incentives as separate components, making it difficult to establish clear causal relationships between participant behavior and system-wide consequences. Furthermore, most frameworks assume homogeneous device capabilities, limiting their applicability to heterogeneous IoT ecosystems where computational resources vary significantly across participants.
-This paper proposes a reputation-driven blockchain federated learning framework specifically designed for IoT environments. Our framework makes several key contributions:
-	\begin{enumerate}[1)]
-	\item Introduces a novel architecture integrating consortium blockchain with federated learning, establishing trust between IoT federations through smart contracts and consensus mechanisms.
-	\item Introduces a dynamic reputation token system that comprehensively evaluates node contributions based on both current performance and historical behavior, providing targeted incentives for high-quality participation.
-	\item Designs an innovative role separation mechanism, dividing participating nodes into training nodes and validation nodes to accommodate the heterogeneity of IoT devices. This separation mechanism enhances system security and reliability while providing participation opportunities for devices with varying computational capabilities.
-	\item Proposes a robust malicious behavior identification method combining multiple anomaly detection models with smart contract-based punishment mechanisms.
+This paper proposes BRITE-FL, a reputation-driven blockchain federated learning 
+framework for heterogeneous IoT environments that establishes an end-to-end 
+closed-loop where update-quality evidence consistently drives participant 
+selection, reputation evolution, and automated reward/penalty execution. The 
+key contributions are summarized as follows:
+
+\begin{enumerate}[1)]
+	\item We design a role-based participation architecture that separates 
+	training and validation responsibilities across heterogeneous IoT devices. 
+	This separation enables resource-constrained devices to contribute as 
+	validators, while creating structural independence between model producers 
+	and evaluators to prevent self-validation conflicts.
+	
+	\item We introduce a dual-metric validation scheme that fuses accuracy-based 
+	statistical deviation analysis with parameter-space anomaly detection to 
+	produce a unified severity score for each submitted update. Detection 
+	consensus is reached through a decentralized multi-validator protocol 
+	with outlier filtering and supermajority agreement, eliminating reliance 
+	on a trusted central evaluator.
+	
+	\item We propose a reputation co-evolution mechanism with superlinearly 
+	escalating penalties, where sustained malicious behavior triggers 
+	accelerating reputation degradation and eventual permanent exclusion. 
+	A reputation decay and composite scoring strategy is further incorporated 
+	to prevent high-reputation nodes from monopolizing participation across 
+	rounds.
+	
+	\item We design a token incentive and deposit penalty mechanism governed 
+	by smart contracts, where reward distribution is weighted by both 
+	contribution and reputation, and deposit requirements grow inversely 
+	with reputation. We provide an incentive compatibility analysis showing 
+	that honest participation yields strictly higher expected long-term 
+	payoffs under the proposed mechanism.
 \end{enumerate}
 
 The remainder of this paper is organized as follows. Section \ref{sec:2} reviews related work. Section \ref{sec:3} presents the preliminaries of Blockchain Technology, Federated Learning, and Isolation Forest. Section \ref{sec:4} details the proposed framework, including the system model, operation workflow, reputation-based participant selection, and token mechanisms. Section \ref{sec:5} evaluates the framework's performance through comprehensive experiments, and Section \ref{sec:6} concludes the paper.
@@ -894,7 +949,7 @@ To comprehensively evaluate the performance of our proposed scheme, we compared 
 Regarding attack scenarios, we rigorously defined the attack parameters to ensure reproducibility. For data pollution attacks, malicious clients replace 100\% of their local training samples with Gaussian noise ($\mu=0, \sigma=1$), effectively submitting random gradients. For label flipping attacks, malicious nodes flip the label $l$ of every training sample to $9-l$ (e.g., $0 \to 9, 1 \to 8$). Both attack types are untargeted: data pollution applies random noise uniformly across all classes, and label flipping uses a fixed symmetric rule across the full label space. Attacks are "always-on", meaning malicious nodes perform these actions in every round they are selected. We set malicious client proportions at 10\%, 20\%, and 30\% for data pollution, and 10\%, 15\%, and 20\% for label flipping.
 
 
-\subsection{Experimental Results and Analysis}
+\subsection{Federated Learning Performance Evaluation}
 \subsubsection{Model Performance Comparison}
 First, we compared the global model performance of our proposed framework with baseline schemes in the absence of malicious nodes. Table \ref{tb1} shows the accuracy of each scheme on MNIST and FMNIST datasets.
 
@@ -1094,7 +1149,7 @@ We further evaluated the transaction confirmation delay (TCD) of on-chain operat
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.45\textwidth]{figs/10.pdf}
+	\includegraphics[width=0.49\textwidth,height=0.284\textheight]{figs/10.pdf}
 
 	\caption{Transaction confirmation delay distribution under varying network scales}
 	\label{FIG:10}
