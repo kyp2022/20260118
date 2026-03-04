@@ -891,7 +891,7 @@ To comprehensively evaluate the performance of our proposed scheme, we compared 
 	\item Federated Learning in IoT with Malicious Nodes (FedIoT-Malicious): This baseline represents standard federated learning implementations in IoT environments following the FedIoTs framework\cite{65}. We introduce malicious participants in this setting to evaluate system robustness under adversarial conditions, providing a representative baseline for assessing the effectiveness of security-enhanced federated learning approaches.
 \end{enumerate}
 
-Regarding attack scenarios, we rigorously defined the attack parameters to ensure reproducibility. For \textbf{data pollution attacks}, malicious clients replace 100\% of their local training samples with Gaussian noise ($\mu=0, \sigma=1$), effectively submitting random gradients. For \textbf{label flipping attacks}, malicious nodes flip the label $l$ of every training sample to $9-l$ (e.g., $0 \to 9, 1 \to 8$). Both attack types are untargeted: data pollution applies random noise uniformly across all classes, and label flipping uses a fixed symmetric rule across the full label space. Attacks are "always-on", meaning malicious nodes perform these actions in every round they are selected. We set malicious client proportions at 10\%, 20\%, and 30\% for data pollution, and 10\%, 15\%, and 20\% for label flipping.
+Regarding attack scenarios, we rigorously defined the attack parameters to ensure reproducibility. For data pollution attacks, malicious clients replace 100\% of their local training samples with Gaussian noise ($\mu=0, \sigma=1$), effectively submitting random gradients. For label flipping attacks, malicious nodes flip the label $l$ of every training sample to $9-l$ (e.g., $0 \to 9, 1 \to 8$). Both attack types are untargeted: data pollution applies random noise uniformly across all classes, and label flipping uses a fixed symmetric rule across the full label space. Attacks are "always-on", meaning malicious nodes perform these actions in every round they are selected. We set malicious client proportions at 10\%, 20\%, and 30\% for data pollution, and 10\%, 15\%, and 20\% for label flipping.
 
 
 \subsection{Experimental Results and Analysis}
@@ -1081,8 +1081,8 @@ We measured the time breakdown of a single FL round under different network scal
 
 \begin{figure}[h]
 	\centering
-	% \includegraphics[width=0.45\textwidth]{figs/9.pdf}
-	% TODO: Add figure 9.pdf
+	 \includegraphics[width=0.49\textwidth]{figs/9.pdf}
+
 	\caption{Per-round time decomposition under varying network scales}
 	\label{FIG:9}
 \end{figure}
@@ -1094,8 +1094,8 @@ We further evaluated the transaction confirmation delay (TCD) of on-chain operat
 
 \begin{figure}[h]
 	\centering
-	% \includegraphics[width=0.45\textwidth]{figs/10.pdf}
-	% TODO: Add figure 10.pdf
+	\includegraphics[width=0.45\textwidth]{figs/10.pdf}
+
 	\caption{Transaction confirmation delay distribution under varying network scales}
 	\label{FIG:10}
 \end{figure}
