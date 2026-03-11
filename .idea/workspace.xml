@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60fd7de0-8a3c-4b9e-ab30-3458f0f10c5d" name="Changes" comment="docs(paper): 更新论文实验结果和文献引用格式&#10;&#10;- 修正了MNIST数据集上PFL-CR算法的准确率数据，从84.1%/78.5%/68.9%更新为87.3%/86.6%/83.7%&#10;- 更新了FMNIST数据集上PFL-CR算法的准确率数据，从72.1%/68.9%/60.8%调整为74.2%/71.7%/69.3%&#10;- 修正了ADPFL算法在FMNIST数据集上的性能表现，从72.3%/68.6%/60.1%保持不变&#10;- 更新了我们方案在FMNIST数据集上的准确率结果，从77.0%/75.9%/73.2%提升至77.4%/75.9%/74.5%&#10;- 重新排列了参考文献列表中的条目顺序&#10;- 修正了文献引用中的作者姓名和发表年份信息&#10;- 添加了新的性能测试图表和时间分解分析内容&#10;- 移除了攻击场景描述中的多余强调标记">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.abs" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.abs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.aux" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.log" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cas-dc-template.tex" beforeDir="false" afterPath="$PROJECT_DIR$/cas-dc-template.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figs/10.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/figs/10.pdf" afterDir="false" />
-    </list>
+    <list default="true" id="60fd7de0-8a3c-4b9e-ab30-3458f0f10c5d" name="Changes" comment="feat(paper): 更新区块链辅助联邦学习框架研究论文&#10;&#10;- 替换了原有的摘要内容，引入新的BRITE-FL框架描述&#10;- 重构了论文的整体结构，包括系统模型、操作流程和验证机制&#10;- 完善了声誉评估和代币激励机制的设计方案&#10;- 更新了实验结果部分，包含MNIST和Fashion-MNIST数据集测试&#10;- 优化了恶意节点检测算法和性能评估体系&#10;- 调整了参考文献和图表引用的编号顺序&#10;- 修正了页面布局和字体相关的编译警告问题" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,7 +74,7 @@
       <workItem from="1768726325532" duration="243000" />
       <workItem from="1769262744918" duration="337000" />
       <workItem from="1772416038398" duration="9083000" />
-      <workItem from="1772539848613" duration="1661000" />
+      <workItem from="1772539848613" duration="1696000" />
     </task>
     <task id="LOCAL-00001" summary="perf(blockchain): 优化区块链性能评估并简化激励兼容性分析&#10;&#10;- 简化了激励兼容性分析部分的数学表达式和公式推导过程&#10;- 添加了完整的区块链性能和可扩展性评估子章节&#10;- 实现了每轮时间分解、区块生成稳定性、链上存储增长等性能测试&#10;- 量化了区块链相关开销占总时间的比例，在所有测试规模下均低于9%&#10;- 证明了区块链集成只引入边际额外开销同时提供关键安全保障">
       <option name="closed" value="true" />
@@ -144,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1772627796678</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat(paper): 更新区块链辅助联邦学习框架研究论文&#10;&#10;- 替换了原有的摘要内容，引入新的BRITE-FL框架描述&#10;- 重构了论文的整体结构，包括系统模型、操作流程和验证机制&#10;- 完善了声誉评估和代币激励机制的设计方案&#10;- 更新了实验结果部分，包含MNIST和Fashion-MNIST数据集测试&#10;- 优化了恶意节点检测算法和性能评估体系&#10;- 调整了参考文献和图表引用的编号顺序&#10;- 修正了页面布局和字体相关的编译警告问题">
+      <created>1772632300085</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1772632300085</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +171,7 @@
     <MESSAGE value="docs(paper): 更新论文实验结果和文献引用格式&#10;&#10;- 修正了MNIST数据集上PFL-CR算法的准确率数据，从84.1%/78.5%/68.9%更新为87.3%/86.6%/83.7%&#10;- 更新了FMNIST数据集上PFL-CR算法的准确率数据，从72.1%/68.9%/60.8%调整为74.2%/71.7%/69.3%&#10;- 修正了ADPFL算法在FMNIST数据集上的性能表现，从72.3%/68.6%/60.1%保持不变&#10;- 更新了我们方案在FMNIST数据集上的准确率结果，从77.0%/75.9%/73.2%提升至77.4%/75.9%/74.5%&#10;&#10;- 重新排列了参考文献列表中的条目顺序&#10;- 修正了文献引用中的作者姓名和发表年份信息" />
     <MESSAGE value="docs(paper): 更新论文实验结果和文献引用格式&#10;&#10;- 修正了MNIST数据集上PFL-CR算法的准确率数据，从84.1%/78.5%/68.9%更新为87.3%/86.6%/83.7%&#10;- 更新了FMNIST数据集上PFL-CR算法的准确率数据，从72.1%/68.9%/60.8%调整为74.2%/71.7%/69.3%&#10;- 修正了ADPFL算法在FMNIST数据集上的性能表现，从72.3%/68.6%/60.1%保持不变&#10;- 更新了我们方案在FMNIST数据集上的准确率结果，从77.0%/75.9%/73.2%提升至77.4%/75.9%/74.5%&#10;- 重新排列了参考文献列表中的条目顺序&#10;- 修正了文献引用中的作者姓名和发表年份信息" />
     <MESSAGE value="docs(paper): 更新论文实验结果和文献引用格式&#10;&#10;- 修正了MNIST数据集上PFL-CR算法的准确率数据，从84.1%/78.5%/68.9%更新为87.3%/86.6%/83.7%&#10;- 更新了FMNIST数据集上PFL-CR算法的准确率数据，从72.1%/68.9%/60.8%调整为74.2%/71.7%/69.3%&#10;- 修正了ADPFL算法在FMNIST数据集上的性能表现，从72.3%/68.6%/60.1%保持不变&#10;- 更新了我们方案在FMNIST数据集上的准确率结果，从77.0%/75.9%/73.2%提升至77.4%/75.9%/74.5%&#10;- 重新排列了参考文献列表中的条目顺序&#10;- 修正了文献引用中的作者姓名和发表年份信息&#10;- 添加了新的性能测试图表和时间分解分析内容&#10;- 移除了攻击场景描述中的多余强调标记" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs(paper): 更新论文实验结果和文献引用格式&#10;&#10;- 修正了MNIST数据集上PFL-CR算法的准确率数据，从84.1%/78.5%/68.9%更新为87.3%/86.6%/83.7%&#10;- 更新了FMNIST数据集上PFL-CR算法的准确率数据，从72.1%/68.9%/60.8%调整为74.2%/71.7%/69.3%&#10;- 修正了ADPFL算法在FMNIST数据集上的性能表现，从72.3%/68.6%/60.1%保持不变&#10;- 更新了我们方案在FMNIST数据集上的准确率结果，从77.0%/75.9%/73.2%提升至77.4%/75.9%/74.5%&#10;- 重新排列了参考文献列表中的条目顺序&#10;- 修正了文献引用中的作者姓名和发表年份信息&#10;- 添加了新的性能测试图表和时间分解分析内容&#10;- 移除了攻击场景描述中的多余强调标记" />
+    <MESSAGE value="feat(paper): 更新区块链辅助联邦学习框架研究论文&#10;&#10;- 替换了原有的摘要内容，引入新的BRITE-FL框架描述&#10;- 重构了论文的整体结构，包括系统模型、操作流程和验证机制&#10;- 完善了声誉评估和代币激励机制的设计方案&#10;- 更新了实验结果部分，包含MNIST和Fashion-MNIST数据集测试&#10;- 优化了恶意节点检测算法和性能评估体系&#10;- 调整了参考文献和图表引用的编号顺序&#10;- 修正了页面布局和字体相关的编译警告问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(paper): 更新区块链辅助联邦学习框架研究论文&#10;&#10;- 替换了原有的摘要内容，引入新的BRITE-FL框架描述&#10;- 重构了论文的整体结构，包括系统模型、操作流程和验证机制&#10;- 完善了声誉评估和代币激励机制的设计方案&#10;- 更新了实验结果部分，包含MNIST和Fashion-MNIST数据集测试&#10;- 优化了恶意节点检测算法和性能评估体系&#10;- 调整了参考文献和图表引用的编号顺序&#10;- 修正了页面布局和字体相关的编译警告问题" />
   </component>
 </project>

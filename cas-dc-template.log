@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.1)  4 MAR 2026 21:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.1)  11 MAR 2026 21:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1381,14 +1381,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.54 
-     
+l.27 ...0)Li, Chen, Liu, Huang, Zheng, and Yan]{4}
+                                                  
 pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.54 
-      <./figs/9.pdf> <./figs/10.pdf
+l.27 ...0)Li, Chen, Liu, Huang, Zheng, and Yan]{4}
+                                                   <./figs/9.pdf> <./figs/10.pd
+f
 
 pdfTeX warning: pdflatex.exe (file ./figs/10.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
@@ -1433,13 +1434,13 @@ Underfull \hbox (badness 2027) in paragraph at lines 214--221
 on in
  []
 
-
+[18{d:/Program Files/texlive/2023/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-
+0.enc}]
 Underfull \hbox (badness 1173) in paragraph at lines 268--272
 []\T1/stix/m/n/8 Ming Tang, Fu Peng, and Vin-cent WS Wong.  A blockchain-
  []
 
-[18{d:/Program Files/texlive/2023/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-
-0.enc}]
+
 Underfull \hbox (badness 1226) in paragraph at lines 291--295
 \T1/stix/m/it/8 works and Enterprise-Level Prac-tices\T1/stix/m/n/8 , pages 273
 --292. Springer,
@@ -1452,13 +1453,13 @@ Package rerunfilecheck Info: File `cas-dc-template.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18955 strings out of 476025
- 291242 string characters out of 5786996
+ 18956 strings out of 476025
+ 291252 string characters out of 5786996
  1897382 words of memory out of 5000000
  38808 multiletter control sequences out of 15000+600000
  613383 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,18n,93p,1504b,650s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,18n,93p,1504b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/inconsolata/Inco
 nsolata-zi4r.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/s
 tix/STIXGeneral-Bold.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/
@@ -1476,10 +1477,10 @@ it.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix/stix-m
 athrm.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix/sti
 x-mathscr.pfb><d:/Program Files/texlive/2023/texmf-dist/fonts/type1/public/stix
 /stix-mathsf.pfb>
-Output written on cas-dc-template.pdf (19 pages, 2650702 bytes).
+Output written on cas-dc-template.pdf (19 pages, 2651102 bytes).
 PDF statistics:
- 1167 PDF objects out of 1200 (max. 8388607)
- 805 compressed objects within 9 object streams
- 256 named destinations out of 1000 (max. 500000)
+ 1168 PDF objects out of 1200 (max. 8388607)
+ 806 compressed objects within 9 object streams
+ 257 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
