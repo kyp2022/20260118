@@ -159,24 +159,24 @@
 		% For a title note without a number/mark
 		%\nonumnote{}
 		
-%		\author[1]{Yingpan Kuang}
-%		\author[2,4]{Jianghao Chen}
-%		\author[1]{Yipeng Zhang}
-%		\author[3,4]{Xiaofeng chen}
-%		
-%		\author[1]{Shuwu Chen}
-%		
-%		\author[1]{Xiaolong Liu}[orcid=0000-0001-7772-9607]
-%		\ead{xlliu@fafu.edu.cn}
-%		\cormark[1]
+		\author[1]{Yingpan Kuang}
+		\author[2,4]{Jianghao Chen}
+		\author[1]{Yipeng Zhang}
+		\author[3,4]{Xiaofeng chen}
 		
-%		\address[1]{College of Computer and Information Science,Fujian Agriculture and Forestry University, Fuzhou 350002, China}
-%		\address[2]{Hangzhou Institute for Advanced Study, University of Chinese Academy of Sciences, Hangzhou 310000, China}
-%		\address[3]{State Key Laboratory of Blockchain and Data Security, Zhejiang University, Hangzhou 310027, China}
-%		\address[4]{Hangzhou Qulian Technology Co., Ltd., Hangzhou 310051, China}
+		\author[1]{Shuwu Chen}
+		
+		\author[1]{Xiaolong Liu}[orcid=0000-0001-7772-9607]
+		\ead{xlliu@fafu.edu.cn}
+		\cormark[1]
+		
+		\address[1]{College of Computer and Information Science,Fujian Agriculture and Forestry University, Fuzhou 350002, China}
+		\address[2]{Hangzhou Institute for Advanced Study, University of Chinese Academy of Sciences, Hangzhou 310000, China}
+		\address[3]{State Key Laboratory of Blockchain and Data Security, Zhejiang University, Hangzhou 310027, China}
+		\address[4]{Hangzhou Qulian Technology Co., Ltd., Hangzhou 310051, China}
 %		%\address[3]{\TeX{} Users Group, Providence, MA, USA}
 %		
-%		\cortext[1]{Corresponding author} 
+		\cortext[1]{Corresponding author} 
 		%\cortext[2]{Principal corresponding author} 
 		
 		% Here goes the abstract
@@ -1249,16 +1249,30 @@ Across all tested scales, the median TCD remains below 0.7 seconds, and even the
 		% Loading bibliography database
 		\bibliography{cas-refs}
 		
+		% 作者简介（Elsevier CAS 原生格式，避免双栏下 wrapfigure 浮动错位）
+		\clearpage
+		\bio[width=1in,pos=l]{figs/a1.jpg}
+		\textbf{Yingpan Kuang} received his B.S. degree in software engineering from Hunan Institute of Technology, China, in 2020. He is now a master's student in Electronic and Information Engineering at Fujian Agriculture and Forestry University. His research interests include blockchain, IoT security, and federated learning.
+		\endbio
 		
+		\bio[width=1in,pos=l]{figs/a2.jpg}
+		\textbf{Jianghao Chen} received his B.S. degree in software engineering from Zhejiang University of Technology, China, in 2023. He is now a master's student majoring in Computer Technology at the University of Chinese Academy of Sciences. His research interests include blockchain and data sharing.
+		\endbio
 		
+		\bio[width=1in,pos=l]{figs/a30.png}
+		\textbf{Zhang Yipeng} is a postgraduate student in Artificial Intelligence at Fujian Agriculture and Forestry University, with research centered on blockchain and a focus on the integration of blockchain and AI security.
+		\endbio
 		
-		% Biography
-		% \bio{}
-		% % Here goes the biography details.
-		% \endbio
+		\bio[width=1in,pos=l]{figs/a3.png}
+		\textbf{Xiaofeng Chen}, born in 1985, is a Ph.D. candidate and a Professor-level Senior Engineer. He is an IEEE Member (No.96348463), an IEEE Consumer Technology Society Member, and an IEEE Standards Association Individual Member. He also serves as a Member of the IEEE SA Standards Board 2025, Vice-Chair of the IEEE SASB New Standards Committee 2025, Member of the IEEE SASB Audit Committee 2025, and Member of the IEEE SASB New Standards Committee (2022--2024). His main research interests include blockchain and DLT, metaverse, Web 3.0, digital technologies, and standardization.
+		\endbio
 		
-		% \bio{pic1}
-		% % Here goes the biography details.
-		% \endbio
+		\bio[width=1in,pos=l]{figs/a41.png}
+		\textbf{Shuwu Chen} is currently a professor at the College of Computer and Information Science, Fujian Agriculture and Forestry University, Fuzhou, China. He is also the director of the Innovation Lab of IoT Technology at Fujian Agriculture and Forestry University. He received his bachelor's degree in industrial automation from Chang'an University, China, in 1998, and his master's degree in radio physics from Xiamen University, China, in 2003. He is the co-founder of Xiamen Four-Faith Communication Technology Co., Ltd., which focuses on IoT technology and solutions. He has directed dozens of research projects and is the author of more than 10 patents. His research interests include IoT technology, edge computing, and AI algorithms.
+		\endbio
+		
+		\bio[width=1in,pos=l]{figs/a5.png}
+		\textbf{Xiaolong Liu} received his B.S. degree from Xiamen University, China, in 2011, his M.S. degree in Computer Science and Information Management from Providence University, Taiwan, in 2013, and his Ph.D. degree from the Institute of Computer Science and Engineering, National Chiao Tung University, Taiwan, in 2016. Since 2018, he has been an Associate Professor with the College of Computer and Information Sciences, Fujian Agriculture and Forestry University. He is the author of more than 50 peer-reviewed international journal and conference papers. His research interests include internet technologies, distributed computing, and multimedia security.
+		\endbio
 		
 	\end{document}
